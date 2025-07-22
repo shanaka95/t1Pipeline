@@ -306,7 +306,5 @@ videos_test = [
     'videos/output_10min.mp4'
 ]
 
-for video in videos_test:
-    print(cropper.get_width(video))
-    print(cropper.get_bounding_box(video))
-    print(cropper.save_frame(video))
+for video in videos:
+    cropper.save_frame(video)
