@@ -13,6 +13,11 @@ POSE_FILE_PATH = "test/3d_poses/004_t1_20230217_clip_10min_X3D.npy"
 OUTPUT_DIR = "outputs"
 FPS = 30
 
+# Frame processing settings (to handle large files)
+MAX_FRAMES = 1000        # Maximum number of frames to animate (set to None for all frames)
+FRAME_SKIP = 1          # Take every Nth frame (1 = all frames, 10 = every 10th frame)
+START_FRAME = 0          # Which frame to start from (0 = beginning)
+
 def animate_skeleton_3d(poses, output_path, title="3D Skeleton Animation", fps=30):
     """
     Create a 2D skeleton animation from 3D pose data (side view).
@@ -105,6 +110,31 @@ def animate_skeleton_3d(poses, output_path, title="3D Skeleton Animation", fps=3
     plt.close()
     print(f"✅ Animation saved successfully!")
 
+def process_poses(poses, start_frame=0, max_frames=None, frame_skip=1):
+    """
+    Process poses by applying frame selection, limiting, and downsampling.
+    
+    Parameters:
+    poses (numpy array): Original poses (T, 17, 3)
+    start_frame (int): Starting frame index
+    max_frames (int): Maximum number of frames to keep (after skipping)
+    frame_skip (int): Take every Nth frame
+    
+    Returns:
+    numpy array: Processed poses
+    """
+    # Start from specified frame
+    poses = poses[start_frame:]
+    
+    # Apply frame skipping (downsampling)
+    poses = poses[::frame_skip]
+    
+    # Limit maximum frames
+    if max_frames is not None and poses.shape[0] > max_frames:
+        poses = poses[:max_frames]
+    
+    return poses
+
 def main():
     """Main function to create skeleton animation."""
     
@@ -131,9 +161,29 @@ def main():
         print(f"❌ Error: Expected pose shape (T, 17, 3), got {poses.shape}")
         return
     
+    # Process poses (downsample and limit frames)
+    original_frames = poses.shape[0]
+    poses = process_poses(poses, START_FRAME, MAX_FRAMES, FRAME_SKIP)
+    processed_frames = poses.shape[0]
+    
+    print(f"📊 Frame processing:")
+    print(f"   Original frames: {original_frames}")
+    print(f"   Start frame: {START_FRAME}")
+    print(f"   Frame skip: every {FRAME_SKIP} frame(s)")
+    print(f"   Max frames limit: {MAX_FRAMES}")
+    print(f"   Final frames: {processed_frames}")
+    
+    # Estimate memory usage and warn if too large
+    estimated_mb = (processed_frames * 17 * 3 * 8) / (1024 * 1024)  # rough estimate
+    if processed_frames > 2000:
+        print(f"⚠️  Warning: {processed_frames} frames might be too many for GIF creation")
+        print(f"   Consider reducing MAX_FRAMES or increasing FRAME_SKIP")
+        print(f"   Estimated memory usage: ~{estimated_mb:.1f} MB")
+    
     # Create output filename
     base_name = os.path.splitext(os.path.basename(POSE_FILE_PATH))[0]
-    output_path = os.path.join(OUTPUT_DIR, f"{base_name}_animation.gif")
+    suffix = f"_skip{FRAME_SKIP}_frames{processed_frames}"
+    output_path = os.path.join(OUTPUT_DIR, f"{base_name}{suffix}_animation.gif")
     
     # Create animation
     animate_skeleton_3d(poses, output_path, f"3D Skeleton Animation - {base_name}", FPS)
