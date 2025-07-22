@@ -17,6 +17,25 @@ def extract_pose(vid_path, out_path):
     # Set GPU
     os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
+    # Load bounding boxes
+    bbox_file = "preprocess_videos/bounding_boxes.npy"
+    bounding_boxes = np.load(bbox_file, allow_pickle=True).item()
+    
+    # Get video filename without extension
+    video_filename = os.path.basename(vid_path)
+    video_name = os.path.splitext(video_filename)[0]
+    
+    # Select bounding box for current video
+    if video_name in bounding_boxes:
+        bbox_info = bounding_boxes[video_name]
+        bounding_box = bbox_info['bounding_box']
+        print(f"Found bounding box for video '{video_name}': {bounding_box}")
+        print(f"Video dimensions: {bbox_info['width']}x{bbox_info['height']}")
+    else:
+        print(f"Warning: No bounding box found for video '{video_name}'")
+        print(f"Available videos: {list(bounding_boxes.keys())}")
+        bounding_box = None
+
     # Load MotionBERT config
     config = "pose_extractor/configs/pose3d/MB_ft_h36m.yaml"
 
@@ -31,18 +50,18 @@ def extract_pose(vid_path, out_path):
 
     print(f"Generating 2D keypoints for {vid_path}")
 
-    #all_frame_poses, frame_count, person_detected_frame, vid_size = vitpose.generate_2d_pose(vid_path)
+    all_frame_poses, frame_count, person_detected_frame, vid_size = vitpose.generate_2d_pose(vid_path, bounding_box)
         
     # Save the keypoints to a npz file
-    #np.savez(npz_path, 
-    #        keypoints=all_frame_poses, 
-    #        frame_count=frame_count, 
-    #        person_detected_frame=person_detected_frame,
-    #        vid_size=vid_size)
+    np.savez(npz_path, 
+           keypoints=all_frame_poses, 
+           frame_count=frame_count, 
+           person_detected_frame=person_detected_frame,
+           vid_size=vid_size)
         
-    #print(f"Processed {frame_count} frames")
-    #print(f"Person detected from frame {person_detected_frame}")
-    #print(f"Saved keypoints with shape {all_frame_poses.shape} in H36M format")
+    print(f"Processed {frame_count} frames")
+    print(f"Person detected from frame {person_detected_frame}")
+    print(f"Saved keypoints with shape {all_frame_poses.shape} in H36M format")
 
     # Get config
     args = get_config(config)

@@ -63,7 +63,7 @@ def coco2h36m(x):
     else:
         raise ValueError(f"Expected keypoint shape [frames, joints, coords], got {x.shape}")
 
-def generate_2d_pose(video_path):
+def generate_2d_pose(video_path, bounding_box):
 
     # Open the video file with OpenCV
     cap = cv2.VideoCapture(video_path)
@@ -76,6 +76,11 @@ def generate_2d_pose(video_path):
     width  = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     vid_size = (width, height)
+
+    # Create temp directory for test frames
+    temp_dir = "temp_test_frames"
+    os.makedirs(temp_dir, exist_ok=True)
+    print(f"Created temp directory: {temp_dir}")
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -104,13 +109,31 @@ def generate_2d_pose(video_path):
             break  # No more frames or error reading
 
         # ------------------------------------------------------------
+        # 0) Crop frame to bounding box if provided
+        # ------------------------------------------------------------
+        if bounding_box is not None:
+            x, y, w, h = bounding_box
+            frame = frame[y:y+h, x:x+w]
+            print(f"Frame {frame_count}: Cropped to bounding box {bounding_box}, new size: {frame.shape}")
+        else:
+            print(f"Frame {frame_count}: No bounding box provided, using original frame")
+
+        # ------------------------------------------------------------
         # 1) Convert the frame (BGR) to PIL (RGB)
         # ------------------------------------------------------------
         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         pil_image = Image.fromarray(frame_rgb)
 
         # ------------------------------------------------------------
-        # 2) Detect persons
+        # 2) Save test frame every 5 seconds
+        # ------------------------------------------------------------
+        if frame_count % int(original_fps * 5) == 0:  # Every 5 seconds
+            test_frame_path = os.path.join(temp_dir, f"frame_{frame_count:06d}.jpg")
+            cv2.imwrite(test_frame_path, frame)
+            print(f"Saved test frame {frame_count} to {test_frame_path}")
+
+        # ------------------------------------------------------------
+        # 3) Detect persons
         # ------------------------------------------------------------
         inputs = person_processor(images=pil_image, return_tensors="pt").to(device)
         with torch.no_grad():
@@ -153,7 +176,7 @@ def generate_2d_pose(video_path):
             continue  # proceed to next frame
         
         # ------------------------------------------------------------
-        # 3) Pose estimation
+        # 4) Pose estimation
         # ------------------------------------------------------------
         boxes_per_image = [person_boxes]
         dataset_index = torch.zeros((1, len(person_boxes)), dtype=torch.int64).to(device)  # COCO=0
