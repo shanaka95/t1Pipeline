@@ -308,5 +308,5 @@ videos_test = [
     'videos/203_t1_20230605.mp4',
 ]
 
-for video in videos_test:
+for video in videos:
     cropper.save_frame(video)
