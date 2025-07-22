@@ -18,10 +18,10 @@ def extract_pose(vid_path, out_path):
     os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
     # Load MotionBERT config
-    config = "configs/pose3d/MB_ft_h36m.yaml"
+    config = "pose_extractor/configs/pose3d/MB_ft_h36m.yaml"
 
     # Load MotionBERT checkpoint
-    model_path = "checkpoint/pose3d/FT_MB_release_MB_ft_h36m/best_epoch.bin"
+    model_path = "pose_extractor/checkpoint/pose3d/FT_MB_release_MB_ft_h36m/best_epoch.bin"
 
     # Load keypoints
     npz_path = out_path + "/keypoints_2d.npz"
@@ -31,18 +31,18 @@ def extract_pose(vid_path, out_path):
 
     print(f"Generating 2D keypoints for {vid_path}")
 
-    all_frame_poses, frame_count, person_detected_frame, vid_size = vitpose.generate_2d_pose(vid_path)
+    #all_frame_poses, frame_count, person_detected_frame, vid_size = vitpose.generate_2d_pose(vid_path)
         
     # Save the keypoints to a npz file
-    np.savez(npz_path, 
-            keypoints=all_frame_poses, 
-            frame_count=frame_count, 
-            person_detected_frame=person_detected_frame,
-            vid_size=vid_size)
+    #np.savez(npz_path, 
+    #        keypoints=all_frame_poses, 
+    #        frame_count=frame_count, 
+    #        person_detected_frame=person_detected_frame,
+    #        vid_size=vid_size)
         
-    print(f"Processed {frame_count} frames")
-    print(f"Person detected from frame {person_detected_frame}")
-    print(f"Saved keypoints with shape {all_frame_poses.shape} in H36M format")
+    #print(f"Processed {frame_count} frames")
+    #print(f"Person detected from frame {person_detected_frame}")
+    #print(f"Saved keypoints with shape {all_frame_poses.shape} in H36M format")
 
     # Get config
     args = get_config(config)
