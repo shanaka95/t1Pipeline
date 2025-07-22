@@ -1,6 +1,7 @@
 import cv2
 import os
 import random
+import numpy as np
 
 def get_width(video_path):
     """
@@ -40,13 +41,27 @@ def get_bounding_box(video_url):
         
     Returns:
         tuple: (x, y, width, height) coordinates of the bounding box for the right half
-               Returns None if video width is not 1280 or 3840
+               Returns None if video width is not 1280 or 3840, or if video cannot be opened
         
     Raises:
         ValueError: If the video file cannot be opened or read
     """
+    # Get video name without extension for dictionary key
+    video_name = os.path.splitext(os.path.basename(video_url))[0]
+    
+    # Load existing bounding boxes dictionary
+    bounding_boxes_file = "bounding_boxes.npy"
+    if os.path.exists(bounding_boxes_file):
+        bounding_boxes = np.load(bounding_boxes_file, allow_pickle=True).item()
+    else:
+        bounding_boxes = {}
+    
     # Get the width of the video
-    width = get_width(video_url)
+    try:
+        width = get_width(video_url)
+    except ValueError as e:
+        print(f"Warning: Could not get width for video '{video_url}': {e}")
+        return None
     
     # Check if width is 1280 or 3840
     if width != 1280 and width != 3840:
@@ -58,24 +73,34 @@ def get_bounding_box(video_url):
     # Check if video opened successfully
     if not cap.isOpened():
         cap.release()
-        raise ValueError(f"Error: Could not open video file '{video_url}'")
+        print(f"Warning: Could not open video file '{video_url}'")
+        return None
     
     # Get the height property
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+
+    patient_in_left = ["115_t1_20230228.mp4"]
     
     # Calculate bounding box based on width
     if width == 1280:
-        # For 1280 width: use right half
-        x = width // 2  # Start from middle (right half)
+        if video_name in patient_in_left:
+            x = 0
+            box_width = width // 2
+            box_height = height
+        else:
+            x = width // 2
+            box_width = width // 2
+            
         y = 0           # Start from top
-        box_width = width // 2  # Half width
         box_height = height     # Full height
+
+
     elif width == 3840:
         # For 3840 width: analyze 2nd and 4th pieces to find darker one
         piece_width = width // 4  # Width of each piece
         
         # Get a sample frame to analyze
-        cap.set(cv2.CAP_PROP_POS_FRAMES, 1000)  # Use frame 1000 for analysis
+        cap.set(cv2.CAP_PROP_POS_FRAMES, 100)  # Use frame 100 for analysis
         ret, frame = cap.read()
         
         if ret:
@@ -117,7 +142,22 @@ def get_bounding_box(video_url):
     # Release the video capture object
     cap.release()
     
-    return (x, y, box_width, box_height)
+    # Create bounding box tuple
+    bounding_box = (x, y, box_width, box_height)
+    
+    # Save bounding box to dictionary
+    bounding_boxes[video_name] = {
+        'bounding_box': bounding_box,
+        'video_path': video_url,
+        'width': width,
+        'height': height
+    }
+    
+    # Save updated dictionary to file
+    np.save(bounding_boxes_file, bounding_boxes)
+    print(f"Saved bounding box for '{video_name}' to {bounding_boxes_file}")
+    
+    return bounding_box
 
 def save_frame(video_path):
     """
@@ -127,7 +167,7 @@ def save_frame(video_path):
         video_path (str): Path to the video file
         
     Returns:
-        list: List of paths to the saved frame images
+        list: List of paths to the saved frame images, or None if video cannot be processed
         
     Raises:
         ValueError: If the video file cannot be opened or read
@@ -137,6 +177,7 @@ def save_frame(video_path):
     bounding_box = get_bounding_box(video_path)
     
     if bounding_box is None:
+        print(f"Warning: Could not get bounding box for video '{video_path}'. Skipping frame save.")
         return None
     
     x, y, box_width, box_height = bounding_box
@@ -147,7 +188,8 @@ def save_frame(video_path):
     # Check if video opened successfully
     if not cap.isOpened():
         cap.release()
-        raise ValueError(f"Error: Could not open video file '{video_path}'")
+        print(f"Warning: Could not open video file '{video_path}' for frame saving")
+        return None
     
     # Get video name without extension for folder creation
     video_name = os.path.splitext(os.path.basename(video_path))[0]
@@ -156,7 +198,7 @@ def save_frame(video_path):
     test_frames_dir = "test_frames"
     if not os.path.exists(test_frames_dir):
         os.makedirs(test_frames_dir)
-
+    
     frame_num = 1000
 
     cap.set(cv2.CAP_PROP_POS_FRAMES, frame_num)
@@ -175,7 +217,6 @@ def save_frame(video_path):
     else:
         print(f"Warning: Could not read frame {frame_num}")
     
-    # Release the video capture object
     cap.release()
     
     return 1
