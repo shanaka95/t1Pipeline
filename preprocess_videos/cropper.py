@@ -48,13 +48,6 @@ def get_bounding_box(video_url):
     """
     # Get video name without extension for dictionary key
     video_name = os.path.splitext(os.path.basename(video_url))[0]
-    patient_id = video_name.split('_')[0]
-    delete_numbers = [531, 553, 629, 747, 777, 834, 997, 403, 539, 699, 705, 746, 998, 316, 652, 741, 907, 911, 1013, 1022, 995, 905, 824, 808, 709, 662, 593, 572, 143, 196]
-
-    # if video name contains any of the delete numbers, return None
-    if int(patient_id) in delete_numbers:
-        print(f"Warning: Video '{video_name}' is in the delete list. Skipping.")
-        return None
 
     # Load existing bounding boxes dictionary
     bounding_boxes_file = "bounding_boxes.npy"
@@ -133,9 +126,6 @@ def get_bounding_box(video_url):
             # Calculate mean brightness (lower value = darker)
             brightness_2 = cv2.mean(piece_2_gray)[0]
             brightness_4 = cv2.mean(piece_4_gray)[0]
-
-            print(f"Brightness 2: {brightness_2}, Brightness 4: {brightness_4}")
-            print(f"Video name: {video_name}")
             
             if brightness_2 < 10:
                 x = piece_4_x

@@ -1,4 +1,5 @@
 import cropper
+import os
 
 videos = ['/home/vault/empkins/tpD/D02/RCT/raw_data/705/705_t1_20240614.mp4',
  '/home/vault/empkins/tpD/D02/RCT/raw_data/338/338_t1_20231208.mp4',
@@ -309,4 +310,12 @@ videos_test = [
 ]
 
 for video in videos:
+    video_name = os.path.splitext(os.path.basename(video))[0]
+    patient_id = video_name.split('_')[0]
+    delete_numbers = [531, 553, 629, 747, 777, 834, 997, 403, 539, 699, 705, 746, 998, 316, 652, 741, 907, 911, 1013, 1022, 995, 905, 824, 808, 709, 662, 593, 572, 143, 196]
+
+    # if video name contains any of the delete numbers, return None
+    if int(patient_id) in delete_numbers:
+        print(f"Warning: Video '{video}' is in the delete list. Skipping.")
+        pass
     cropper.save_frame(video)
