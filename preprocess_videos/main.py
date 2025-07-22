@@ -303,8 +303,10 @@ videos_test = [
     'videos/output_10min4.mp4',
     'videos/output_10min3.mp4',
     'videos/output_10min2.mp4',
-    'videos/output_10min.mp4'
+    'videos/output_10min.mp4',
+    'videos/177_t1_20230525.mp4',
+    'videos/203_t1_20230605.mp4',
 ]
 
-for video in videos:
+for video in videos_test:
     cropper.save_frame(video)

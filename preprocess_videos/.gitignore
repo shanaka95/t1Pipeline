@@ -14,3 +14,4 @@ test_frames/*
 *.jpg
 env/*
 __pycache__/*
+bounding_boxes.npy 

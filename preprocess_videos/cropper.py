@@ -88,7 +88,8 @@ def get_bounding_box(video_url):
     # Get the height property
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
-    patient_in_left = ["115_t1_20230228.mp4"]
+    patient_in_left = ["115_t1_20230228"]
+    needs_space_on_left = ["1111_t1_20250206", "1104_t1_20250120", "1076_t1_20250110", "1075_t1_20250107", "1069_t1_20241120", "1068_t1_2024_11_24", "1061_t1_20241202", "1060_t1_20250131", "1055_t1_20241122", "1053_t1_20241206", "1040_t1_20241119", "1037_t1_20250130", "1034_t1_20241213", "1025_t1_20241203", "1017_t1_20241202", "1017_t1_20241202", "1016_t1_20241205", "1014_t1_20241119", "995_t1_20241125", "992_t1_20241119", "987_t1_20241203", "982_t1_20241113", "861_t1_20241129", "856_t1_20241127", "161_t1_20230530"]
 
     # Calculate bounding box based on width
     if width == 1280:
@@ -97,8 +98,13 @@ def get_bounding_box(video_url):
             box_width = width // 2
             box_height = height
         else:
-            x = width // 2
-            box_width = width // 2
+            # add 200 more pixels to the left
+            if video_name in needs_space_on_left:
+                x = (width // 2) - 200
+                box_width = width // 2 + 200
+            else:
+                x = width // 2
+                box_width = width // 2
 
         y = 0           # Start from top
         box_height = height     # Full height
@@ -129,14 +135,24 @@ def get_bounding_box(video_url):
             # Calculate mean brightness (lower value = darker)
             brightness_2 = cv2.mean(piece_2_gray)[0]
             brightness_4 = cv2.mean(piece_4_gray)[0]
+
+            print(f"Brightness 2: {brightness_2}, Brightness 4: {brightness_4}")
+            print(f"Video name: {video_name}")
             
-            # Choose the darker piece
-            if brightness_2 < brightness_4:
+            if brightness_2 < 10:
+                x = piece_4_x
+            elif brightness_4 < 10:
+                x = piece_2_x
+            elif brightness_2 < brightness_4:
                 # 2nd piece is darker
                 x = piece_2_x
             else:
                 # 4th piece is darker
                 x = piece_4_x
+            
+            if video_name in needs_space_on_left:
+                x = max(x - 200, 0)
+
         else:
             # Fallback to 4th piece if frame reading fails
             x = 3 * piece_width
