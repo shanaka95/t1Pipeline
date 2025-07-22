@@ -48,7 +48,16 @@ def get_bounding_box(video_url):
     """
     # Get video name without extension for dictionary key
     video_name = os.path.splitext(os.path.basename(video_url))[0]
+
+    delete_numbers = [531, 553, 629, 747, 777, 834, 997, 403, 539, 699, 705, 746, 998, 316, 652, 741, 907, 911, 1013, 1022, 995, 905, 824, 808, 709, 662, 593, 572, 143, 196]
+    delete_numbers = ['/' + str(num) + '/'  for num in delete_numbers]
+
+    # if video name contains any of the delete numbers, return None
+    if any(num in video_name for num in delete_numbers):
+        print(f"Warning: Video '{video_name}' is in the delete list. Skipping.")
+        return None
     
+
     # Load existing bounding boxes dictionary
     bounding_boxes_file = "bounding_boxes.npy"
     if os.path.exists(bounding_boxes_file):
@@ -80,7 +89,7 @@ def get_bounding_box(video_url):
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
     patient_in_left = ["115_t1_20230228.mp4"]
-    
+
     # Calculate bounding box based on width
     if width == 1280:
         if video_name in patient_in_left:
@@ -90,7 +99,7 @@ def get_bounding_box(video_url):
         else:
             x = width // 2
             box_width = width // 2
-            
+
         y = 0           # Start from top
         box_height = height     # Full height
 
@@ -125,11 +134,9 @@ def get_bounding_box(video_url):
             if brightness_2 < brightness_4:
                 # 2nd piece is darker
                 x = piece_2_x
-                print(f"Using 2nd piece (darker): brightness_2={brightness_2:.2f}, brightness_4={brightness_4:.2f}")
             else:
                 # 4th piece is darker
                 x = piece_4_x
-                print(f"Using 4th piece (darker): brightness_2={brightness_2:.2f}, brightness_4={brightness_4:.2f}")
         else:
             # Fallback to 4th piece if frame reading fails
             x = 3 * piece_width
@@ -155,7 +162,6 @@ def get_bounding_box(video_url):
     
     # Save updated dictionary to file
     np.save(bounding_boxes_file, bounding_boxes)
-    print(f"Saved bounding box for '{video_name}' to {bounding_boxes_file}")
     
     return bounding_box
 
