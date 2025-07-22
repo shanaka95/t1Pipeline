@@ -317,5 +317,5 @@ for video in videos:
     # if video name contains any of the delete numbers, return None
     if int(patient_id) in delete_numbers:
         print(f"Warning: Video '{video}' is in the delete list. Skipping.")
-        pass
+        continue
     cropper.save_frame(video)
