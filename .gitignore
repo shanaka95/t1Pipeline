@@ -1,0 +1,12 @@
+videos/*
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.flv
+*.wmv
+*.webm
+*.m4v
+*.m4a
+*.m4b
+*.m4p
