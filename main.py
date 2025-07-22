@@ -15,3 +15,5 @@ videos = [
 
 for video in videos:
     print(cropper.get_width(video))
+    print(cropper.get_bounding_box(video))
+    print(cropper.save_frame(video))

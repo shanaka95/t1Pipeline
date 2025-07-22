@@ -10,3 +10,7 @@ videos/*
 *.m4a
 *.m4b
 *.m4p
+test_frames/*
+*.jpg
+env/*
+__pycache__/*
