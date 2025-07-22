@@ -152,6 +152,9 @@ def get_bounding_box(video_url):
             
             if video_name in needs_space_on_left:
                 x = max(x - 200, 0)
+            
+            if video_name in patient_in_left:
+                x = 0
 
         else:
             # Fallback to 4th piece if frame reading fails
