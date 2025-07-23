@@ -7,7 +7,7 @@ import os
 # CONFIGURATION VARIABLE
 # =======================
 # Change this path to your 3D pose file
-POSE_FILE_PATH = "test/3d_poses/004_t1_20230217_clip_10min_X3D.npy"
+POSE_FILE_PATH = "test/3d_poses/example_with_cropping.npy"
 
 # Output settings
 OUTPUT_DIR = "outputs"
