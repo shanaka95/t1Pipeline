@@ -2,7 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import os
-from typing import List, Tuple, Dict
+import json
+from typing import List, Tuple, Dict, Optional
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -470,11 +471,99 @@ def filter_glitched_segments(pose_segments: List[np.ndarray],
     
     return clean_segments
 
+def filter_empty_skeleton_segments(pose_segments: List[np.ndarray], 
+                                 summary_dir: Optional[str] = None) -> Tuple[List[np.ndarray], Dict]:
+    """
+    Filter out segments that don't have valid skeleton data.
+    
+    Args:
+        pose_segments: List of pose segments
+        summary_dir: Optional directory to save summary JSON
+        
+    Returns:
+        Tuple of (clean_segments, summary_info)
+    """
+    print(f"🔍 Filtering empty skeleton segments...")
+    
+    if not pose_segments:
+        summary_info = {
+            'input_segments': 0,
+            'output_segments': 0,
+            'removed_segments': 0,
+            'removal_percentage': 0.0,
+            'total_input_frames': 0,
+            'total_output_frames': 0,
+            'removed_frames': 0,
+            'time_removed_percentage': 0.0
+        }
+        return [], summary_info
+    
+    clean_segments = []
+    removed_count = 0
+    total_input_frames = 0
+    total_output_frames = 0
+    
+    for i, segment in enumerate(pose_segments):
+        if len(segment.shape) != 3 or segment.shape[1] != 17 or segment.shape[2] != 3:
+            print(f"  Segment {i}: Invalid shape {segment.shape} - removed")
+            removed_count += 1
+            continue
+            
+        total_input_frames += segment.shape[0]
+        
+        # Check if segment has any valid skeleton data
+        # A segment is considered empty if all coordinates are zero or very close to zero
+        max_coord = np.max(np.abs(segment))
+        if max_coord < 1e-6:  # All coordinates are essentially zero
+            print(f"  Segment {i}: No skeleton data (max coord: {max_coord}) - removed")
+            removed_count += 1
+            continue
+            
+        # Check if segment has sufficient non-zero joints
+        non_zero_frames = np.sum(np.any(np.abs(segment) > 1e-6, axis=(1, 2)))
+        if non_zero_frames < segment.shape[0] * 0.5:  # Less than 50% frames have data
+            print(f"  Segment {i}: Insufficient skeleton data ({non_zero_frames}/{segment.shape[0]} frames) - removed")
+            removed_count += 1
+            continue
+            
+        clean_segments.append(segment)
+        total_output_frames += segment.shape[0]
+    
+    removal_percentage = (removed_count / len(pose_segments)) * 100 if pose_segments else 0
+    time_removed_percentage = ((total_input_frames - total_output_frames) / total_input_frames) * 100 if total_input_frames > 0 else 0
+    
+    summary_info = {
+        'input_segments': len(pose_segments),
+        'output_segments': len(clean_segments),
+        'removed_segments': removed_count,
+        'removal_percentage': removal_percentage,
+        'total_input_frames': total_input_frames,
+        'total_output_frames': total_output_frames,
+        'removed_frames': total_input_frames - total_output_frames,
+        'time_removed_percentage': time_removed_percentage
+    }
+    
+    print(f"📊 Empty skeleton filter summary:")
+    print(f"   Input segments: {summary_info['input_segments']}")
+    print(f"   Output segments: {summary_info['output_segments']}")
+    print(f"   Removed segments: {summary_info['removed_segments']} ({removal_percentage:.1f}%)")
+    print(f"   Removed frames: {summary_info['removed_frames']} ({time_removed_percentage:.1f}%)")
+    
+    if summary_dir:
+        os.makedirs(summary_dir, exist_ok=True)
+        summary_file = os.path.join(summary_dir, 'empty_skeleton_filter_summary.json')
+        with open(summary_file, 'w') as f:
+            json.dump(summary_info, f, indent=2)
+        print(f"💾 Empty skeleton filter summary saved to: {summary_file}")
+    
+    return clean_segments, summary_info
+
 def process_poses_with_glitch_filtering(raw_poses, 
                                       velocity_threshold: float = 0.3,
                                       acceleration_threshold: float = 0.5,
                                       create_visualizations: bool = True,
-                                      output_dir: str = "outputs/removed_glitches") -> List[np.ndarray]:
+                                      output_dir: str = "outputs/removed_glitches",
+                                      summary_dir: Optional[str] = None) -> List[np.ndarray]:
     """
     Complete pipeline function for processing raw poses with glitch filtering.
     
@@ -483,6 +572,7 @@ def process_poses_with_glitch_filtering(raw_poses,
     2. Remove batch dimensions if present  
     3. Filter out glitched segments
     4. Return clean segments ready for saving
+    5. Optionally create summary statistics
     
     Args:
         raw_poses: Raw pose data from extract_pose (list or array)
@@ -490,21 +580,28 @@ def process_poses_with_glitch_filtering(raw_poses,
         acceleration_threshold (float): Threshold for acceleration-based glitch detection  
         create_visualizations (bool): Whether to create visualizations of removed segments
         output_dir (str): Directory to save visualizations
+        summary_dir (Optional[str]): Directory to save summary JSON files
         
     Returns:
         List[np.ndarray]: List of clean pose segments
     """
     print(f"🔍 Processing poses with glitch filtering...")
     
+    original_segment_count = 0
+    original_frame_count = 0
+    
     # Parse raw poses into segments (reuse logic from test script)
     if isinstance(raw_poses, list):
         print(f"Found {len(raw_poses)} pose segments in list format")
         segments = []
+        original_segment_count = len(raw_poses)
         
         for i, segment in enumerate(raw_poses):
             # Handle extra batch dimension if present
             if len(segment.shape) == 4 and segment.shape[0] == 1:
                 segment = segment.squeeze(0)
+            
+            original_frame_count += segment.shape[0] if len(segment.shape) >= 1 else 0
             
             # Validate segment format
             if len(segment.shape) == 3 and segment.shape[1] == 17 and segment.shape[2] == 3:
@@ -517,6 +614,7 @@ def process_poses_with_glitch_filtering(raw_poses,
         
     elif isinstance(raw_poses, np.ndarray):
         print(f"Found numpy array with shape: {raw_poses.shape}")
+        original_frame_count = raw_poses.shape[0] if len(raw_poses.shape) >= 1 else 0
         
         # Handle extra batch dimension if present
         if len(raw_poses.shape) == 4 and raw_poses.shape[0] == 1:
@@ -526,6 +624,7 @@ def process_poses_with_glitch_filtering(raw_poses,
         segments = []
         total_frames = raw_poses.shape[0]
         segment_length = 243
+        original_segment_count = (total_frames + segment_length - 1) // segment_length
         
         for start_idx in range(0, total_frames, segment_length):
             end_idx = min(start_idx + segment_length, total_frames)
@@ -549,6 +648,33 @@ def process_poses_with_glitch_filtering(raw_poses,
         create_visualizations=create_visualizations,
         output_dir=output_dir
     )
+    
+    # Create summary if requested
+    if summary_dir:
+        final_frame_count = sum(seg.shape[0] for seg in clean_segments)
+        removed_segments = len(segments) - len(clean_segments)
+        removed_frames = sum(seg.shape[0] for seg in segments) - final_frame_count
+        
+        glitch_summary = {
+            'original_segments': original_segment_count,
+            'parsed_segments': len(segments),
+            'final_segments': len(clean_segments),
+            'removed_segments': removed_segments,
+            'removal_percentage': (removed_segments / len(segments)) * 100 if segments else 0,
+            'original_frames': original_frame_count,
+            'parsed_frames': sum(seg.shape[0] for seg in segments),
+            'final_frames': final_frame_count,
+            'removed_frames': removed_frames,
+            'time_removed_percentage': (removed_frames / sum(seg.shape[0] for seg in segments)) * 100 if segments else 0,
+            'velocity_threshold': velocity_threshold,
+            'acceleration_threshold': acceleration_threshold
+        }
+        
+        os.makedirs(summary_dir, exist_ok=True)
+        summary_file = os.path.join(summary_dir, 'glitch_filter_summary.json')
+        with open(summary_file, 'w') as f:
+            json.dump(glitch_summary, f, indent=2)
+        print(f"💾 Glitch filter summary saved to: {summary_file}")
     
     return clean_segments
 
