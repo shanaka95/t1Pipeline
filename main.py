@@ -3,7 +3,7 @@ from postprocess_poses.filter import process_poses_with_glitch_filtering
 from postprocess_poses.normalize import normalize_pose_segments
 from visualizations.visualize import create_pose_segment_visualizations
 from postprocess_poses.rotate import process_pose_segments
-from action_recognition.ctrgcn.inference import run_inference_on_segments
+from action_recognition.ctrgcn.inference import run_inference_on_segments, extract_embeddings_from_segments
 
 import pickle, random
 
@@ -76,10 +76,16 @@ if POSE_NORMALIZATION_ENABLED:
 print("\n🔄 Rotating poses to front-facing...")
 rotated_poses = process_pose_segments(normalized_poses)
 
-# Run batch inference on all segments
-results = run_inference_on_segments(rotated_poses)
-for result in results:
-    print(f"Segment {result['sequence_id']}: {result['class_name']} (Label: {result['predicted_label']}, Confidence: {result['confidence']:.4f})")
+# Extract embeddings for clustering analysis
+print("\n🧠 Extracting embeddings for clustering...")
+embeddings_results = extract_embeddings_from_segments(rotated_poses)
+print(f"Extracted {len(embeddings_results)} embeddings, each of shape: {embeddings_results[0]['embedding'].shape}")
+
+# Save embeddings for later analysis
+embeddings_filename = 'pose_embeddings.pkl'
+with open(embeddings_filename, 'wb') as f:
+    pickle.dump(embeddings_results, f)
+print(f"💾 Saved embeddings to {embeddings_filename}")
 
 filename = 'poses_single_segment.pkl'
 # Step 5: Save processed poses
