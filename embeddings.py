@@ -1,11 +1,11 @@
 from pose_extractor.extract import extract_pose
 from postprocess_poses.filter import process_poses_with_glitch_filtering
 from postprocess_poses.normalize import normalize_pose_segments
-from visualizations.visualize import create_pose_segment_visualizations
 from postprocess_poses.rotate import process_pose_segments
-from action_recognition.ctrgcn.inference import run_inference_on_segments, extract_embeddings_from_segments
+from action_recognition.ctrgcn.inference import extract_embeddings_from_segments
+from clustering.pca import apply_pca_to_embeddings, save_pca_results
 
-import pickle, random
+import os
 
 # Configuration for glitch filtering
 GLITCH_FILTERING_ENABLED = True
@@ -20,18 +20,27 @@ TARGET_SKELETON_SCALE = 1.0      # Target scale for skeleton size
 EMA_SMOOTHING_ALPHA = 0.3        # EMA smoothing factor (0 < alpha < 1)
 USE_STANDARD_BONE_LENGTHS = True # Use predefined bone length ratios
 
+video_path = '/home/shanaka/Desktop/thesis/pipeline-final/preprocess_videos/videos/004_t1_20230217_clip_10min.mp4'
 
-print("🎬 Starting pose extraction pipeline...")
+video_name = video_path.split('/')[-1].split('.')[0]
+
+poses_output_path = f'./poses/{video_name}'
+
+embeddings_output_path = f'./embeddings/{video_name}'
+
+# Create output directories if they don't exist
+os.makedirs(poses_output_path, exist_ok=True)
+os.makedirs(embeddings_output_path, exist_ok=True)
 
 # Step 1: Extract poses from video
-print("📹 Extracting poses from video...")
-raw_poses = extract_pose('/home/shanaka/Desktop/thesis/pipeline-final/preprocess_videos/videos/004_t1_20230217_clip_10min.mp4', './')
+print("Extracting poses from video...")
+raw_poses = extract_pose(video_path, poses_output_path)
 
 print(f"Pose extraction completed. Raw poses type: {type(raw_poses)}")
 
 # Step 2: Filter out glitched segments (if enabled)
 if GLITCH_FILTERING_ENABLED:
-    print("\n🔍 Filtering out glitched segments...")
+    print("Filtering out glitched segments...")
     
     clean_poses = process_poses_with_glitch_filtering(
         raw_poses=raw_poses,
@@ -61,7 +70,7 @@ else:
 
 # Step 3: Normalize poses (if enabled)
 if POSE_NORMALIZATION_ENABLED:
-    print("\n🔧 Normalizing pose segments...")
+    print("Normalizing pose segments...")
     
     normalized_poses = normalize_pose_segments(
         pose_segments=poses_for_normalization,
@@ -73,22 +82,16 @@ if POSE_NORMALIZATION_ENABLED:
 
 
 # Step 4: Rotate poses to front-facing
-print("\n🔄 Rotating poses to front-facing...")
+print("Rotating poses to front-facing...")
 rotated_poses = process_pose_segments(normalized_poses)
 
 # Extract embeddings for clustering analysis
-print("\n🧠 Extracting embeddings for clustering...")
+print("Extracting embeddings for clustering...")
 embeddings_results = extract_embeddings_from_segments(rotated_poses)
 print(f"Extracted {len(embeddings_results)} embeddings, each of shape: {embeddings_results[0]['embedding'].shape}")
 
-# Save embeddings for later analysis
-embeddings_filename = 'pose_embeddings.pkl'
-with open(embeddings_filename, 'wb') as f:
-    pickle.dump(embeddings_results, f)
-print(f"💾 Saved embeddings to {embeddings_filename}")
+# Apply PCA to reduce dimensionality
+print("Applying PCA for dimensionality reduction...")
+pca_results = apply_pca_to_embeddings(embeddings_results, n_components=50, standardize=True)
 
-filename = 'poses_single_segment.pkl'
-# Step 5: Save processed poses
-print(f"\n💾 Saving poses to {filename}...")
-with open(filename, 'wb') as f:
-    pickle.dump(rotated_poses, f)
+save_pca_results(pca_results, f'{embeddings_output_path}/pca_results.pkl')

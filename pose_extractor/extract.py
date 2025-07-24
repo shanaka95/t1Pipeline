@@ -161,22 +161,9 @@ def extract_pose(vid_path, out_path):
                 predicted_3d_pos[...,:2] = batch_input[...,:2]
             results_all.append(predicted_3d_pos.cpu().numpy())
 
-    # Process results
-    #results_all = np.hstack(results_all)
-    #results_all = np.concatenate(results_all)
-    #print(f"Final 3D pose shape: {results_all.shape}")
-
-    #print(f"Rendering and saving video")
-
-    #filename = os.path.basename(vid_path)
-    #filename = filename.split('.')[0]
-
-    # Render and save video
-    #render_and_save(results_all, '%s/%s_X3D.mp4' % (out_path, filename), keep_imgs=False, fps=fps_in)
-
     # Save 3D pose data
-    #np.save('%s/%s_X3D.npy' % (out_path, filename), results_all)
-    #print(f"3D pose data saved to {out_path}/{filename}_X3D.npy")
-    #print(f"3D pose video saved to {out_path}/{filename}_X3D.mp4")
+    import pickle
+    with open(f'{out_path}/poses_3D.pkl', 'wb') as f:
+        pickle.dump(results_all, f)
 
     return results_all

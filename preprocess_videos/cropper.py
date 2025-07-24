@@ -50,7 +50,7 @@ def get_bounding_box(video_url):
     video_name = os.path.splitext(os.path.basename(video_url))[0]
 
     # Load existing bounding boxes dictionary
-    bounding_boxes_file = "bounding_boxes.npy"
+    bounding_boxes_file = "preprocess_videos/bounding_boxes.npy"
     if os.path.exists(bounding_boxes_file):
         bounding_boxes = np.load(bounding_boxes_file, allow_pickle=True).item()
     else:

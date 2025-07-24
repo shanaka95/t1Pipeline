@@ -1,4 +1,4 @@
-import cropper
+import preprocess_videos.cropper as cropper
 import os
 
 videos = ['/home/vault/empkins/tpD/D02/RCT/raw_data/705/705_t1_20240614.mp4',
@@ -295,21 +295,21 @@ videos = ['/home/vault/empkins/tpD/D02/RCT/raw_data/705/705_t1_20240614.mp4',
  '/home/vault/empkins/tpD/D02/RCT/raw_data/634/634_t1_20240515.mp4']
 
 videos_test = [
-    'videos/clip6_10min.mp4',
-    'videos/clip5_10min.mp4',
-    'videos/clip4_10min.mp4',
-    'videos/clip3_10min.mp4',
-    'videos/004_t1_20230217_clip_10min.mp4',
-    'videos/output_clip.mp4',
-    'videos/output_10min4.mp4',
-    'videos/output_10min3.mp4',
-    'videos/output_10min2.mp4',
-    'videos/output_10min.mp4',
-    'videos/177_t1_20230525.mp4',
-    'videos/203_t1_20230605.mp4',
+    'preprocess_videos/videos/001_clip6_10min.mp4',
+    'preprocess_videos/videos/001_clip5_10min.mp4',
+    'preprocess_videos/videos/001_clip4_10min.mp4',
+    'preprocess_videos/videos/001_clip3_10min.mp4',
+    'preprocess_videos/videos/004_t1_20230217_clip_10min.mp4',
+    'preprocess_videos/videos/001_output_clip.mp4',
+    'preprocess_videos/videos/001_output_10min4.mp4',
+    'preprocess_videos/videos/001_output_10min3.mp4',
+    'preprocess_videos/videos/001_output_10min2.mp4',
+    'preprocess_videos/videos/001_output_10min.mp4',
+    'preprocess_videos/videos/177_t1_20230525.mp4',
+    'preprocess_videos/videos/203_t1_20230605.mp4',
 ]
 
-for video in videos:
+for video in videos_test:
     video_name = os.path.splitext(os.path.basename(video))[0]
     patient_id = video_name.split('_')[0]
     delete_numbers = [531, 553, 629, 747, 777, 834, 997, 403, 539, 699, 705, 746, 998, 316, 652, 741, 907, 911, 1013, 1022, 995, 905, 824, 808, 709, 662, 593, 572, 143, 196]
@@ -318,4 +318,4 @@ for video in videos:
     if int(patient_id) in delete_numbers:
         print(f"Warning: Video '{video}' is in the delete list. Skipping.")
         continue
-    cropper.save_frame(video)
+    cropper.get_bounding_box(video)
