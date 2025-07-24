@@ -1,0 +1,85 @@
+work_dir: ./work_dir/custom/ctrgcn_balanced
+
+# feeder
+feeder: feeders.feeder_custom.Feeder
+train_feeder_args:
+  data_path: data/train
+  label_path: data/train_labels.txt
+  split: train
+  debug: False
+  random_choose: False       
+  random_shift: False        
+  random_move: False         
+  window_size: 64
+  normalization: False       
+  random_rot: True           # Keep rotation augmentation - it's proven effective
+  p_interval: [0.5, 1]      
+  vel: False
+  bone: False
+
+test_feeder_args:
+  data_path: data/test
+  label_path: data/test_labels.txt
+  split: test
+  window_size: 64
+  p_interval: [0.95]
+  vel: False
+  bone: False
+  debug: False
+
+# model
+model: model.ctrgcn.Model
+model_args:
+  num_class: 52
+  num_point: 17
+  num_person: 1
+  graph: graph.custom_17j.Graph
+  graph_args:
+    labeling_mode: 'spatial'
+  drop_out: 0.2              # Moderate dropout (was 0.5, now 0.2)
+
+# Model weights (optional)
+weights: null                
+ignore_weights: []           
+
+#optim
+weight_decay: 0.0006         # Modest increase from original 0.0004 (was 0.001)
+base_lr: 0.08               # Moderate reduction from original 0.1 (was 0.05)
+lr_decay_rate: 0.1
+step: [35, 55]              # Back to original schedule (was [40, 60])
+warm_up_epoch: 5
+optimizer: SGD               
+
+# training
+device: [0]
+batch_size: 48              # Compromise between 32 and 64
+test_batch_size: 64
+num_epoch: 80               
+nesterov: True
+start_epoch: 0              
+phase: train                
+save_score: False           
+seed: 1                     
+log_interval: 100           
+save_interval: 1            
+save_epoch: 30              
+eval_interval: 1            
+print_log: True             
+show_topk: [1, 5]           
+num_worker: 24              
+model_saved_name: ./work_dir/custom/ctrgcn_balanced/runs
+
+# Early stopping (keep but with longer patience)
+early_stopping: True
+patience: 15                # Increased from 10 to 15
+min_delta: 0.001           
+
+# Remove excessive regularization
+use_joint_stream: True
+use_bone_stream: True
+use_motion_stream: True
+
+# Mild label smoothing (was 0.1, now 0.05)
+label_smoothing: 0.05
+
+# Remove gradient clipping - not needed with other regularization 

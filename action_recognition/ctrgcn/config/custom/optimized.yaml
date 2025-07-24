@@ -1,0 +1,93 @@
+# Optimized CTR-GCN Configuration
+# Balanced approach - moderate augmentation with stability
+
+work_dir: ./work_dir/custom/ctrgcn_optimized
+
+# feeder
+feeder: feeders.feeder_custom.Feeder
+train_feeder_args:
+  data_path: data/train
+  label_path: data/train_labels.txt
+  split: train
+  debug: False
+  # Moderate augmentation - not too aggressive
+  random_choose: True
+  random_shift: True
+  random_move: True
+  random_rot: True
+  window_size: 64
+  normalization: False
+  # More conservative temporal cropping
+  p_interval: [0.85, 1]  # Less aggressive than enhanced (0.75)
+  vel: False
+  bone: False
+
+# data loader for testing
+test_feeder: feeders.feeder_custom.Feeder
+test_feeder_args:
+  data_path: data/test
+  label_path: data/test_labels.txt
+  split: test
+  window_size: 64
+  p_interval: [0.95]  # Conservative for testing
+  vel: False
+  bone: False
+  debug: False
+
+# model
+model: model.ctrgcn.Model
+model_args:
+  num_class: 52
+  num_point: 17
+  num_person: 1
+  graph: graph.custom_17j.Graph
+  graph_args:
+    labeling_mode: spatial
+  drop_out: 0.25  # Between balanced (0.2) and enhanced (0.3)
+
+# training
+device: [0]
+batch_size: 52  # Compromise between balanced (48) and enhanced (56)
+test_batch_size: 64
+num_epoch: 80
+
+# optimizer
+weight_decay: 0.0007  # Between balanced (0.0006) and enhanced (0.0008)
+base_lr: 0.085  # Between balanced (0.08) and enhanced (0.09)
+lr_decay_rate: 0.1
+step: [35, 55]
+warm_up_epoch: 5
+
+# training configuration
+nesterov: True
+start_epoch: 0
+save_interval: 1
+save_epoch: 30
+eval_interval: 1
+save_score: False
+show_topk: [1, 5]
+
+# Early stopping
+early_stopping: True
+patience: 16  # Between balanced (15) and enhanced (18)
+min_delta: 0.001
+
+# Multi-stream configuration
+use_joint_stream: True
+use_bone_stream: True
+use_motion_stream: True
+
+# Regularization
+label_smoothing: 0.04  # Between balanced (0.05) and enhanced (0.03)
+
+# Environment
+num_worker: 24
+seed: 1
+
+# Model loading
+weights: null
+ignore_weights: []
+start_epoch: 0
+save_score: false
+print_log: true
+log_interval: 100 

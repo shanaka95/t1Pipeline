@@ -1,0 +1,83 @@
+work_dir: ./work_dir/custom/ctrgcn_enhanced
+
+# feeder
+feeder: feeders.feeder_custom.Feeder
+train_feeder_args:
+  data_path: data/train
+  label_path: data/train_labels.txt
+  split: train
+  debug: False
+  random_choose: True        # Enable random temporal cropping
+  random_shift: True         # Enable temporal shifting
+  random_move: True          # Enable spatial transformations (rotation, scaling, translation)
+  window_size: 64
+  normalization: False       # Keep disabled for compatibility
+  random_rot: True           # Enable 3D rotations - very effective
+  p_interval: [0.75, 1]      # More aggressive temporal cropping
+  vel: False
+  bone: False
+
+test_feeder_args:
+  data_path: data/test
+  label_path: data/test_labels.txt
+  split: test
+  window_size: 64
+  p_interval: [0.95]         # Stable test-time cropping
+  vel: False
+  bone: False
+  debug: False
+
+# model
+model: model.ctrgcn.Model
+model_args:
+  num_class: 52
+  num_point: 17
+  num_person: 1
+  graph: graph.custom_17j.Graph
+  graph_args:
+    labeling_mode: 'spatial'
+  drop_out: 0.3              # Slightly increased dropout for better generalization
+
+# Model weights (optional)
+weights: null                
+ignore_weights: []           
+
+#optim
+weight_decay: 0.0008         # Slightly increased for better regularization
+base_lr: 0.09               # Slightly higher LR to compensate for stronger augmentation
+lr_decay_rate: 0.1
+step: [35, 55]              # Original schedule
+warm_up_epoch: 5
+optimizer: SGD               
+
+# training
+device: [0]
+batch_size: 56              # Larger batch size for stable training with augmentation
+test_batch_size: 64
+num_epoch: 80               
+nesterov: True
+start_epoch: 0              
+phase: train                
+save_score: False           
+seed: 1                     
+log_interval: 100           
+save_interval: 1            
+save_epoch: 30              
+eval_interval: 1            
+print_log: True             
+show_topk: [1, 5]           
+num_worker: 24              
+model_saved_name: ./work_dir/custom/ctrgcn_enhanced/runs
+
+# Early stopping with longer patience due to augmentation noise
+early_stopping: True
+patience: 18                # Longer patience for augmented training
+min_delta: 0.001           
+
+# Multi-stream training
+use_joint_stream: True
+use_bone_stream: True
+use_motion_stream: True
+
+# Very mild label smoothing with strong augmentation
+label_smoothing: 0.03 

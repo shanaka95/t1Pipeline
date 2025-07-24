@@ -1,0 +1,76 @@
+base_lr: 0.05
+batch_size: 32
+config: config/custom/improved.yaml
+device:
+- 0
+early_stopping: true
+eval_interval: 1
+feeder: feeders.feeder_custom.Feeder
+gradient_clip: 1.0
+ignore_weights: []
+label_smoothing: 0.1
+log_interval: 100
+lr_decay_rate: 0.1
+min_delta: 0.001
+model: model.ctrgcn.Model
+model_args:
+  drop_out: 0.5
+  graph: graph.custom_17j.Graph
+  graph_args:
+    labeling_mode: spatial
+  num_class: 52
+  num_person: 1
+  num_point: 17
+model_saved_name: ./work_dir/custom/ctrgcn_improved/runs
+nesterov: true
+num_epoch: 80
+num_worker: 24
+optimizer: SGD
+patience: 10
+phase: train
+print_log: true
+save_epoch: 30
+save_interval: 1
+save_score: false
+seed: 1
+show_topk:
+- 1
+- 5
+start_epoch: 0
+step:
+- 40
+- 60
+test_batch_size: 64
+test_feeder_args:
+  bone: false
+  data_path: data/test
+  debug: false
+  label_path: data/test_labels.txt
+  p_interval:
+  - 0.95
+  split: test
+  vel: false
+  window_size: 64
+train_feeder_args:
+  bone: false
+  data_path: data/train
+  debug: false
+  label_path: data/train_labels.txt
+  normalization: false
+  p_interval:
+  - 0.5
+  - 1
+  random_choose: true
+  random_move: true
+  random_rot: true
+  random_shift: true
+  split: train
+  vel: false
+  window_size: 64
+use_bone_stream: true
+use_joint_stream: true
+use_motion_stream: true
+warm_up_epoch: 5
+weight_decay: 0.001
+weights: null
+work_dir: ./work_dir/custom/ctrgcn_improved
