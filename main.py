@@ -3,6 +3,7 @@ from postprocess_poses.filter import process_poses_with_glitch_filtering
 from postprocess_poses.normalize import normalize_pose_segments
 from visualizations.visualize import create_pose_segment_visualizations
 from postprocess_poses.rotate import process_pose_segments
+from action_recognition.ctrgcn.inference import run_inference_on_segments
 
 import pickle, random
 
@@ -46,17 +47,17 @@ if GLITCH_FILTERING_ENABLED:
 else:
     poses_for_normalization = raw_poses
 
-selected_indices = [0, 1, 2, 3, 4]
+# selected_indices = [0, 1, 2, 3, 4]
 
-create_pose_segment_visualizations(
-    pose_segments=poses_for_normalization,
-    output_dir='visualizations/poses',
-    segment_indices=selected_indices,
-    fps=30,
-    max_frames_per_segment=243,
-    frame_skip=1,
-    prefix="raw"
-)
+# create_pose_segment_visualizations(
+#     pose_segments=poses_for_normalization,
+#     output_dir='visualizations/poses',
+#     segment_indices=selected_indices,
+#     fps=30,
+#     max_frames_per_segment=243,
+#     frame_skip=1,
+#     prefix="raw"
+# )
 
 # Step 3: Normalize poses (if enabled)
 if POSE_NORMALIZATION_ENABLED:
@@ -75,16 +76,10 @@ if POSE_NORMALIZATION_ENABLED:
 print("\n🔄 Rotating poses to front-facing...")
 rotated_poses = process_pose_segments(normalized_poses)
 
-create_pose_segment_visualizations(
-    pose_segments=normalized_poses,
-    output_dir='visualizations/poses',
-    segment_indices=selected_indices,
-    fps=30,
-    max_frames_per_segment=243,
-    frame_skip=1,
-    prefix="normalized"
-)
-
+# Run batch inference on all segments
+results = run_inference_on_segments(rotated_poses)
+for result in results:
+    print(f"Segment {result['sequence_id']}: {result['class_name']} (Label: {result['predicted_label']}, Confidence: {result['confidence']:.4f})")
 
 filename = 'poses_single_segment.pkl'
 # Step 5: Save processed poses
