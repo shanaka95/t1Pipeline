@@ -50,18 +50,18 @@ def extract_pose(vid_path, out_path):
 
     print(f"Generating 2D keypoints for {vid_path}")
 
-    # all_frame_poses, frame_count, person_detected_frame, vid_size = vitpose.generate_2d_pose(vid_path, bounding_box)
+    all_frame_poses, frame_count, person_detected_frame, vid_size = vitpose.generate_2d_pose(vid_path, bounding_box)
         
-    # # Save the keypoints to a npz file
-    # np.savez(npz_path, 
-    #        keypoints=all_frame_poses, 
-    #        frame_count=frame_count, 
-    #        person_detected_frame=person_detected_frame,
-    #        vid_size=vid_size)
+    # Save the keypoints to a npz file
+    np.savez(npz_path, 
+           keypoints=all_frame_poses, 
+           frame_count=frame_count, 
+           person_detected_frame=person_detected_frame,
+           vid_size=vid_size)
         
-    # print(f"Processed {frame_count} frames")
-    # print(f"Person detected from frame {person_detected_frame}")
-    # print(f"Saved keypoints with shape {all_frame_poses.shape} in H36M format")
+    print(f"Processed {frame_count} frames")
+    print(f"Person detected from frame {person_detected_frame}")
+    print(f"Saved keypoints with shape {all_frame_poses.shape} in H36M format")
 
     # Get config
     args = get_config(config)

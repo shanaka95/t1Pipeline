@@ -17,3 +17,7 @@ __pycache__/*
 bounding_boxes.npy 
 env/*
 saved_for_later/*
+poses/*
+embeddings/*
+clustering_results/*
+clustered_poses/*

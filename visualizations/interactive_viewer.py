@@ -44,7 +44,7 @@ import matplotlib.animation as animation
 from mpl_toolkits.mplot3d import Axes3D
 
 # Hardcoded pickle file path
-PICKLE_FILE_PATH = "../poses_single_segment.pkl"
+PICKLE_FILE_PATH = "../clustered_poses/cluster_049/poses.pkl"
 # Segment index to load (0 for first segment, or specify which one)
 SEGMENT_INDEX = 0
 

@@ -14,3 +14,4 @@ pytorch-metric-learning                         # For one-hot action recognition
 smplx[all]                                      # For mesh recovery
 numpy
 PyQt5
+seaborn
