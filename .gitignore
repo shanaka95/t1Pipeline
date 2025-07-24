@@ -16,3 +16,4 @@ env/*
 __pycache__/*
 bounding_boxes.npy 
 env/*
+saved_for_later/*

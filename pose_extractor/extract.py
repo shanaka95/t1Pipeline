@@ -50,18 +50,18 @@ def extract_pose(vid_path, out_path):
 
     print(f"Generating 2D keypoints for {vid_path}")
 
-    all_frame_poses, frame_count, person_detected_frame, vid_size = vitpose.generate_2d_pose(vid_path, bounding_box)
+    # all_frame_poses, frame_count, person_detected_frame, vid_size = vitpose.generate_2d_pose(vid_path, bounding_box)
         
-    # Save the keypoints to a npz file
-    np.savez(npz_path, 
-           keypoints=all_frame_poses, 
-           frame_count=frame_count, 
-           person_detected_frame=person_detected_frame,
-           vid_size=vid_size)
+    # # Save the keypoints to a npz file
+    # np.savez(npz_path, 
+    #        keypoints=all_frame_poses, 
+    #        frame_count=frame_count, 
+    #        person_detected_frame=person_detected_frame,
+    #        vid_size=vid_size)
         
-    print(f"Processed {frame_count} frames")
-    print(f"Person detected from frame {person_detected_frame}")
-    print(f"Saved keypoints with shape {all_frame_poses.shape} in H36M format")
+    # print(f"Processed {frame_count} frames")
+    # print(f"Person detected from frame {person_detected_frame}")
+    # print(f"Saved keypoints with shape {all_frame_poses.shape} in H36M format")
 
     # Get config
     args = get_config(config)
@@ -162,19 +162,21 @@ def extract_pose(vid_path, out_path):
             results_all.append(predicted_3d_pos.cpu().numpy())
 
     # Process results
-    results_all = np.hstack(results_all)
-    results_all = np.concatenate(results_all)
-    print(f"Final 3D pose shape: {results_all.shape}")
+    #results_all = np.hstack(results_all)
+    #results_all = np.concatenate(results_all)
+    #print(f"Final 3D pose shape: {results_all.shape}")
 
     #print(f"Rendering and saving video")
 
-    filename = os.path.basename(vid_path)
-    filename = filename.split('.')[0]
+    #filename = os.path.basename(vid_path)
+    #filename = filename.split('.')[0]
 
     # Render and save video
     #render_and_save(results_all, '%s/%s_X3D.mp4' % (out_path, filename), keep_imgs=False, fps=fps_in)
 
     # Save 3D pose data
-    np.save('%s/%s_X3D.npy' % (out_path, filename), results_all)
-    print(f"3D pose data saved to {out_path}/{filename}_X3D.npy")
+    #np.save('%s/%s_X3D.npy' % (out_path, filename), results_all)
+    #print(f"3D pose data saved to {out_path}/{filename}_X3D.npy")
     #print(f"3D pose video saved to {out_path}/{filename}_X3D.mp4")
+
+    return results_all
