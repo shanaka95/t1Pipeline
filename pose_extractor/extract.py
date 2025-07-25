@@ -16,12 +16,6 @@ from pose_extractor.lib.utils.vismo import render_and_save
  
 def extract_pose(vid_path, out_path):
 
-    # load the 3d pkl
-    with open(f'poses_3D.pkl', 'rb') as f:
-        results_all = pickle.load(f)
-
-    return results_all
-
     # Set GPU
     os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
