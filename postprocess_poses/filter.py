@@ -6,6 +6,8 @@ import json
 from typing import List, Tuple, Dict, Optional
 import warnings
 warnings.filterwarnings('ignore')
+import matplotlib
+matplotlib.use('Agg')
 
 class PoseGlitchDetector:
     """
@@ -380,9 +382,9 @@ def filter_glitched_segments(pose_segments: List[np.ndarray],
                            velocity_threshold: float = 0.3,
                            acceleration_threshold: float = 0.5,
                            create_visualizations: bool = False,
-                           output_dir: str = "outputs/glitch_analysis") -> List[np.ndarray]:
+                           output_dir: str = "outputs/glitch_analysis") -> Tuple[List[np.ndarray], List[int]]:
     """
-    Filter out glitched segments from pose data and return only clean segments.
+    Filter out glitched segments from pose data and return only clean segments and the indices of removed segments.
     
     This function is designed to be called from the main processing pipeline to
     automatically remove problematic pose segments before saving.
@@ -395,7 +397,7 @@ def filter_glitched_segments(pose_segments: List[np.ndarray],
         output_dir (str): Directory to save visualizations (if enabled)
         
     Returns:
-        List[np.ndarray]: List of clean pose segments (no glitches detected)
+        Tuple of (clean_segments, glitched_segment_ids)
     """
     print(f"\n{'='*60}")
     print(f"FILTERING GLITCHED SEGMENTS")
@@ -469,7 +471,7 @@ def filter_glitched_segments(pose_segments: List[np.ndarray],
     else:
         print(f"✅ {kept_count} clean segments ready for further processing")
     
-    return clean_segments
+    return clean_segments, glitched_segments
 
 def filter_empty_skeleton_segments(pose_segments: List[np.ndarray], 
                                  summary_dir: Optional[str] = None) -> Tuple[List[np.ndarray], Dict]:
@@ -504,6 +506,10 @@ def filter_empty_skeleton_segments(pose_segments: List[np.ndarray],
     total_output_frames = 0
     
     for i, segment in enumerate(pose_segments):
+        # Allow (1, frames, 17, 3) by squeezing first dimension
+        if len(segment.shape) == 4 and segment.shape[0] == 1 and segment.shape[2] == 17 and segment.shape[3] == 3:
+            segment = segment.squeeze(0)
+        
         if len(segment.shape) != 3 or segment.shape[1] != 17 or segment.shape[2] != 3:
             print(f"  Segment {i}: Invalid shape {segment.shape} - removed")
             removed_count += 1
@@ -641,7 +647,7 @@ def process_poses_with_glitch_filtering(raw_poses,
     print(f"Prepared {len(segments)} segments for glitch filtering")
     
     # Filter out glitched segments
-    clean_segments = filter_glitched_segments(
+    clean_segments, glitched_segment_ids = filter_glitched_segments(
         pose_segments=segments,
         velocity_threshold=velocity_threshold,
         acceleration_threshold=acceleration_threshold,
@@ -654,7 +660,20 @@ def process_poses_with_glitch_filtering(raw_poses,
         final_frame_count = sum(seg.shape[0] for seg in clean_segments)
         removed_segments = len(segments) - len(clean_segments)
         removed_frames = sum(seg.shape[0] for seg in segments) - final_frame_count
-        
+
+        # Calculate removed segment timings
+        segment_length = 243
+        fps = 30
+        removed_segment_infos = []
+        for seg_id in glitched_segment_ids:
+            start_time = seg_id * segment_length / fps
+            end_time = (seg_id + 1) * segment_length / fps
+            removed_segment_infos.append({
+                'segment_id': seg_id,
+                'start_time': start_time,
+                'end_time': end_time
+            })
+
         glitch_summary = {
             'original_segments': original_segment_count,
             'parsed_segments': len(segments),
@@ -667,7 +686,8 @@ def process_poses_with_glitch_filtering(raw_poses,
             'removed_frames': removed_frames,
             'time_removed_percentage': (removed_frames / sum(seg.shape[0] for seg in segments)) * 100 if segments else 0,
             'velocity_threshold': velocity_threshold,
-            'acceleration_threshold': acceleration_threshold
+            'acceleration_threshold': acceleration_threshold,
+            'removed_segment_timings': removed_segment_infos
         }
         
         os.makedirs(summary_dir, exist_ok=True)
@@ -675,6 +695,10 @@ def process_poses_with_glitch_filtering(raw_poses,
         with open(summary_file, 'w') as f:
             json.dump(glitch_summary, f, indent=2)
         print(f"💾 Glitch filter summary saved to: {summary_file}")
+        if removed_segment_infos:
+            print("Removed segment timings:")
+            for info in removed_segment_infos:
+                print(f"  Segment {info['segment_id']}: {info['start_time']:.2f}s - {info['end_time']:.2f}s")
     
     return clean_segments
 

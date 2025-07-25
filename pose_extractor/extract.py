@@ -4,6 +4,7 @@ import sys
 from tqdm import tqdm
 import imageio
 import torch
+import pickle
 from pose_extractor import vitpose
 import torch.nn as nn
 from torch.utils.data import DataLoader
@@ -14,6 +15,13 @@ from pose_extractor.lib.data.dataset_vitpose import WildDetDataset
 from pose_extractor.lib.utils.vismo import render_and_save
  
 def extract_pose(vid_path, out_path):
+
+    # load the 3d pkl
+    with open(f'poses_3D.pkl', 'rb') as f:
+        results_all = pickle.load(f)
+
+    return results_all
+
     # Set GPU
     os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
@@ -162,7 +170,7 @@ def extract_pose(vid_path, out_path):
             results_all.append(predicted_3d_pos.cpu().numpy())
 
     # Save 3D pose data
-    import pickle
+
     with open(f'{out_path}/poses_3D.pkl', 'wb') as f:
         pickle.dump(results_all, f)
 

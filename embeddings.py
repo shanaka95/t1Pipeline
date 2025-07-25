@@ -8,12 +8,13 @@ from clustering.pca import apply_pca_to_embeddings, save_pca_results
 import os
 import argparse
 import json
+import cv2
 
 # Configuration for glitch filtering
 GLITCH_FILTERING_ENABLED = True
 VELOCITY_THRESHOLD = 0.25        # Adjust based on your data sensitivity
 ACCELERATION_THRESHOLD = 0.5    # Adjust based on your data sensitivity
-CREATE_VISUALIZATIONS = False    # Set to False to skip visualization generation
+CREATE_VISUALIZATIONS = True    # Set to False to skip visualization generation
 VISUALIZATION_DIR = "outputs/removed_glitches"
 
 # Configuration for pose normalization
@@ -21,6 +22,12 @@ POSE_NORMALIZATION_ENABLED = True
 TARGET_SKELETON_SCALE = 1.0      # Target scale for skeleton size
 EMA_SMOOTHING_ALPHA = 0.3        # EMA smoothing factor (0 < alpha < 1)
 USE_STANDARD_BONE_LENGTHS = True # Use predefined bone length ratios
+
+def get_video_frame_count(video_path):
+    cap = cv2.VideoCapture(video_path)
+    frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    cap.release()
+    return frame_count
 
 def main():
     parser = argparse.ArgumentParser(description="Extract embeddings from video and save results.")
@@ -113,24 +120,34 @@ def main():
         # Calculate video duration (assuming 30 FPS)
         fps = 30
         
-        # Get original frame count from raw poses
-        if isinstance(raw_poses, list):
-            original_frames = sum(seg.shape[0] for seg in raw_poses if hasattr(seg, 'shape'))
-        else:
-            original_frames = raw_poses.shape[0] if hasattr(raw_poses, 'shape') else 0
+        # Use actual video frame count for original_frames
+        original_frames = get_video_frame_count(video_path)
+        original_duration_seconds = original_frames / fps
         
         final_frames = sum(seg.shape[0] for seg in rotated_poses if hasattr(seg, 'shape'))
+        final_duration_seconds = final_frames / fps
         
+        # Sanity check
+        if final_frames > original_frames:
+            print(f"Warning: final_frames ({final_frames}) > original_frames ({original_frames}). Adjusting removed frames to 0.")
+            total_removed_frames = 0
+            total_time_removed_seconds = 0
+            total_time_removed_percentage = 0
+        else:
+            total_removed_frames = original_frames - final_frames
+            total_time_removed_seconds = original_duration_seconds - final_duration_seconds
+            total_time_removed_percentage = (total_time_removed_seconds / original_duration_seconds) * 100 if original_duration_seconds > 0 else 0
+
         combined_summary = {
             'video_info': {
                 'video_path': video_path,
                 'original_frames': original_frames,
-                'original_duration_seconds': original_frames / fps,
+                'original_duration_seconds': original_duration_seconds,
                 'final_frames': final_frames,
-                'final_duration_seconds': final_frames / fps,
-                'total_removed_frames': original_frames - final_frames,
-                'total_time_removed_seconds': (original_frames - final_frames) / fps,
-                'total_time_removed_percentage': ((original_frames - final_frames) / original_frames) * 100 if original_frames > 0 else 0
+                'final_duration_seconds': final_duration_seconds,
+                'total_removed_frames': total_removed_frames,
+                'total_time_removed_seconds': total_time_removed_seconds,
+                'total_time_removed_percentage': total_time_removed_percentage
             },
             'processing_steps': {
                 'empty_skeleton_filter': empty_filter_summary,
