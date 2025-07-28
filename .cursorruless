@@ -1,0 +1,496 @@
+# Cursor Plan Executor Integration Rules
+
+## Core Workflow for Task Completion
+
+When a user asks you to complete any task, follow this systematic approach:
+
+### 1. Plan Creation Phase
+- **ALWAYS** create a detailed plan first before starting any task
+- Break down the task into clear, separate, actionable steps
+- Each step should be specific and executable
+- **ALWAYS** include validation criteria for each step to verify completion
+- Consider dependencies between steps
+- Estimate complexity and order steps logically
+
+### 2. Plan Initialization
+- Use the `initialize_plan` tool to set up your plan
+- Provide all steps as an array of objects with instructions and validation criteria
+- Example: `initialize_plan(plan_steps: [{"instructions": "Step 1 description", "validation": "Validation criteria"}, ...])`
+
+### 3. Execution Workflow
+After initializing the plan, follow this cycle:
+
+#### Step 1: Get Current Task
+- Use `get_next_step` to identify the current pending step
+- Read and understand the step instructions carefully
+
+#### Step 2: Execute the Step
+- Execute the current step completely
+- Follow the instructions precisely
+- Make all necessary code changes, file modifications, etc.
+- **Save important variables** that might be needed in later steps (file paths, configuration values, user preferences, etc.)
+
+#### Step 3: Pre-Validation Check
+- **ALWAYS** call `get_current_validation_criteria` before marking any step as done
+- Review the validation criteria for the current step
+- Assess whether the current work meets the validation requirements
+
+#### Step 4: Validation Assessment
+**If validation criteria are met:**
+- Proceed to mark the step as done
+- Provide detailed execution_data describing what was accomplished
+
+**If there are contradictions between validation requirements and current work:**
+- **DO NOT** mark the step as done
+- Use `show_all_steps` to pull the full plan and understand the context
+- Analyze what went wrong and why the validation criteria aren't met
+- Determine if the plan needs adjustment or if more work is required
+- If plan adjustment is needed:
+  - Use `update_step_data` to modify current or future steps
+  - Use `insert_step_at_position` to add missing steps
+  - Use `mark_step_as_not_done` to revert completed steps if necessary
+- If more work is required:
+  - Continue working on the current step until validation criteria are met
+  - Re-check validation criteria using `get_current_validation_criteria`
+  - Only proceed when all validation requirements are satisfied
+
+#### Step 5: Mark as Done (Only After Validation Passes)
+- Use `mark_current_step_done` to mark the step as completed
+- **ALWAYS** provide execution_data describing what was accomplished and any issues
+- This automatically moves to the next pending step
+
+#### Step 6: Repeat
+- Continue the cycle (get next step → execute → pre-validation check → validation assessment → mark done)
+- Repeat until all steps are completed
+
+### 4. Progress Monitoring
+- Use `show_all_steps` periodically to review overall progress
+- Use `update_step_execution_data` to add notes about what was accomplished
+- Use `update_step_data` if you need to modify step instructions during execution
+
+### 5. Variable Management
+- **ALWAYS** save important information as variables for later use
+- Use `add_variable` to store file paths, configuration values, user preferences, etc.
+- Use `list_variables` to see what variables are available
+- Use `get_variable` to retrieve stored information when needed
+- Variables are automatically cleared when a new plan is initialized
+
+### 6. Final Validation Phase
+**After all steps are marked as done, perform comprehensive validation:**
+
+#### Step 1: Get Complete Task List
+- Use `show_all_steps` to get the complete list of all tasks
+- Review each completed step and its execution data
+
+#### Step 2: Validate Each Completed Step
+- Go through each completed step systematically
+- Check if the execution data matches the step requirements
+- Verify that all deliverables are actually present
+- Test functionality if applicable
+- Validate code quality and completeness
+
+#### Step 3: Identify Any Issues
+- If any step appears incomplete or incorrect:
+  - Use `mark_step_as_not_done` to revert the step
+  - Use `update_step_data` to clarify requirements if needed
+  - Re-execute the step with proper attention
+  - Mark as done again with accurate execution data
+
+#### Step 4: Final Verification
+- Re-run `show_all_steps` to confirm all steps are properly completed
+- Ensure all execution data accurately reflects what was accomplished
+- Verify that the overall task objectives are met
+
+## Handling Execution Interruptions
+
+### When Execution Stops for User Input:
+- **DO NOT** re-initialize the plan - this will remove all previous progress
+- Use `show_all_steps` to check current status
+- Use `get_next_step` to identify where to continue
+- Resume execution from the current pending step
+- Continue the normal workflow cycle
+
+### When Starting a Completely New Task:
+- **ALWAYS** use `initialize_plan` to clear previous data and start fresh
+- Even if previous task was incomplete, start new task with clean slate
+- This ensures no confusion between different tasks
+
+### Workflow for Interrupted Execution:
+1. **Check Current Status**: Use `show_all_steps()` to see what's completed
+2. **Identify Next Step**: Use `get_next_step()` to see what's pending
+3. **Continue Execution**: Resume from the current pending step
+4. **Follow Normal Cycle**: Execute → verify → mark done → repeat
+
+### Workflow for New Task:
+1. **Clear Previous Data**: `initialize_plan()` will automatically clear old data
+2. **Create New Plan**: Provide new plan steps
+3. **Start Fresh**: Begin execution from step 1
+
+## Available MCP Tools
+
+### Core Workflow Tools:
+- **`initialize_plan`**: Start a new task with complete plan
+- **`show_all_steps`**: View all steps with status indicators and execution data
+- **`get_next_step`**: Get the next pending step to follow
+- **`get_current_validation_criteria`**: Get validation criteria for the currently unfinished task (REQUIRED before marking any step as done)
+- **`mark_current_step_done`**: Mark current step as completed (requires execution_data)
+
+### Plan Management Tools:
+- **`mark_step_as_not_done`**: Revert a completed step to pending
+- **`update_step_data`**: Update step instructions
+- **`insert_step_at_position`**: Insert a new step at a specific position (reorders existing steps)
+- **`update_step_execution_data`**: Add progress notes and results
+- **`get_plan_step`**: Get detailed info about a specific step
+
+### Administrative Tools:
+- **`delete_plan_step`**: Remove a specific step
+- **`clear_all_plan_steps`**: Reset entire plan (use with caution)
+
+### Variable Management Tools:
+- **`add_variable`**: Save a variable for use in later steps (file paths, config values, user preferences, etc.)
+- **`list_variables`**: List all stored variables with names and descriptions
+- **`get_variable`**: Get a specific variable's value and description by name
+
+## Example Workflow
+
+### User Request: "Create a React component for user authentication"
+
+#### 1. Plan Creation:
+```
+1. Create the basic React component structure
+2. Add form elements for username and password
+3. Implement form validation
+4. Add state management for form data
+5. Create authentication logic
+6. Add error handling
+7. Style the component
+8. Add unit tests
+```
+
+#### 2. Initialize Plan:
+```
+initialize_plan(plan_steps: [
+  {"instructions": "Create the basic React component structure", "validation": "AuthComponent.tsx file exists with proper TypeScript interface"},
+  {"instructions": "Add form elements for username and password", "validation": "Form contains username and password input fields with proper labels"},
+  {"instructions": "Implement form validation", "validation": "Form validates required fields and shows error messages"},
+  {"instructions": "Add state management for form data", "validation": "Form data is properly managed with useState hooks"},
+  {"instructions": "Create authentication logic", "validation": "Authentication function handles login/logout properly"},
+  {"instructions": "Add error handling", "validation": "Error states are properly handled and displayed"},
+  {"instructions": "Style the component", "validation": "Component has proper styling and responsive design"},
+  {"instructions": "Add unit tests", "validation": "Test files exist and cover main functionality"}
+])
+```
+
+#### 3. Execute Step 1:
+- Get next step: `get_next_step()`
+- Execute: Create React component file with basic structure
+- Save variable: `add_variable(name: "component_path", description: "Path to the created React component file", value: "./src/components/AuthComponent.tsx")`
+- **Pre-validation check**: `get_current_validation_criteria()` to review validation requirements
+- **Validation assessment**: Check if AuthComponent.tsx file exists with proper TypeScript interface
+- If validation passes: Mark done: `mark_current_step_done(execution_data: "Created AuthComponent.tsx with proper TypeScript interface and basic structure")`
+- If validation fails: Continue working until requirements are met, then re-check validation
+
+#### 4. Continue Cycle:
+- Repeat for each step until all are complete
+
+#### 5. Final Validation:
+- Use `show_all_steps()` to review all completed steps
+- Validate each step's execution data against requirements
+- Check if all files exist and are properly implemented
+- Test the authentication functionality
+- Verify styling and error handling
+- Confirm unit tests are present and working
+
+## Handling User Input During Execution
+
+### Scenario: Execution stops for user input (e.g., "What color should the button be?")
+
+#### Before User Input:
+- Complete the current step as much as possible
+- Note what was accomplished
+- Use `update_step_execution_data` to record progress
+
+#### After User Input:
+- **DO NOT** call `initialize_plan` - this would clear all progress
+- Use `show_all_steps()` to check current status
+- Use `get_next_step()` to see what's next
+- Continue execution from the current pending step
+- If the current step was partially completed, complete it first
+
+#### Example Recovery:
+```
+// Check current status
+show_all_steps()
+
+// Get next step to continue
+get_next_step()
+
+// Continue execution from where we left off
+// Execute the current step with user input
+
+// BEFORE marking as done, check validation criteria
+get_current_validation_criteria()
+
+// If validation passes, mark as done
+mark_current_step_done(execution_data: "Completed step with user's color preference")
+
+// If validation fails, continue working until requirements are met
+```
+
+## Best Practices
+
+### Plan Creation:
+- Make steps granular but not too small
+- Each step should be completable in one execution cycle
+- Consider technical dependencies
+- Include verification steps if needed
+- Add cleanup steps if necessary
+
+### Execution:
+- Execute each step completely before moving to the next
+- Don't skip steps or combine them
+- If a step fails, fix it before marking as done
+- Add execution notes using `update_step_execution_data`
+
+### Verification:
+- Always verify step completion before marking as done
+- Check that all requirements of the step are met
+- Test functionality if applicable
+- Review code quality and completeness
+
+### Adaptation:
+- Use `update_step_data` if requirements change during execution
+- Use `mark_step_as_not_done` if you need to redo a step
+- Use `delete_plan_step` if a step becomes unnecessary
+- Use `show_all_steps` to review progress and adjust if needed
+
+### Handling Interruptions:
+- **NEVER** re-initialize when resuming interrupted execution
+- **ALWAYS** check current status before continuing
+- **ALWAYS** use `get_next_step` to identify where to continue
+- **ALWAYS** complete the current step before moving to the next
+
+### Final Validation:
+- **ALWAYS** perform comprehensive validation after all steps are done
+- **ALWAYS** review execution data for accuracy
+- **ALWAYS** verify that deliverables actually exist
+- **ALWAYS** test functionality if applicable
+- **NEVER** consider the task complete without final validation
+
+## Error Handling
+
+### If a Step Fails:
+1. Don't mark it as done
+2. Fix the issue
+3. Re-execute the step
+4. Verify completion
+5. Then mark as done with accurate execution data
+
+### If Requirements Change:
+1. Use `update_step_data` to modify current/future steps
+2. Use `mark_step_as_not_done` if you need to redo completed steps
+3. Use `show_all_steps` to review and adjust the plan
+
+### If You Need to Start Over:
+1. Use `clear_all_plan_steps` to reset
+2. Create a new plan
+3. Use `initialize_plan` to start fresh
+
+### If Execution is Interrupted:
+1. **DO NOT** re-initialize the plan
+2. Use `show_all_steps()` to check current status
+3. Use `get_next_step()` to identify next step
+4. Continue execution from current pending step
+5. Complete any partially completed steps first
+
+### If Final Validation Reveals Issues:
+1. Identify which steps have problems
+2. Use `mark_step_as_not_done` to revert problematic steps
+3. Re-execute those steps with proper attention
+4. Re-run final validation until all issues are resolved
+
+## Communication with User
+
+### During Execution:
+- Inform the user when you're starting a new step
+- Show the step instructions you're following
+- Report completion of each step with execution summary
+- Mention any issues or changes made
+
+### When Resuming After Interruption:
+- Inform the user that you're continuing from where you left off
+- Show the current step you're working on
+- Mention any progress that was already made
+
+### Progress Updates:
+- Use `show_all_steps` to give periodic progress reports
+- Highlight completed vs pending steps with execution summaries
+- Mention any modifications to the plan
+
+### During Final Validation:
+- Inform the user that you're performing final validation
+- Report any issues found during validation
+- Mention steps that need to be re-executed
+- Confirm when validation is complete
+
+### Completion:
+- Confirm when all steps are complete and validated
+- Provide a comprehensive summary of what was accomplished
+- Offer to make any final adjustments
+- Confirm that all deliverables are present and functional
+
+## Validation Workflow (CRITICAL)
+
+### Mandatory Validation Process:
+**BEFORE marking any step as done, you MUST follow this process:**
+
+1. **Call `get_current_validation_criteria`** to get the validation requirements for the current step
+2. **Assess your current work** against the validation criteria
+3. **If validation criteria are met:**
+   - Proceed to mark the step as done
+   - Provide detailed execution_data
+4. **If validation criteria are NOT met:**
+   - **DO NOT** mark the step as done
+   - Use `show_all_steps` to understand the full plan context
+   - Analyze what went wrong and why validation failed
+   - Either:
+     - Continue working until validation criteria are met, OR
+     - Adjust the plan using `update_step_data` or `insert_step_at_position`
+   - Re-check validation criteria using `get_current_validation_criteria`
+   - Only mark as done when ALL validation requirements are satisfied
+
+### Validation Failure Scenarios:
+- **Missing deliverables**: Continue working until all required items are created
+- **Incomplete functionality**: Finish implementing the required features
+- **Quality issues**: Fix code quality, styling, or other requirements
+- **Plan misalignment**: Adjust the plan to better match the actual requirements
+- **Dependency issues**: Ensure all dependencies are properly resolved
+
+### Plan Adjustment When Validation Fails:
+- Use `update_step_data` to modify current step requirements
+- Use `insert_step_at_position` to add missing intermediate steps
+- Use `mark_step_as_not_done` to revert completed steps if necessary
+- Use `delete_plan_step` to remove unnecessary steps
+- Always re-check validation criteria after any plan adjustments
+
+## Integration with Cursor
+
+### Always Use the MCP Tools:
+- Never skip the plan creation phase
+- Always use the tools for step management
+- Don't try to manage steps manually
+- Let the MCP server handle the workflow
+
+### Tool Usage Examples:
+```
+// Initialize a plan (only for new tasks)
+initialize_plan(plan_steps: [
+  {"instructions": "Step 1", "validation": "Validation criteria for step 1"},
+  {"instructions": "Step 2", "validation": "Validation criteria for step 2"},
+  {"instructions": "Step 3", "validation": "Validation criteria for step 3"}
+])
+
+// Check current status (use when resuming)
+show_all_steps()
+
+// Get next step (use when resuming)
+get_next_step()
+
+// Get current validation criteria (REQUIRED before marking any step as done)
+get_current_validation_criteria()
+
+// Mark step as done (with execution summary) - ONLY after validation passes
+mark_current_step_done(execution_data: "Component created successfully with proper TypeScript types and error handling")
+
+// Add execution notes
+update_step_execution_data(step: 1, execution_data: "Component created successfully")
+
+// Modify a step
+update_step_data(step: 2, instructions: "Updated step instructions", validation: "Updated validation criteria")
+
+// Insert a new step at position 3 (reorders existing steps)
+insert_step_at_position(position: 3, instructions: "New step to insert", validation: "Validation criteria for new step")
+
+// Revert a step (useful during final validation)
+mark_step_as_not_done(step: 3)
+
+// Get detailed info about a specific step
+get_plan_step(step: 1)
+
+// Delete a step if no longer needed
+delete_plan_step(step: 4)
+
+// Clear all steps (use with caution)
+clear_all_plan_steps()
+
+// Variable management
+add_variable(name: "component_path", description: "Path to the created React component file", value: "./src/components/AuthComponent.tsx")
+
+// List all stored variables
+list_variables()
+
+// Get a specific variable
+get_variable(name: "component_path")
+```
+
+## Remember
+
+- **ALWAYS** create a plan first
+- **ALWAYS** include validation criteria for each step
+- **ALWAYS** use the MCP tools for workflow management
+- **ALWAYS** call `get_current_validation_criteria` before marking any step as done
+- **ALWAYS** verify completion before marking steps as done
+- **ALWAYS** check validation criteria when verifying step completion
+- **ALWAYS** provide execution_data when marking steps as done
+- **ALWAYS** communicate progress to the user
+- **ALWAYS** perform final validation after all steps are complete
+- **ALWAYS** save important variables for later use
+- **NEVER** skip the systematic approach
+- **NEVER** try to manage steps without the MCP tools
+- **NEVER** mark a step as done without checking validation criteria first
+- **NEVER** re-initialize when resuming interrupted execution
+- **NEVER** consider the task complete without final validation
+- **ALWAYS** check current status before continuing after interruption
+
+## Comprehensive Validation Example
+
+### Scenario: Creating a React Authentication Component
+
+#### Step 1: Initialize Plan
+```
+initialize_plan(plan_steps: [
+  {"instructions": "Create AuthComponent.tsx with basic structure", "validation": "AuthComponent.tsx file exists with proper TypeScript interface and basic component structure"},
+  {"instructions": "Add username and password form fields", "validation": "Form contains username and password input fields with proper labels and accessibility attributes"},
+  {"instructions": "Implement form validation", "validation": "Form validates required fields and displays error messages for invalid input"},
+  {"instructions": "Add authentication logic", "validation": "Component handles login/logout with proper error handling and loading states"}
+])
+```
+
+#### Step 2: Execute First Step
+- Get next step: `get_next_step()` → "Create AuthComponent.tsx with basic structure"
+- Execute: Create the component file with basic structure
+- **Pre-validation check**: `get_current_validation_criteria()` → "AuthComponent.tsx file exists with proper TypeScript interface and basic component structure"
+- **Validation assessment**: Check if file exists and has proper structure
+- **Result**: Validation passes → Mark as done
+
+#### Step 3: Execute Second Step (Validation Failure Example)
+- Get next step: `get_next_step()` → "Add username and password form fields"
+- Execute: Add form fields but forget accessibility attributes
+- **Pre-validation check**: `get_current_validation_criteria()` → "Form contains username and password input fields with proper labels and accessibility attributes"
+- **Validation assessment**: Form fields exist but missing accessibility attributes
+- **Result**: Validation fails → Continue working
+- **Action**: Add proper accessibility attributes (aria-label, role, etc.)
+- **Re-check validation**: `get_current_validation_criteria()` → Validation now passes
+- **Result**: Mark as done
+
+#### Step 4: Execute Third Step (Plan Adjustment Example)
+- Get next step: `get_next_step()` → "Implement form validation"
+- Execute: Add basic validation
+- **Pre-validation check**: `get_current_validation_criteria()` → "Form validates required fields and displays error messages for invalid input"
+- **Validation assessment**: Basic validation exists but error messages not displayed
+- **Result**: Validation fails
+- **Action**: Realize error display is missing → Continue working to add error message display
+- **Re-check validation**: `get_current_validation_criteria()` → Validation now passes
+- **Result**: Mark as done
+
+This systematic approach ensures consistent, reliable task completion with proper tracking and verification at each step, while properly handling interruptions and user inputs, and includes comprehensive final validation to ensure all deliverables are properly completed.
