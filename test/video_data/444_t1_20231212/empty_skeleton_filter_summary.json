@@ -1,0 +1,10 @@
+{
+  "input_segments": 528,
+  "output_segments": 528,
+  "removed_segments": 0,
+  "removal_percentage": 0.0,
+  "total_input_frames": 128172,
+  "total_output_frames": 128172,
+  "removed_frames": 0,
+  "time_removed_percentage": 0.0
+}

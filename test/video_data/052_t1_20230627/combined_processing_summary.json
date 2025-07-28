@@ -1,0 +1,35 @@
+{
+  "video_info": {
+    "video_path": "/home/vault/empkins/tpD/D02/RCT/raw_data/052/052_t1_20230627.mp4",
+    "original_frames": 60131,
+    "original_duration_seconds": 2004.3666666666666,
+    "final_frames": 58320,
+    "final_duration_seconds": 1944.0,
+    "total_removed_frames": 1811,
+    "total_time_removed_seconds": 60.36666666666656,
+    "total_time_removed_percentage": 3.0117576624370073
+  },
+  "processing_steps": {
+    "empty_skeleton_filter": {
+      "input_segments": 248,
+      "output_segments": 248,
+      "removed_segments": 0,
+      "removal_percentage": 0.0,
+      "total_input_frames": 60130,
+      "total_output_frames": 60130,
+      "removed_frames": 0,
+      "time_removed_percentage": 0.0
+    },
+    "glitch_filter_enabled": true,
+    "normalization_enabled": true,
+    "final_segment_count": 240,
+    "final_embedding_count": 240
+  },
+  "configuration": {
+    "velocity_threshold": 0.25,
+    "acceleration_threshold": 0.5,
+    "target_skeleton_scale": 1.0,
+    "ema_smoothing_alpha": 0.3,
+    "pca_components": 50
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "original_segments": 629,
+  "parsed_segments": 629,
+  "final_segments": 627,
+  "removed_segments": 2,
+  "removal_percentage": 0.3179650238473768,
+  "original_frames": 152626,
+  "parsed_frames": 152626,
+  "final_frames": 152140,
+  "removed_frames": 486,
+  "time_removed_percentage": 0.31842543210200097,
+  "velocity_threshold": 0.25,
+  "acceleration_threshold": 0.5,
+  "removed_segment_timings": [
+    {
+      "segment_id": 0,
+      "start_time": 0.0,
+      "end_time": 8.1
+    },
+    {
+      "segment_id": 627,
+      "start_time": 5078.7,
+      "end_time": 5086.8
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "original_segments": 393,
+  "parsed_segments": 393,
+  "final_segments": 373,
+  "removed_segments": 20,
+  "removal_percentage": 5.089058524173027,
+  "original_frames": 95389,
+  "parsed_frames": 95389,
+  "final_frames": 90639,
+  "removed_frames": 4750,
+  "time_removed_percentage": 4.9796098082588145,
+  "velocity_threshold": 0.25,
+  "acceleration_threshold": 0.5,
+  "removed_segment_timings": [
+    {
+      "segment_id": 0,
+      "start_time": 0.0,
+      "end_time": 8.1
+    },
+    {
+      "segment_id": 24,
+      "start_time": 194.4,
+      "end_time": 202.5
+    },
+    {
+      "segment_id": 136,
+      "start_time": 1101.6,
+      "end_time": 1109.7
+    },
+    {
+      "segment_id": 137,
+      "start_time": 1109.7,
+      "end_time": 1117.8
+    },
+    {
+      "segment_id": 138,
+      "start_time": 1117.8,
+      "end_time": 1125.9
+    },
+    {
+      "segment_id": 141,
+      "start_time": 1142.1,
+      "end_time": 1150.2
+    },
+    {
+      "segment_id": 146,
+      "start_time": 1182.6,
+      "end_time": 1190.7
+    },
+    {
+      "segment_id": 345,
+      "start_time": 2794.5,
+      "end_time": 2802.6
+    },
+    {
+      "segment_id": 346,
+      "start_time": 2802.6,
+      "end_time": 2810.7
+    },
+    {
+      "segment_id": 350,
+      "start_time": 2835.0,
+      "end_time": 2843.1
+    },
+    {
+      "segment_id": 361,
+      "start_time": 2924.1,
+      "end_time": 2932.2
+    },
+    {
+      "segment_id": 365,
+      "start_time": 2956.5,
+      "end_time": 2964.6
+    },
+    {
+      "segment_id": 377,
+      "start_time": 3053.7,
+      "end_time": 3061.8
+    },
+    {
+      "segment_id": 383,
+      "start_time": 3102.3,
+      "end_time": 3110.4
+    },
+    {
+      "segment_id": 384,
+      "start_time": 3110.4,
+      "end_time": 3118.5
+    },
+    {
+      "segment_id": 385,
+      "start_time": 3118.5,
+      "end_time": 3126.6
+    },
+    {
+      "segment_id": 386,
+      "start_time": 3126.6,
+      "end_time": 3134.7
+    },
+    {
+      "segment_id": 388,
+      "start_time": 3142.8,
+      "end_time": 3150.9
+    },
+    {
+      "segment_id": 391,
+      "start_time": 3167.1,
+      "end_time": 3175.2
+    },
+    {
+      "segment_id": 392,
+      "start_time": 3175.2,
+      "end_time": 3183.3
+    }
+  ]
+}

@@ -1,0 +1,1321 @@
+{
+  "original_segments": 961,
+  "parsed_segments": 961,
+  "final_segments": 700,
+  "removed_segments": 261,
+  "removal_percentage": 27.15920915712799,
+  "original_frames": 233354,
+  "parsed_frames": 233354,
+  "final_frames": 169931,
+  "removed_frames": 63423,
+  "time_removed_percentage": 27.17887844219512,
+  "velocity_threshold": 0.25,
+  "acceleration_threshold": 0.5,
+  "removed_segment_timings": [
+    {
+      "segment_id": 0,
+      "start_time": 0.0,
+      "end_time": 8.1
+    },
+    {
+      "segment_id": 17,
+      "start_time": 137.7,
+      "end_time": 145.8
+    },
+    {
+      "segment_id": 21,
+      "start_time": 170.1,
+      "end_time": 178.2
+    },
+    {
+      "segment_id": 22,
+      "start_time": 178.2,
+      "end_time": 186.3
+    },
+    {
+      "segment_id": 23,
+      "start_time": 186.3,
+      "end_time": 194.4
+    },
+    {
+      "segment_id": 24,
+      "start_time": 194.4,
+      "end_time": 202.5
+    },
+    {
+      "segment_id": 26,
+      "start_time": 210.6,
+      "end_time": 218.7
+    },
+    {
+      "segment_id": 32,
+      "start_time": 259.2,
+      "end_time": 267.3
+    },
+    {
+      "segment_id": 33,
+      "start_time": 267.3,
+      "end_time": 275.4
+    },
+    {
+      "segment_id": 34,
+      "start_time": 275.4,
+      "end_time": 283.5
+    },
+    {
+      "segment_id": 35,
+      "start_time": 283.5,
+      "end_time": 291.6
+    },
+    {
+      "segment_id": 36,
+      "start_time": 291.6,
+      "end_time": 299.7
+    },
+    {
+      "segment_id": 38,
+      "start_time": 307.8,
+      "end_time": 315.9
+    },
+    {
+      "segment_id": 39,
+      "start_time": 315.9,
+      "end_time": 324.0
+    },
+    {
+      "segment_id": 40,
+      "start_time": 324.0,
+      "end_time": 332.1
+    },
+    {
+      "segment_id": 41,
+      "start_time": 332.1,
+      "end_time": 340.2
+    },
+    {
+      "segment_id": 43,
+      "start_time": 348.3,
+      "end_time": 356.4
+    },
+    {
+      "segment_id": 45,
+      "start_time": 364.5,
+      "end_time": 372.6
+    },
+    {
+      "segment_id": 46,
+      "start_time": 372.6,
+      "end_time": 380.7
+    },
+    {
+      "segment_id": 47,
+      "start_time": 380.7,
+      "end_time": 388.8
+    },
+    {
+      "segment_id": 54,
+      "start_time": 437.4,
+      "end_time": 445.5
+    },
+    {
+      "segment_id": 55,
+      "start_time": 445.5,
+      "end_time": 453.6
+    },
+    {
+      "segment_id": 61,
+      "start_time": 494.1,
+      "end_time": 502.2
+    },
+    {
+      "segment_id": 62,
+      "start_time": 502.2,
+      "end_time": 510.3
+    },
+    {
+      "segment_id": 65,
+      "start_time": 526.5,
+      "end_time": 534.6
+    },
+    {
+      "segment_id": 67,
+      "start_time": 542.7,
+      "end_time": 550.8
+    },
+    {
+      "segment_id": 68,
+      "start_time": 550.8,
+      "end_time": 558.9
+    },
+    {
+      "segment_id": 70,
+      "start_time": 567.0,
+      "end_time": 575.1
+    },
+    {
+      "segment_id": 73,
+      "start_time": 591.3,
+      "end_time": 599.4
+    },
+    {
+      "segment_id": 77,
+      "start_time": 623.7,
+      "end_time": 631.8
+    },
+    {
+      "segment_id": 78,
+      "start_time": 631.8,
+      "end_time": 639.9
+    },
+    {
+      "segment_id": 80,
+      "start_time": 648.0,
+      "end_time": 656.1
+    },
+    {
+      "segment_id": 81,
+      "start_time": 656.1,
+      "end_time": 664.2
+    },
+    {
+      "segment_id": 121,
+      "start_time": 980.1,
+      "end_time": 988.2
+    },
+    {
+      "segment_id": 185,
+      "start_time": 1498.5,
+      "end_time": 1506.6
+    },
+    {
+      "segment_id": 214,
+      "start_time": 1733.4,
+      "end_time": 1741.5
+    },
+    {
+      "segment_id": 247,
+      "start_time": 2000.7,
+      "end_time": 2008.8
+    },
+    {
+      "segment_id": 248,
+      "start_time": 2008.8,
+      "end_time": 2016.9
+    },
+    {
+      "segment_id": 261,
+      "start_time": 2114.1,
+      "end_time": 2122.2
+    },
+    {
+      "segment_id": 262,
+      "start_time": 2122.2,
+      "end_time": 2130.3
+    },
+    {
+      "segment_id": 263,
+      "start_time": 2130.3,
+      "end_time": 2138.4
+    },
+    {
+      "segment_id": 264,
+      "start_time": 2138.4,
+      "end_time": 2146.5
+    },
+    {
+      "segment_id": 265,
+      "start_time": 2146.5,
+      "end_time": 2154.6
+    },
+    {
+      "segment_id": 298,
+      "start_time": 2413.8,
+      "end_time": 2421.9
+    },
+    {
+      "segment_id": 299,
+      "start_time": 2421.9,
+      "end_time": 2430.0
+    },
+    {
+      "segment_id": 344,
+      "start_time": 2786.4,
+      "end_time": 2794.5
+    },
+    {
+      "segment_id": 345,
+      "start_time": 2794.5,
+      "end_time": 2802.6
+    },
+    {
+      "segment_id": 346,
+      "start_time": 2802.6,
+      "end_time": 2810.7
+    },
+    {
+      "segment_id": 363,
+      "start_time": 2940.3,
+      "end_time": 2948.4
+    },
+    {
+      "segment_id": 366,
+      "start_time": 2964.6,
+      "end_time": 2972.7
+    },
+    {
+      "segment_id": 367,
+      "start_time": 2972.7,
+      "end_time": 2980.8
+    },
+    {
+      "segment_id": 368,
+      "start_time": 2980.8,
+      "end_time": 2988.9
+    },
+    {
+      "segment_id": 373,
+      "start_time": 3021.3,
+      "end_time": 3029.4
+    },
+    {
+      "segment_id": 375,
+      "start_time": 3037.5,
+      "end_time": 3045.6
+    },
+    {
+      "segment_id": 376,
+      "start_time": 3045.6,
+      "end_time": 3053.7
+    },
+    {
+      "segment_id": 377,
+      "start_time": 3053.7,
+      "end_time": 3061.8
+    },
+    {
+      "segment_id": 381,
+      "start_time": 3086.1,
+      "end_time": 3094.2
+    },
+    {
+      "segment_id": 383,
+      "start_time": 3102.3,
+      "end_time": 3110.4
+    },
+    {
+      "segment_id": 384,
+      "start_time": 3110.4,
+      "end_time": 3118.5
+    },
+    {
+      "segment_id": 392,
+      "start_time": 3175.2,
+      "end_time": 3183.3
+    },
+    {
+      "segment_id": 393,
+      "start_time": 3183.3,
+      "end_time": 3191.4
+    },
+    {
+      "segment_id": 401,
+      "start_time": 3248.1,
+      "end_time": 3256.2
+    },
+    {
+      "segment_id": 404,
+      "start_time": 3272.4,
+      "end_time": 3280.5
+    },
+    {
+      "segment_id": 409,
+      "start_time": 3312.9,
+      "end_time": 3321.0
+    },
+    {
+      "segment_id": 411,
+      "start_time": 3329.1,
+      "end_time": 3337.2
+    },
+    {
+      "segment_id": 414,
+      "start_time": 3353.4,
+      "end_time": 3361.5
+    },
+    {
+      "segment_id": 418,
+      "start_time": 3385.8,
+      "end_time": 3393.9
+    },
+    {
+      "segment_id": 420,
+      "start_time": 3402.0,
+      "end_time": 3410.1
+    },
+    {
+      "segment_id": 421,
+      "start_time": 3410.1,
+      "end_time": 3418.2
+    },
+    {
+      "segment_id": 423,
+      "start_time": 3426.3,
+      "end_time": 3434.4
+    },
+    {
+      "segment_id": 424,
+      "start_time": 3434.4,
+      "end_time": 3442.5
+    },
+    {
+      "segment_id": 425,
+      "start_time": 3442.5,
+      "end_time": 3450.6
+    },
+    {
+      "segment_id": 429,
+      "start_time": 3474.9,
+      "end_time": 3483.0
+    },
+    {
+      "segment_id": 431,
+      "start_time": 3491.1,
+      "end_time": 3499.2
+    },
+    {
+      "segment_id": 435,
+      "start_time": 3523.5,
+      "end_time": 3531.6
+    },
+    {
+      "segment_id": 436,
+      "start_time": 3531.6,
+      "end_time": 3539.7
+    },
+    {
+      "segment_id": 447,
+      "start_time": 3620.7,
+      "end_time": 3628.8
+    },
+    {
+      "segment_id": 449,
+      "start_time": 3636.9,
+      "end_time": 3645.0
+    },
+    {
+      "segment_id": 455,
+      "start_time": 3685.5,
+      "end_time": 3693.6
+    },
+    {
+      "segment_id": 459,
+      "start_time": 3717.9,
+      "end_time": 3726.0
+    },
+    {
+      "segment_id": 461,
+      "start_time": 3734.1,
+      "end_time": 3742.2
+    },
+    {
+      "segment_id": 462,
+      "start_time": 3742.2,
+      "end_time": 3750.3
+    },
+    {
+      "segment_id": 471,
+      "start_time": 3815.1,
+      "end_time": 3823.2
+    },
+    {
+      "segment_id": 472,
+      "start_time": 3823.2,
+      "end_time": 3831.3
+    },
+    {
+      "segment_id": 473,
+      "start_time": 3831.3,
+      "end_time": 3839.4
+    },
+    {
+      "segment_id": 476,
+      "start_time": 3855.6,
+      "end_time": 3863.7
+    },
+    {
+      "segment_id": 479,
+      "start_time": 3879.9,
+      "end_time": 3888.0
+    },
+    {
+      "segment_id": 480,
+      "start_time": 3888.0,
+      "end_time": 3896.1
+    },
+    {
+      "segment_id": 481,
+      "start_time": 3896.1,
+      "end_time": 3904.2
+    },
+    {
+      "segment_id": 482,
+      "start_time": 3904.2,
+      "end_time": 3912.3
+    },
+    {
+      "segment_id": 484,
+      "start_time": 3920.4,
+      "end_time": 3928.5
+    },
+    {
+      "segment_id": 485,
+      "start_time": 3928.5,
+      "end_time": 3936.6
+    },
+    {
+      "segment_id": 494,
+      "start_time": 4001.4,
+      "end_time": 4009.5
+    },
+    {
+      "segment_id": 507,
+      "start_time": 4106.7,
+      "end_time": 4114.8
+    },
+    {
+      "segment_id": 513,
+      "start_time": 4155.3,
+      "end_time": 4163.4
+    },
+    {
+      "segment_id": 526,
+      "start_time": 4260.6,
+      "end_time": 4268.7
+    },
+    {
+      "segment_id": 527,
+      "start_time": 4268.7,
+      "end_time": 4276.8
+    },
+    {
+      "segment_id": 528,
+      "start_time": 4276.8,
+      "end_time": 4284.9
+    },
+    {
+      "segment_id": 533,
+      "start_time": 4317.3,
+      "end_time": 4325.4
+    },
+    {
+      "segment_id": 534,
+      "start_time": 4325.4,
+      "end_time": 4333.5
+    },
+    {
+      "segment_id": 544,
+      "start_time": 4406.4,
+      "end_time": 4414.5
+    },
+    {
+      "segment_id": 566,
+      "start_time": 4584.6,
+      "end_time": 4592.7
+    },
+    {
+      "segment_id": 568,
+      "start_time": 4600.8,
+      "end_time": 4608.9
+    },
+    {
+      "segment_id": 571,
+      "start_time": 4625.1,
+      "end_time": 4633.2
+    },
+    {
+      "segment_id": 572,
+      "start_time": 4633.2,
+      "end_time": 4641.3
+    },
+    {
+      "segment_id": 576,
+      "start_time": 4665.6,
+      "end_time": 4673.7
+    },
+    {
+      "segment_id": 577,
+      "start_time": 4673.7,
+      "end_time": 4681.8
+    },
+    {
+      "segment_id": 578,
+      "start_time": 4681.8,
+      "end_time": 4689.9
+    },
+    {
+      "segment_id": 581,
+      "start_time": 4706.1,
+      "end_time": 4714.2
+    },
+    {
+      "segment_id": 582,
+      "start_time": 4714.2,
+      "end_time": 4722.3
+    },
+    {
+      "segment_id": 583,
+      "start_time": 4722.3,
+      "end_time": 4730.4
+    },
+    {
+      "segment_id": 584,
+      "start_time": 4730.4,
+      "end_time": 4738.5
+    },
+    {
+      "segment_id": 585,
+      "start_time": 4738.5,
+      "end_time": 4746.6
+    },
+    {
+      "segment_id": 586,
+      "start_time": 4746.6,
+      "end_time": 4754.7
+    },
+    {
+      "segment_id": 589,
+      "start_time": 4770.9,
+      "end_time": 4779.0
+    },
+    {
+      "segment_id": 590,
+      "start_time": 4779.0,
+      "end_time": 4787.1
+    },
+    {
+      "segment_id": 593,
+      "start_time": 4803.3,
+      "end_time": 4811.4
+    },
+    {
+      "segment_id": 594,
+      "start_time": 4811.4,
+      "end_time": 4819.5
+    },
+    {
+      "segment_id": 600,
+      "start_time": 4860.0,
+      "end_time": 4868.1
+    },
+    {
+      "segment_id": 605,
+      "start_time": 4900.5,
+      "end_time": 4908.6
+    },
+    {
+      "segment_id": 610,
+      "start_time": 4941.0,
+      "end_time": 4949.1
+    },
+    {
+      "segment_id": 611,
+      "start_time": 4949.1,
+      "end_time": 4957.2
+    },
+    {
+      "segment_id": 612,
+      "start_time": 4957.2,
+      "end_time": 4965.3
+    },
+    {
+      "segment_id": 614,
+      "start_time": 4973.4,
+      "end_time": 4981.5
+    },
+    {
+      "segment_id": 615,
+      "start_time": 4981.5,
+      "end_time": 4989.6
+    },
+    {
+      "segment_id": 616,
+      "start_time": 4989.6,
+      "end_time": 4997.7
+    },
+    {
+      "segment_id": 619,
+      "start_time": 5013.9,
+      "end_time": 5022.0
+    },
+    {
+      "segment_id": 623,
+      "start_time": 5046.3,
+      "end_time": 5054.4
+    },
+    {
+      "segment_id": 625,
+      "start_time": 5062.5,
+      "end_time": 5070.6
+    },
+    {
+      "segment_id": 626,
+      "start_time": 5070.6,
+      "end_time": 5078.7
+    },
+    {
+      "segment_id": 627,
+      "start_time": 5078.7,
+      "end_time": 5086.8
+    },
+    {
+      "segment_id": 628,
+      "start_time": 5086.8,
+      "end_time": 5094.9
+    },
+    {
+      "segment_id": 629,
+      "start_time": 5094.9,
+      "end_time": 5103.0
+    },
+    {
+      "segment_id": 631,
+      "start_time": 5111.1,
+      "end_time": 5119.2
+    },
+    {
+      "segment_id": 632,
+      "start_time": 5119.2,
+      "end_time": 5127.3
+    },
+    {
+      "segment_id": 634,
+      "start_time": 5135.4,
+      "end_time": 5143.5
+    },
+    {
+      "segment_id": 635,
+      "start_time": 5143.5,
+      "end_time": 5151.6
+    },
+    {
+      "segment_id": 636,
+      "start_time": 5151.6,
+      "end_time": 5159.7
+    },
+    {
+      "segment_id": 637,
+      "start_time": 5159.7,
+      "end_time": 5167.8
+    },
+    {
+      "segment_id": 639,
+      "start_time": 5175.9,
+      "end_time": 5184.0
+    },
+    {
+      "segment_id": 640,
+      "start_time": 5184.0,
+      "end_time": 5192.1
+    },
+    {
+      "segment_id": 641,
+      "start_time": 5192.1,
+      "end_time": 5200.2
+    },
+    {
+      "segment_id": 642,
+      "start_time": 5200.2,
+      "end_time": 5208.3
+    },
+    {
+      "segment_id": 643,
+      "start_time": 5208.3,
+      "end_time": 5216.4
+    },
+    {
+      "segment_id": 644,
+      "start_time": 5216.4,
+      "end_time": 5224.5
+    },
+    {
+      "segment_id": 645,
+      "start_time": 5224.5,
+      "end_time": 5232.6
+    },
+    {
+      "segment_id": 646,
+      "start_time": 5232.6,
+      "end_time": 5240.7
+    },
+    {
+      "segment_id": 647,
+      "start_time": 5240.7,
+      "end_time": 5248.8
+    },
+    {
+      "segment_id": 655,
+      "start_time": 5305.5,
+      "end_time": 5313.6
+    },
+    {
+      "segment_id": 657,
+      "start_time": 5321.7,
+      "end_time": 5329.8
+    },
+    {
+      "segment_id": 661,
+      "start_time": 5354.1,
+      "end_time": 5362.2
+    },
+    {
+      "segment_id": 662,
+      "start_time": 5362.2,
+      "end_time": 5370.3
+    },
+    {
+      "segment_id": 663,
+      "start_time": 5370.3,
+      "end_time": 5378.4
+    },
+    {
+      "segment_id": 677,
+      "start_time": 5483.7,
+      "end_time": 5491.8
+    },
+    {
+      "segment_id": 685,
+      "start_time": 5548.5,
+      "end_time": 5556.6
+    },
+    {
+      "segment_id": 686,
+      "start_time": 5556.6,
+      "end_time": 5564.7
+    },
+    {
+      "segment_id": 688,
+      "start_time": 5572.8,
+      "end_time": 5580.9
+    },
+    {
+      "segment_id": 689,
+      "start_time": 5580.9,
+      "end_time": 5589.0
+    },
+    {
+      "segment_id": 690,
+      "start_time": 5589.0,
+      "end_time": 5597.1
+    },
+    {
+      "segment_id": 696,
+      "start_time": 5637.6,
+      "end_time": 5645.7
+    },
+    {
+      "segment_id": 698,
+      "start_time": 5653.8,
+      "end_time": 5661.9
+    },
+    {
+      "segment_id": 709,
+      "start_time": 5742.9,
+      "end_time": 5751.0
+    },
+    {
+      "segment_id": 711,
+      "start_time": 5759.1,
+      "end_time": 5767.2
+    },
+    {
+      "segment_id": 712,
+      "start_time": 5767.2,
+      "end_time": 5775.3
+    },
+    {
+      "segment_id": 713,
+      "start_time": 5775.3,
+      "end_time": 5783.4
+    },
+    {
+      "segment_id": 717,
+      "start_time": 5807.7,
+      "end_time": 5815.8
+    },
+    {
+      "segment_id": 720,
+      "start_time": 5832.0,
+      "end_time": 5840.1
+    },
+    {
+      "segment_id": 721,
+      "start_time": 5840.1,
+      "end_time": 5848.2
+    },
+    {
+      "segment_id": 722,
+      "start_time": 5848.2,
+      "end_time": 5856.3
+    },
+    {
+      "segment_id": 726,
+      "start_time": 5880.6,
+      "end_time": 5888.7
+    },
+    {
+      "segment_id": 728,
+      "start_time": 5896.8,
+      "end_time": 5904.9
+    },
+    {
+      "segment_id": 731,
+      "start_time": 5921.1,
+      "end_time": 5929.2
+    },
+    {
+      "segment_id": 732,
+      "start_time": 5929.2,
+      "end_time": 5937.3
+    },
+    {
+      "segment_id": 733,
+      "start_time": 5937.3,
+      "end_time": 5945.4
+    },
+    {
+      "segment_id": 734,
+      "start_time": 5945.4,
+      "end_time": 5953.5
+    },
+    {
+      "segment_id": 735,
+      "start_time": 5953.5,
+      "end_time": 5961.6
+    },
+    {
+      "segment_id": 738,
+      "start_time": 5977.8,
+      "end_time": 5985.9
+    },
+    {
+      "segment_id": 739,
+      "start_time": 5985.9,
+      "end_time": 5994.0
+    },
+    {
+      "segment_id": 744,
+      "start_time": 6026.4,
+      "end_time": 6034.5
+    },
+    {
+      "segment_id": 745,
+      "start_time": 6034.5,
+      "end_time": 6042.6
+    },
+    {
+      "segment_id": 746,
+      "start_time": 6042.6,
+      "end_time": 6050.7
+    },
+    {
+      "segment_id": 747,
+      "start_time": 6050.7,
+      "end_time": 6058.8
+    },
+    {
+      "segment_id": 750,
+      "start_time": 6075.0,
+      "end_time": 6083.1
+    },
+    {
+      "segment_id": 751,
+      "start_time": 6083.1,
+      "end_time": 6091.2
+    },
+    {
+      "segment_id": 752,
+      "start_time": 6091.2,
+      "end_time": 6099.3
+    },
+    {
+      "segment_id": 753,
+      "start_time": 6099.3,
+      "end_time": 6107.4
+    },
+    {
+      "segment_id": 755,
+      "start_time": 6115.5,
+      "end_time": 6123.6
+    },
+    {
+      "segment_id": 756,
+      "start_time": 6123.6,
+      "end_time": 6131.7
+    },
+    {
+      "segment_id": 764,
+      "start_time": 6188.4,
+      "end_time": 6196.5
+    },
+    {
+      "segment_id": 766,
+      "start_time": 6204.6,
+      "end_time": 6212.7
+    },
+    {
+      "segment_id": 769,
+      "start_time": 6228.9,
+      "end_time": 6237.0
+    },
+    {
+      "segment_id": 772,
+      "start_time": 6253.2,
+      "end_time": 6261.3
+    },
+    {
+      "segment_id": 775,
+      "start_time": 6277.5,
+      "end_time": 6285.6
+    },
+    {
+      "segment_id": 780,
+      "start_time": 6318.0,
+      "end_time": 6326.1
+    },
+    {
+      "segment_id": 781,
+      "start_time": 6326.1,
+      "end_time": 6334.2
+    },
+    {
+      "segment_id": 783,
+      "start_time": 6342.3,
+      "end_time": 6350.4
+    },
+    {
+      "segment_id": 793,
+      "start_time": 6423.3,
+      "end_time": 6431.4
+    },
+    {
+      "segment_id": 794,
+      "start_time": 6431.4,
+      "end_time": 6439.5
+    },
+    {
+      "segment_id": 796,
+      "start_time": 6447.6,
+      "end_time": 6455.7
+    },
+    {
+      "segment_id": 798,
+      "start_time": 6463.8,
+      "end_time": 6471.9
+    },
+    {
+      "segment_id": 799,
+      "start_time": 6471.9,
+      "end_time": 6480.0
+    },
+    {
+      "segment_id": 807,
+      "start_time": 6536.7,
+      "end_time": 6544.8
+    },
+    {
+      "segment_id": 808,
+      "start_time": 6544.8,
+      "end_time": 6552.9
+    },
+    {
+      "segment_id": 809,
+      "start_time": 6552.9,
+      "end_time": 6561.0
+    },
+    {
+      "segment_id": 810,
+      "start_time": 6561.0,
+      "end_time": 6569.1
+    },
+    {
+      "segment_id": 813,
+      "start_time": 6585.3,
+      "end_time": 6593.4
+    },
+    {
+      "segment_id": 814,
+      "start_time": 6593.4,
+      "end_time": 6601.5
+    },
+    {
+      "segment_id": 815,
+      "start_time": 6601.5,
+      "end_time": 6609.6
+    },
+    {
+      "segment_id": 816,
+      "start_time": 6609.6,
+      "end_time": 6617.7
+    },
+    {
+      "segment_id": 817,
+      "start_time": 6617.7,
+      "end_time": 6625.8
+    },
+    {
+      "segment_id": 818,
+      "start_time": 6625.8,
+      "end_time": 6633.9
+    },
+    {
+      "segment_id": 820,
+      "start_time": 6642.0,
+      "end_time": 6650.1
+    },
+    {
+      "segment_id": 822,
+      "start_time": 6658.2,
+      "end_time": 6666.3
+    },
+    {
+      "segment_id": 823,
+      "start_time": 6666.3,
+      "end_time": 6674.4
+    },
+    {
+      "segment_id": 824,
+      "start_time": 6674.4,
+      "end_time": 6682.5
+    },
+    {
+      "segment_id": 825,
+      "start_time": 6682.5,
+      "end_time": 6690.6
+    },
+    {
+      "segment_id": 826,
+      "start_time": 6690.6,
+      "end_time": 6698.7
+    },
+    {
+      "segment_id": 827,
+      "start_time": 6698.7,
+      "end_time": 6706.8
+    },
+    {
+      "segment_id": 829,
+      "start_time": 6714.9,
+      "end_time": 6723.0
+    },
+    {
+      "segment_id": 830,
+      "start_time": 6723.0,
+      "end_time": 6731.1
+    },
+    {
+      "segment_id": 831,
+      "start_time": 6731.1,
+      "end_time": 6739.2
+    },
+    {
+      "segment_id": 833,
+      "start_time": 6747.3,
+      "end_time": 6755.4
+    },
+    {
+      "segment_id": 834,
+      "start_time": 6755.4,
+      "end_time": 6763.5
+    },
+    {
+      "segment_id": 835,
+      "start_time": 6763.5,
+      "end_time": 6771.6
+    },
+    {
+      "segment_id": 836,
+      "start_time": 6771.6,
+      "end_time": 6779.7
+    },
+    {
+      "segment_id": 837,
+      "start_time": 6779.7,
+      "end_time": 6787.8
+    },
+    {
+      "segment_id": 838,
+      "start_time": 6787.8,
+      "end_time": 6795.9
+    },
+    {
+      "segment_id": 839,
+      "start_time": 6795.9,
+      "end_time": 6804.0
+    },
+    {
+      "segment_id": 840,
+      "start_time": 6804.0,
+      "end_time": 6812.1
+    },
+    {
+      "segment_id": 843,
+      "start_time": 6828.3,
+      "end_time": 6836.4
+    },
+    {
+      "segment_id": 844,
+      "start_time": 6836.4,
+      "end_time": 6844.5
+    },
+    {
+      "segment_id": 846,
+      "start_time": 6852.6,
+      "end_time": 6860.7
+    },
+    {
+      "segment_id": 848,
+      "start_time": 6868.8,
+      "end_time": 6876.9
+    },
+    {
+      "segment_id": 854,
+      "start_time": 6917.4,
+      "end_time": 6925.5
+    },
+    {
+      "segment_id": 856,
+      "start_time": 6933.6,
+      "end_time": 6941.7
+    },
+    {
+      "segment_id": 859,
+      "start_time": 6957.9,
+      "end_time": 6966.0
+    },
+    {
+      "segment_id": 860,
+      "start_time": 6966.0,
+      "end_time": 6974.1
+    },
+    {
+      "segment_id": 864,
+      "start_time": 6998.4,
+      "end_time": 7006.5
+    },
+    {
+      "segment_id": 866,
+      "start_time": 7014.6,
+      "end_time": 7022.7
+    },
+    {
+      "segment_id": 873,
+      "start_time": 7071.3,
+      "end_time": 7079.4
+    },
+    {
+      "segment_id": 878,
+      "start_time": 7111.8,
+      "end_time": 7119.9
+    },
+    {
+      "segment_id": 879,
+      "start_time": 7119.9,
+      "end_time": 7128.0
+    },
+    {
+      "segment_id": 883,
+      "start_time": 7152.3,
+      "end_time": 7160.4
+    },
+    {
+      "segment_id": 884,
+      "start_time": 7160.4,
+      "end_time": 7168.5
+    },
+    {
+      "segment_id": 885,
+      "start_time": 7168.5,
+      "end_time": 7176.6
+    },
+    {
+      "segment_id": 892,
+      "start_time": 7225.2,
+      "end_time": 7233.3
+    },
+    {
+      "segment_id": 898,
+      "start_time": 7273.8,
+      "end_time": 7281.9
+    },
+    {
+      "segment_id": 903,
+      "start_time": 7314.3,
+      "end_time": 7322.4
+    },
+    {
+      "segment_id": 906,
+      "start_time": 7338.6,
+      "end_time": 7346.7
+    },
+    {
+      "segment_id": 908,
+      "start_time": 7354.8,
+      "end_time": 7362.9
+    },
+    {
+      "segment_id": 910,
+      "start_time": 7371.0,
+      "end_time": 7379.1
+    },
+    {
+      "segment_id": 912,
+      "start_time": 7387.2,
+      "end_time": 7395.3
+    },
+    {
+      "segment_id": 913,
+      "start_time": 7395.3,
+      "end_time": 7403.4
+    },
+    {
+      "segment_id": 925,
+      "start_time": 7492.5,
+      "end_time": 7500.6
+    },
+    {
+      "segment_id": 926,
+      "start_time": 7500.6,
+      "end_time": 7508.7
+    },
+    {
+      "segment_id": 941,
+      "start_time": 7622.1,
+      "end_time": 7630.2
+    },
+    {
+      "segment_id": 942,
+      "start_time": 7630.2,
+      "end_time": 7638.3
+    },
+    {
+      "segment_id": 943,
+      "start_time": 7638.3,
+      "end_time": 7646.4
+    },
+    {
+      "segment_id": 944,
+      "start_time": 7646.4,
+      "end_time": 7654.5
+    },
+    {
+      "segment_id": 958,
+      "start_time": 7759.8,
+      "end_time": 7767.9
+    },
+    {
+      "segment_id": 959,
+      "start_time": 7767.9,
+      "end_time": 7776.0
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "original_segments": 593,
+  "parsed_segments": 593,
+  "final_segments": 589,
+  "removed_segments": 4,
+  "removal_percentage": 0.6745362563237773,
+  "original_frames": 143909,
+  "parsed_frames": 143909,
+  "final_frames": 143127,
+  "removed_frames": 782,
+  "time_removed_percentage": 0.5433989535053402,
+  "velocity_threshold": 0.25,
+  "acceleration_threshold": 0.5,
+  "removed_segment_timings": [
+    {
+      "segment_id": 0,
+      "start_time": 0.0,
+      "end_time": 8.1
+    },
+    {
+      "segment_id": 292,
+      "start_time": 2365.2,
+      "end_time": 2373.3
+    },
+    {
+      "segment_id": 591,
+      "start_time": 4787.1,
+      "end_time": 4795.2
+    },
+    {
+      "segment_id": 592,
+      "start_time": 4795.2,
+      "end_time": 4803.3
+    }
+  ]
+}

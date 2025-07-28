@@ -1,0 +1,15 @@
+{
+  "original_segments": 531,
+  "parsed_segments": 531,
+  "final_segments": 531,
+  "removed_segments": 0,
+  "removal_percentage": 0.0,
+  "original_frames": 128903,
+  "parsed_frames": 128903,
+  "final_frames": 128903,
+  "removed_frames": 0,
+  "time_removed_percentage": 0.0,
+  "velocity_threshold": 0.25,
+  "acceleration_threshold": 0.5,
+  "removed_segment_timings": []
+}
