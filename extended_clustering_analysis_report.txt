@@ -1,0 +1,72 @@
+================================================================================
+EXTENDED CLUSTERING ANALYSIS REPORT (5-199 Clusters)
+================================================================================
+
+SUMMARY STATISTICS
+----------------------------------------
+Total clusters analyzed: 195
+Best Silhouette Score: 0.665258 (Cluster 121)
+Worst Silhouette Score: 0.325082 (Cluster 5)
+Average Silhouette Score: 0.584145
+Median Silhouette Score: 0.603723
+Standard Deviation: 0.063415
+
+TOP 10 PERFORMING CLUSTER NUMBERS
+----------------------------------------
+ 1. Cluster 121: 0.665258
+ 2. Cluster 112: 0.655963
+ 3. Cluster 155: 0.655922
+ 4. Cluster 107: 0.652870
+ 5. Cluster 110: 0.652566
+ 6. Cluster 136: 0.651274
+ 7. Cluster 183: 0.651259
+ 8. Cluster 134: 0.647211
+ 9. Cluster  99: 0.646775
+10. Cluster 111: 0.646743
+
+PERFORMANCE BY CLUSTER RANGES
+----------------------------------------
+5-20:
+  Count: 16
+  Average Score: 0.427430
+  Max Score: 0.494883
+  Best Cluster: 19
+
+21-50:
+  Count: 30
+  Average Score: 0.519628
+  Max Score: 0.569830
+  Best Cluster: 50
+
+51-100:
+  Count: 50
+  Average Score: 0.605471
+  Max Score: 0.646775
+  Best Cluster: 99
+
+101-150:
+  Count: 50
+  Average Score: 0.625796
+  Max Score: 0.665258
+  Best Cluster: 121
+
+151-199:
+  Count: 49
+  Average Score: 0.610553
+  Max Score: 0.655922
+  Best Cluster: 155
+
+KEY INSIGHTS
+----------------------------------------
+1. The best performing cluster number is 121 with a Silhouette Score of 0.665258
+2. Performance generally improves with more clusters, but plateaus around 100-150
+3. The optimal range appears to be between 100-150 clusters
+4. Very low cluster numbers (5-20) perform poorly
+5. There's significant variation in performance across different cluster numbers
+
+RECOMMENDATIONS
+----------------------------------------
+1. Use cluster number 121 for optimal performance
+2. Alternative options: 112, 155, 107, 110 (all above 0.65)
+3. Avoid cluster numbers below 50 for this dataset
+4. Consider the trade-off between performance and computational complexity

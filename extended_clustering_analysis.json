@@ -1,0 +1,1956 @@
+{
+  "total_clusters_analyzed": 195,
+  "cluster_range": "5-199",
+  "results": [
+    {
+      "n_clusters": 5,
+      "total_segments": 165050,
+      "silhouette_score": 0.32508212550809507,
+      "file_path": "test/clustering_info_with_top5_labels/5/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 6,
+      "total_segments": 165050,
+      "silhouette_score": 0.3570561838921675,
+      "file_path": "test/clustering_info_with_top5_labels/6/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 7,
+      "total_segments": 165050,
+      "silhouette_score": 0.36535205507300045,
+      "file_path": "test/clustering_info_with_top5_labels/7/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 8,
+      "total_segments": 165050,
+      "silhouette_score": 0.3679774159297075,
+      "file_path": "test/clustering_info_with_top5_labels/8/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 9,
+      "total_segments": 165050,
+      "silhouette_score": 0.3970733651064497,
+      "file_path": "test/clustering_info_with_top5_labels/9/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 10,
+      "total_segments": 165050,
+      "silhouette_score": 0.4156246080115971,
+      "file_path": "test/clustering_info_with_top5_labels/10/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 11,
+      "total_segments": 165050,
+      "silhouette_score": 0.4332209132167833,
+      "file_path": "test/clustering_info_with_top5_labels/11/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 12,
+      "total_segments": 165050,
+      "silhouette_score": 0.4462601872616747,
+      "file_path": "test/clustering_info_with_top5_labels/12/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 13,
+      "total_segments": 165050,
+      "silhouette_score": 0.44157464336215824,
+      "file_path": "test/clustering_info_with_top5_labels/13/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 14,
+      "total_segments": 165050,
+      "silhouette_score": 0.46174022194367137,
+      "file_path": "test/clustering_info_with_top5_labels/14/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 15,
+      "total_segments": 165050,
+      "silhouette_score": 0.45629886915738777,
+      "file_path": "test/clustering_info_with_top5_labels/15/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 16,
+      "total_segments": 165050,
+      "silhouette_score": 0.44948283670861694,
+      "file_path": "test/clustering_info_with_top5_labels/16/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 17,
+      "total_segments": 165050,
+      "silhouette_score": 0.4687227188942674,
+      "file_path": "test/clustering_info_with_top5_labels/17/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 18,
+      "total_segments": 165050,
+      "silhouette_score": 0.4675295441892522,
+      "file_path": "test/clustering_info_with_top5_labels/18/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 19,
+      "total_segments": 165050,
+      "silhouette_score": 0.49488264154901485,
+      "file_path": "test/clustering_info_with_top5_labels/19/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 20,
+      "total_segments": 165050,
+      "silhouette_score": 0.49099565967864517,
+      "file_path": "test/clustering_info_with_top5_labels/20/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 21,
+      "total_segments": 165050,
+      "silhouette_score": 0.4836654770188203,
+      "file_path": "test/clustering_info_with_top5_labels/21/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 22,
+      "total_segments": 165050,
+      "silhouette_score": 0.4891666022260149,
+      "file_path": "test/clustering_info_with_top5_labels/22/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 23,
+      "total_segments": 165050,
+      "silhouette_score": 0.4907847388187158,
+      "file_path": "test/clustering_info_with_top5_labels/23/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 24,
+      "total_segments": 165050,
+      "silhouette_score": 0.4965072380649163,
+      "file_path": "test/clustering_info_with_top5_labels/24/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 25,
+      "total_segments": 165050,
+      "silhouette_score": 0.4964249309004494,
+      "file_path": "test/clustering_info_with_top5_labels/25/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 26,
+      "total_segments": 165050,
+      "silhouette_score": 0.480358029229208,
+      "file_path": "test/clustering_info_with_top5_labels/26/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 27,
+      "total_segments": 165050,
+      "silhouette_score": 0.4993104280963387,
+      "file_path": "test/clustering_info_with_top5_labels/27/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 28,
+      "total_segments": 165050,
+      "silhouette_score": 0.4937635761413506,
+      "file_path": "test/clustering_info_with_top5_labels/28/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 29,
+      "total_segments": 165050,
+      "silhouette_score": 0.49964380095508054,
+      "file_path": "test/clustering_info_with_top5_labels/29/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 30,
+      "total_segments": 165050,
+      "silhouette_score": 0.5027789288661445,
+      "file_path": "test/clustering_info_with_top5_labels/30/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 31,
+      "total_segments": 165050,
+      "silhouette_score": 0.4991053745727436,
+      "file_path": "test/clustering_info_with_top5_labels/31/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 32,
+      "total_segments": 165050,
+      "silhouette_score": 0.49993352746697867,
+      "file_path": "test/clustering_info_with_top5_labels/32/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 33,
+      "total_segments": 165050,
+      "silhouette_score": 0.5082306343360958,
+      "file_path": "test/clustering_info_with_top5_labels/33/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 34,
+      "total_segments": 165050,
+      "silhouette_score": 0.5131016929710843,
+      "file_path": "test/clustering_info_with_top5_labels/34/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 35,
+      "total_segments": 165050,
+      "silhouette_score": 0.5162397678096662,
+      "file_path": "test/clustering_info_with_top5_labels/35/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 36,
+      "total_segments": 165050,
+      "silhouette_score": 0.5120936329735295,
+      "file_path": "test/clustering_info_with_top5_labels/36/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 37,
+      "total_segments": 165050,
+      "silhouette_score": 0.5183534244739173,
+      "file_path": "test/clustering_info_with_top5_labels/37/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 38,
+      "total_segments": 165050,
+      "silhouette_score": 0.5296292142546136,
+      "file_path": "test/clustering_info_with_top5_labels/38/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 39,
+      "total_segments": 165050,
+      "silhouette_score": 0.5362437504581444,
+      "file_path": "test/clustering_info_with_top5_labels/39/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 40,
+      "total_segments": 165050,
+      "silhouette_score": 0.5356783017266423,
+      "file_path": "test/clustering_info_with_top5_labels/40/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 41,
+      "total_segments": 165050,
+      "silhouette_score": 0.53714613804245,
+      "file_path": "test/clustering_info_with_top5_labels/41/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 42,
+      "total_segments": 165050,
+      "silhouette_score": 0.5339318148400034,
+      "file_path": "test/clustering_info_with_top5_labels/42/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 43,
+      "total_segments": 165050,
+      "silhouette_score": 0.5431415363022805,
+      "file_path": "test/clustering_info_with_top5_labels/43/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 44,
+      "total_segments": 165050,
+      "silhouette_score": 0.5517947067959438,
+      "file_path": "test/clustering_info_with_top5_labels/44/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 45,
+      "total_segments": 165050,
+      "silhouette_score": 0.5414872236959913,
+      "file_path": "test/clustering_info_with_top5_labels/45/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 46,
+      "total_segments": 165050,
+      "silhouette_score": 0.553055234635608,
+      "file_path": "test/clustering_info_with_top5_labels/46/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 47,
+      "total_segments": 165050,
+      "silhouette_score": 0.5469568561950797,
+      "file_path": "test/clustering_info_with_top5_labels/47/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 48,
+      "total_segments": 165050,
+      "silhouette_score": 0.5548149919090799,
+      "file_path": "test/clustering_info_with_top5_labels/48/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 49,
+      "total_segments": 165050,
+      "silhouette_score": 0.5556607298582196,
+      "file_path": "test/clustering_info_with_top5_labels/49/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 50,
+      "total_segments": 165050,
+      "silhouette_score": 0.5698299477532751,
+      "file_path": "test/clustering_info_with_top5_labels/50/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 51,
+      "total_segments": 165050,
+      "silhouette_score": 0.5633243218960324,
+      "file_path": "test/clustering_info_with_top5_labels/51/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 52,
+      "total_segments": 165050,
+      "silhouette_score": 0.5697617602794037,
+      "file_path": "test/clustering_info_with_top5_labels/52/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 53,
+      "total_segments": 165050,
+      "silhouette_score": 0.5702720152020367,
+      "file_path": "test/clustering_info_with_top5_labels/53/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 54,
+      "total_segments": 165050,
+      "silhouette_score": 0.5744492909153117,
+      "file_path": "test/clustering_info_with_top5_labels/54/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 55,
+      "total_segments": 165050,
+      "silhouette_score": 0.5817209486667994,
+      "file_path": "test/clustering_info_with_top5_labels/55/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 56,
+      "total_segments": 165050,
+      "silhouette_score": 0.5812360116275728,
+      "file_path": "test/clustering_info_with_top5_labels/56/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 57,
+      "total_segments": 165050,
+      "silhouette_score": 0.5842043137535324,
+      "file_path": "test/clustering_info_with_top5_labels/57/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 58,
+      "total_segments": 165050,
+      "silhouette_score": 0.5856741245143732,
+      "file_path": "test/clustering_info_with_top5_labels/58/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 59,
+      "total_segments": 165050,
+      "silhouette_score": 0.5899234002680501,
+      "file_path": "test/clustering_info_with_top5_labels/59/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 60,
+      "total_segments": 165050,
+      "silhouette_score": 0.5756985721438759,
+      "file_path": "test/clustering_info_with_top5_labels/60/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 61,
+      "total_segments": 165050,
+      "silhouette_score": 0.5908654087721461,
+      "file_path": "test/clustering_info_with_top5_labels/61/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 62,
+      "total_segments": 165050,
+      "silhouette_score": 0.5924558566231262,
+      "file_path": "test/clustering_info_with_top5_labels/62/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 63,
+      "total_segments": 165050,
+      "silhouette_score": 0.5936209079270796,
+      "file_path": "test/clustering_info_with_top5_labels/63/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 64,
+      "total_segments": 165050,
+      "silhouette_score": 0.5937032007857794,
+      "file_path": "test/clustering_info_with_top5_labels/64/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 65,
+      "total_segments": 165050,
+      "silhouette_score": 0.6026963957067817,
+      "file_path": "test/clustering_info_with_top5_labels/65/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 66,
+      "total_segments": 165050,
+      "silhouette_score": 0.5954083055944491,
+      "file_path": "test/clustering_info_with_top5_labels/66/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 67,
+      "total_segments": 165050,
+      "silhouette_score": 0.6020044690248406,
+      "file_path": "test/clustering_info_with_top5_labels/67/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 68,
+      "total_segments": 165050,
+      "silhouette_score": 0.604689338945489,
+      "file_path": "test/clustering_info_with_top5_labels/68/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 69,
+      "total_segments": 165050,
+      "silhouette_score": 0.5616706305788842,
+      "file_path": "test/clustering_info_with_top5_labels/69/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 70,
+      "total_segments": 165050,
+      "silhouette_score": 0.6070853414172535,
+      "file_path": "test/clustering_info_with_top5_labels/70/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 71,
+      "total_segments": 165050,
+      "silhouette_score": 0.6078262547898263,
+      "file_path": "test/clustering_info_with_top5_labels/71/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 72,
+      "total_segments": 165050,
+      "silhouette_score": 0.6080951507098318,
+      "file_path": "test/clustering_info_with_top5_labels/72/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 73,
+      "total_segments": 165050,
+      "silhouette_score": 0.6166181935999013,
+      "file_path": "test/clustering_info_with_top5_labels/73/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 74,
+      "total_segments": 165050,
+      "silhouette_score": 0.6185825190052343,
+      "file_path": "test/clustering_info_with_top5_labels/74/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 75,
+      "total_segments": 165050,
+      "silhouette_score": 0.60889742308641,
+      "file_path": "test/clustering_info_with_top5_labels/75/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 76,
+      "total_segments": 165050,
+      "silhouette_score": 0.6177541348493938,
+      "file_path": "test/clustering_info_with_top5_labels/76/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 77,
+      "total_segments": 165050,
+      "silhouette_score": 0.5848765463162707,
+      "file_path": "test/clustering_info_with_top5_labels/77/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 78,
+      "total_segments": 165050,
+      "silhouette_score": 0.619679181191349,
+      "file_path": "test/clustering_info_with_top5_labels/78/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 79,
+      "total_segments": 165050,
+      "silhouette_score": 0.6206615322132834,
+      "file_path": "test/clustering_info_with_top5_labels/79/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 80,
+      "total_segments": 165050,
+      "silhouette_score": 0.6097630216064569,
+      "file_path": "test/clustering_info_with_top5_labels/80/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 81,
+      "total_segments": 165050,
+      "silhouette_score": 0.6225840910763779,
+      "file_path": "test/clustering_info_with_top5_labels/81/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 82,
+      "total_segments": 165050,
+      "silhouette_score": 0.6088594110240119,
+      "file_path": "test/clustering_info_with_top5_labels/82/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 83,
+      "total_segments": 165050,
+      "silhouette_score": 0.6231230022252091,
+      "file_path": "test/clustering_info_with_top5_labels/83/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 84,
+      "total_segments": 165050,
+      "silhouette_score": 0.6243499964989373,
+      "file_path": "test/clustering_info_with_top5_labels/84/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 85,
+      "total_segments": 165050,
+      "silhouette_score": 0.6237765205144057,
+      "file_path": "test/clustering_info_with_top5_labels/85/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 86,
+      "total_segments": 165050,
+      "silhouette_score": 0.62606219496385,
+      "file_path": "test/clustering_info_with_top5_labels/86/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 87,
+      "total_segments": 165050,
+      "silhouette_score": 0.5706064195573896,
+      "file_path": "test/clustering_info_with_top5_labels/87/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 88,
+      "total_segments": 165050,
+      "silhouette_score": 0.628203475082446,
+      "file_path": "test/clustering_info_with_top5_labels/88/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 89,
+      "total_segments": 165050,
+      "silhouette_score": 0.6311046644383465,
+      "file_path": "test/clustering_info_with_top5_labels/89/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 90,
+      "total_segments": 165050,
+      "silhouette_score": 0.6348507300243007,
+      "file_path": "test/clustering_info_with_top5_labels/90/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 91,
+      "total_segments": 165050,
+      "silhouette_score": 0.6055771117003764,
+      "file_path": "test/clustering_info_with_top5_labels/91/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 92,
+      "total_segments": 165050,
+      "silhouette_score": 0.6346656938700198,
+      "file_path": "test/clustering_info_with_top5_labels/92/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 93,
+      "total_segments": 165050,
+      "silhouette_score": 0.5954571251374043,
+      "file_path": "test/clustering_info_with_top5_labels/93/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 94,
+      "total_segments": 165050,
+      "silhouette_score": 0.625483254572029,
+      "file_path": "test/clustering_info_with_top5_labels/94/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 95,
+      "total_segments": 165050,
+      "silhouette_score": 0.6404639013252698,
+      "file_path": "test/clustering_info_with_top5_labels/95/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 96,
+      "total_segments": 165050,
+      "silhouette_score": 0.6402358587285785,
+      "file_path": "test/clustering_info_with_top5_labels/96/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 97,
+      "total_segments": 165050,
+      "silhouette_score": 0.5953790513624243,
+      "file_path": "test/clustering_info_with_top5_labels/97/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 98,
+      "total_segments": 165050,
+      "silhouette_score": 0.6404327177138183,
+      "file_path": "test/clustering_info_with_top5_labels/98/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 99,
+      "total_segments": 165050,
+      "silhouette_score": 0.6467749217667642,
+      "file_path": "test/clustering_info_with_top5_labels/99/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 100,
+      "total_segments": 165050,
+      "silhouette_score": 0.6223521456303882,
+      "file_path": "test/clustering_info_with_top5_labels/100/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 101,
+      "total_segments": 165050,
+      "silhouette_score": 0.6328434719880401,
+      "file_path": "test/clustering_info_with_top5_labels/101/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 102,
+      "total_segments": 165050,
+      "silhouette_score": 0.6420989231824313,
+      "file_path": "test/clustering_info_with_top5_labels/102/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 103,
+      "total_segments": 165050,
+      "silhouette_score": 0.6397463247223087,
+      "file_path": "test/clustering_info_with_top5_labels/103/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 104,
+      "total_segments": 165050,
+      "silhouette_score": 0.6395326394734959,
+      "file_path": "test/clustering_info_with_top5_labels/104/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 105,
+      "total_segments": 165050,
+      "silhouette_score": 0.6381023586327492,
+      "file_path": "test/clustering_info_with_top5_labels/105/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 106,
+      "total_segments": 165050,
+      "silhouette_score": 0.6138532654733018,
+      "file_path": "test/clustering_info_with_top5_labels/106/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 107,
+      "total_segments": 165050,
+      "silhouette_score": 0.6528704029705207,
+      "file_path": "test/clustering_info_with_top5_labels/107/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 108,
+      "total_segments": 165050,
+      "silhouette_score": 0.6243807677227032,
+      "file_path": "test/clustering_info_with_top5_labels/108/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 109,
+      "total_segments": 165050,
+      "silhouette_score": 0.6339357531576715,
+      "file_path": "test/clustering_info_with_top5_labels/109/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 110,
+      "total_segments": 165050,
+      "silhouette_score": 0.6525664624954818,
+      "file_path": "test/clustering_info_with_top5_labels/110/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 111,
+      "total_segments": 165050,
+      "silhouette_score": 0.6467427032482869,
+      "file_path": "test/clustering_info_with_top5_labels/111/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 112,
+      "total_segments": 165050,
+      "silhouette_score": 0.6559628977325052,
+      "file_path": "test/clustering_info_with_top5_labels/112/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 113,
+      "total_segments": 165050,
+      "silhouette_score": 0.6280790553663527,
+      "file_path": "test/clustering_info_with_top5_labels/113/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 114,
+      "total_segments": 165050,
+      "silhouette_score": 0.6369161353171463,
+      "file_path": "test/clustering_info_with_top5_labels/114/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 115,
+      "total_segments": 165050,
+      "silhouette_score": 0.6392177019502236,
+      "file_path": "test/clustering_info_with_top5_labels/115/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 116,
+      "total_segments": 165050,
+      "silhouette_score": 0.6294803315280053,
+      "file_path": "test/clustering_info_with_top5_labels/116/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 117,
+      "total_segments": 165050,
+      "silhouette_score": 0.6336605401011397,
+      "file_path": "test/clustering_info_with_top5_labels/117/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 118,
+      "total_segments": 165050,
+      "silhouette_score": 0.5842868321079334,
+      "file_path": "test/clustering_info_with_top5_labels/118/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 119,
+      "total_segments": 165050,
+      "silhouette_score": 0.6005854682257058,
+      "file_path": "test/clustering_info_with_top5_labels/119/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 120,
+      "total_segments": 165050,
+      "silhouette_score": 0.6403853027210442,
+      "file_path": "test/clustering_info_with_top5_labels/120/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 121,
+      "total_segments": 165050,
+      "silhouette_score": 0.6652576208377161,
+      "file_path": "test/clustering_info_with_top5_labels/121/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 122,
+      "total_segments": 165050,
+      "silhouette_score": 0.6205725466939948,
+      "file_path": "test/clustering_info_with_top5_labels/122/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 123,
+      "total_segments": 165050,
+      "silhouette_score": 0.6436335795208715,
+      "file_path": "test/clustering_info_with_top5_labels/123/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 124,
+      "total_segments": 165050,
+      "silhouette_score": 0.597305059895172,
+      "file_path": "test/clustering_info_with_top5_labels/124/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 125,
+      "total_segments": 165050,
+      "silhouette_score": 0.5911043011503742,
+      "file_path": "test/clustering_info_with_top5_labels/125/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 126,
+      "total_segments": 165050,
+      "silhouette_score": 0.6357255758194233,
+      "file_path": "test/clustering_info_with_top5_labels/126/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 127,
+      "total_segments": 165050,
+      "silhouette_score": 0.6284081649836659,
+      "file_path": "test/clustering_info_with_top5_labels/127/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 128,
+      "total_segments": 165050,
+      "silhouette_score": 0.618838257444593,
+      "file_path": "test/clustering_info_with_top5_labels/128/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 129,
+      "total_segments": 165050,
+      "silhouette_score": 0.584543259091419,
+      "file_path": "test/clustering_info_with_top5_labels/129/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 130,
+      "total_segments": 165050,
+      "silhouette_score": 0.6097495821695709,
+      "file_path": "test/clustering_info_with_top5_labels/130/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 131,
+      "total_segments": 165050,
+      "silhouette_score": 0.63312928510152,
+      "file_path": "test/clustering_info_with_top5_labels/131/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 132,
+      "total_segments": 165050,
+      "silhouette_score": 0.6039259730221731,
+      "file_path": "test/clustering_info_with_top5_labels/132/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 133,
+      "total_segments": 165050,
+      "silhouette_score": 0.6437671073473473,
+      "file_path": "test/clustering_info_with_top5_labels/133/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 134,
+      "total_segments": 165050,
+      "silhouette_score": 0.6472111353429782,
+      "file_path": "test/clustering_info_with_top5_labels/134/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 135,
+      "total_segments": 165050,
+      "silhouette_score": 0.6078725192159318,
+      "file_path": "test/clustering_info_with_top5_labels/135/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 136,
+      "total_segments": 165050,
+      "silhouette_score": 0.6512735500569398,
+      "file_path": "test/clustering_info_with_top5_labels/136/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 137,
+      "total_segments": 165050,
+      "silhouette_score": 0.6414480868491126,
+      "file_path": "test/clustering_info_with_top5_labels/137/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 138,
+      "total_segments": 165050,
+      "silhouette_score": 0.6334995680182122,
+      "file_path": "test/clustering_info_with_top5_labels/138/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 139,
+      "total_segments": 165050,
+      "silhouette_score": 0.5881669096926889,
+      "file_path": "test/clustering_info_with_top5_labels/139/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 140,
+      "total_segments": 165050,
+      "silhouette_score": 0.6228002978949946,
+      "file_path": "test/clustering_info_with_top5_labels/140/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 141,
+      "total_segments": 165050,
+      "silhouette_score": 0.6236310722117765,
+      "file_path": "test/clustering_info_with_top5_labels/141/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 142,
+      "total_segments": 165050,
+      "silhouette_score": 0.6247852754334406,
+      "file_path": "test/clustering_info_with_top5_labels/142/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 143,
+      "total_segments": 165050,
+      "silhouette_score": 0.5960311031233123,
+      "file_path": "test/clustering_info_with_top5_labels/143/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 144,
+      "total_segments": 165050,
+      "silhouette_score": 0.6381469161580263,
+      "file_path": "test/clustering_info_with_top5_labels/144/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 145,
+      "total_segments": 165050,
+      "silhouette_score": 0.6274114130918066,
+      "file_path": "test/clustering_info_with_top5_labels/145/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 146,
+      "total_segments": 165050,
+      "silhouette_score": 0.5972774062646063,
+      "file_path": "test/clustering_info_with_top5_labels/146/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 147,
+      "total_segments": 165050,
+      "silhouette_score": 0.6278240261415455,
+      "file_path": "test/clustering_info_with_top5_labels/147/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 148,
+      "total_segments": 165050,
+      "silhouette_score": 0.5981401670883895,
+      "file_path": "test/clustering_info_with_top5_labels/148/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 149,
+      "total_segments": 165050,
+      "silhouette_score": 0.6037229522300968,
+      "file_path": "test/clustering_info_with_top5_labels/149/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 150,
+      "total_segments": 165050,
+      "silhouette_score": 0.6193714542199334,
+      "file_path": "test/clustering_info_with_top5_labels/150/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 151,
+      "total_segments": 165050,
+      "silhouette_score": 0.6411990050348069,
+      "file_path": "test/clustering_info_with_top5_labels/151/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 152,
+      "total_segments": 165050,
+      "silhouette_score": 0.600977004090086,
+      "file_path": "test/clustering_info_with_top5_labels/152/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 153,
+      "total_segments": 165050,
+      "silhouette_score": 0.6391264823125156,
+      "file_path": "test/clustering_info_with_top5_labels/153/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 154,
+      "total_segments": 165050,
+      "silhouette_score": 0.6165595241339713,
+      "file_path": "test/clustering_info_with_top5_labels/154/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 155,
+      "total_segments": 165050,
+      "silhouette_score": 0.6559218302496654,
+      "file_path": "test/clustering_info_with_top5_labels/155/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 156,
+      "total_segments": 165050,
+      "silhouette_score": 0.6225795744520268,
+      "file_path": "test/clustering_info_with_top5_labels/156/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 157,
+      "total_segments": 165050,
+      "silhouette_score": 0.6128176355906307,
+      "file_path": "test/clustering_info_with_top5_labels/157/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 158,
+      "total_segments": 165050,
+      "silhouette_score": 0.6436108733433425,
+      "file_path": "test/clustering_info_with_top5_labels/158/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 159,
+      "total_segments": 165050,
+      "silhouette_score": 0.5746986112888963,
+      "file_path": "test/clustering_info_with_top5_labels/159/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 160,
+      "total_segments": 165050,
+      "silhouette_score": 0.6242093681359635,
+      "file_path": "test/clustering_info_with_top5_labels/160/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 161,
+      "total_segments": 165050,
+      "silhouette_score": 0.6368378173936913,
+      "file_path": "test/clustering_info_with_top5_labels/161/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 162,
+      "total_segments": 165050,
+      "silhouette_score": 0.6437047960601376,
+      "file_path": "test/clustering_info_with_top5_labels/162/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 163,
+      "total_segments": 165050,
+      "silhouette_score": 0.6158316896177528,
+      "file_path": "test/clustering_info_with_top5_labels/163/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 164,
+      "total_segments": 165050,
+      "silhouette_score": 0.5937833617269074,
+      "file_path": "test/clustering_info_with_top5_labels/164/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 165,
+      "total_segments": 165050,
+      "silhouette_score": 0.6205706732119993,
+      "file_path": "test/clustering_info_with_top5_labels/165/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 166,
+      "total_segments": 165050,
+      "silhouette_score": 0.6019223627455693,
+      "file_path": "test/clustering_info_with_top5_labels/166/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 167,
+      "total_segments": 165050,
+      "silhouette_score": 0.6016858243628456,
+      "file_path": "test/clustering_info_with_top5_labels/167/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 168,
+      "total_segments": 165050,
+      "silhouette_score": 0.5978206829255188,
+      "file_path": "test/clustering_info_with_top5_labels/168/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 169,
+      "total_segments": 165050,
+      "silhouette_score": 0.6108481992572139,
+      "file_path": "test/clustering_info_with_top5_labels/169/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 170,
+      "total_segments": 165050,
+      "silhouette_score": 0.5949411353506046,
+      "file_path": "test/clustering_info_with_top5_labels/170/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 171,
+      "total_segments": 165050,
+      "silhouette_score": 0.6205675105657155,
+      "file_path": "test/clustering_info_with_top5_labels/171/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 172,
+      "total_segments": 165050,
+      "silhouette_score": 0.5826777427137363,
+      "file_path": "test/clustering_info_with_top5_labels/172/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 173,
+      "total_segments": 165050,
+      "silhouette_score": 0.6029680619378992,
+      "file_path": "test/clustering_info_with_top5_labels/173/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 174,
+      "total_segments": 165050,
+      "silhouette_score": 0.6237881402369033,
+      "file_path": "test/clustering_info_with_top5_labels/174/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 175,
+      "total_segments": 165050,
+      "silhouette_score": 0.615598924519805,
+      "file_path": "test/clustering_info_with_top5_labels/175/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 176,
+      "total_segments": 165050,
+      "silhouette_score": 0.618485567171605,
+      "file_path": "test/clustering_info_with_top5_labels/176/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 177,
+      "total_segments": 165050,
+      "silhouette_score": 0.6259601085642522,
+      "file_path": "test/clustering_info_with_top5_labels/177/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 178,
+      "total_segments": 165050,
+      "silhouette_score": 0.575429513639248,
+      "file_path": "test/clustering_info_with_top5_labels/178/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 179,
+      "total_segments": 165050,
+      "silhouette_score": 0.5949722518075566,
+      "file_path": "test/clustering_info_with_top5_labels/179/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 180,
+      "total_segments": 165050,
+      "silhouette_score": 0.6365847451946461,
+      "file_path": "test/clustering_info_with_top5_labels/180/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 181,
+      "total_segments": 165050,
+      "silhouette_score": 0.6333157015575684,
+      "file_path": "test/clustering_info_with_top5_labels/181/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 182,
+      "total_segments": 165050,
+      "silhouette_score": 0.5873758318001232,
+      "file_path": "test/clustering_info_with_top5_labels/182/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 183,
+      "total_segments": 165050,
+      "silhouette_score": 0.6512589869949728,
+      "file_path": "test/clustering_info_with_top5_labels/183/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 184,
+      "total_segments": 165050,
+      "silhouette_score": 0.616654299376735,
+      "file_path": "test/clustering_info_with_top5_labels/184/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 185,
+      "total_segments": 165050,
+      "silhouette_score": 0.6098780758539664,
+      "file_path": "test/clustering_info_with_top5_labels/185/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 186,
+      "total_segments": 165050,
+      "silhouette_score": 0.6126140486744172,
+      "file_path": "test/clustering_info_with_top5_labels/186/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 187,
+      "total_segments": 165050,
+      "silhouette_score": 0.5920177318028007,
+      "file_path": "test/clustering_info_with_top5_labels/187/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 188,
+      "total_segments": 165050,
+      "silhouette_score": 0.5791952260745359,
+      "file_path": "test/clustering_info_with_top5_labels/188/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 189,
+      "total_segments": 165050,
+      "silhouette_score": 0.609259588495626,
+      "file_path": "test/clustering_info_with_top5_labels/189/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 190,
+      "total_segments": 165050,
+      "silhouette_score": 0.5947931945886397,
+      "file_path": "test/clustering_info_with_top5_labels/190/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 191,
+      "total_segments": 165050,
+      "silhouette_score": 0.5898318083505667,
+      "file_path": "test/clustering_info_with_top5_labels/191/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 192,
+      "total_segments": 165050,
+      "silhouette_score": 0.6064474752540939,
+      "file_path": "test/clustering_info_with_top5_labels/192/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 193,
+      "total_segments": 165050,
+      "silhouette_score": 0.5885130811395288,
+      "file_path": "test/clustering_info_with_top5_labels/193/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 194,
+      "total_segments": 165050,
+      "silhouette_score": 0.5988016374596263,
+      "file_path": "test/clustering_info_with_top5_labels/194/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 195,
+      "total_segments": 165050,
+      "silhouette_score": 0.6133456315020918,
+      "file_path": "test/clustering_info_with_top5_labels/195/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 196,
+      "total_segments": 165050,
+      "silhouette_score": 0.569408746114803,
+      "file_path": "test/clustering_info_with_top5_labels/196/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 197,
+      "total_segments": 165050,
+      "silhouette_score": 0.6184089139010255,
+      "file_path": "test/clustering_info_with_top5_labels/197/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 198,
+      "total_segments": 165050,
+      "silhouette_score": 0.6116300463230793,
+      "file_path": "test/clustering_info_with_top5_labels/198/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    },
+    {
+      "n_clusters": 199,
+      "total_segments": 165050,
+      "silhouette_score": 0.5876608530599383,
+      "file_path": "test/clustering_info_with_top5_labels/199/clustering_summary.json",
+      "largest_cluster_size": 0,
+      "smallest_cluster_size": 0,
+      "average_cluster_size": 0.0,
+      "total_videos": 0
+    }
+  ]
+}

@@ -231,6 +231,7 @@ def find_optimal_cluster_number(clustering_base_dir):
 def visualize_clusters_with_poses_dir(
     poses_master_dir="/home/janus/iwso-datasets/t1-body-poses-final/",
     clustering_base_dir="/home/shanaka/Desktop/thesis/pipeline-final/test/clustering_info_with_top5_labels",
+    cluster_number=None,
     output_dir="cluster_visualizations_output",
     num_segments_per_cluster=5,
     fps=15
@@ -241,6 +242,7 @@ def visualize_clusters_with_poses_dir(
     Parameters:
     poses_master_dir (str): Master directory containing all pose directories
     clustering_base_dir (str): Base directory containing clustering results for different cluster numbers
+    cluster_number (int): Specific cluster number to use (if None, finds optimal automatically)
     output_dir (str): Output directory for visualizations
     num_segments_per_cluster (int): Number of random segments to visualize per cluster
     fps (int): Frames per second for animations
@@ -251,8 +253,14 @@ def visualize_clusters_with_poses_dir(
     print(f"💾 Output directory: {output_dir}")
     print(f"🎬 Segments per cluster: {num_segments_per_cluster}")
     
-    # Find optimal cluster number
-    optimal_clusters = find_optimal_cluster_number(clustering_base_dir)
+    # Use specified cluster number or find optimal
+    if cluster_number is not None:
+        optimal_clusters = cluster_number
+        print(f"🎯 Using specified cluster number: {optimal_clusters}")
+    else:
+        optimal_clusters = find_optimal_cluster_number(clustering_base_dir)
+        print(f"🎯 Using optimal cluster number: {optimal_clusters}")
+    
     clustering_dir = os.path.join(clustering_base_dir, str(optimal_clusters))
     
     if not os.path.exists(clustering_dir):
@@ -407,6 +415,8 @@ def main():
                        help="Master directory containing all pose directories")
     parser.add_argument("--clustering_dir", default="/home/shanaka/Desktop/thesis/pipeline-final/test/clustering_info_with_top5_labels",
                        help="Base directory containing clustering results")
+    parser.add_argument("--cluster_number", type=int, default=None,
+                       help="Specific cluster number to use (if not specified, finds optimal)")
     parser.add_argument("--output_dir", default="cluster_visualizations_output",
                        help="Output directory for visualizations")
     parser.add_argument("--num_segments", type=int, default=5,
@@ -424,6 +434,7 @@ def main():
         output_dir = visualize_clusters_with_poses_dir(
             poses_master_dir=args.poses_dir,
             clustering_base_dir=args.clustering_dir,
+            cluster_number=args.cluster_number,
             output_dir=args.output_dir,
             num_segments_per_cluster=args.num_segments,
             fps=args.fps
