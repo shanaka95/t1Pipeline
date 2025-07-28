@@ -1,0 +1,72 @@
+{
+  "timestamp": "20250728_230744",
+  "models_compared": [
+    "XGBoost_none",
+    "Random Forest_none",
+    "SVM_none",
+    "XGBoost_smote",
+    "Random Forest_smote",
+    "SVM_smote"
+  ],
+  "balance_methods": [
+    "none",
+    "smote"
+  ],
+  "best_overall": "SVM_smote_svm_smote",
+  "comparison_results": {
+    "XGBoost_none_xgb_none": {
+      "model_type": "XGBoost",
+      "balance_method": "none",
+      "accuracy": 0.5333333333333333,
+      "precision": 0.4844017094017094,
+      "recall": 0.5333333333333333,
+      "f1_score": 0.5048639522046887,
+      "auc_roc": 0.5849040165533081
+    },
+    "Random Forest_none_rf_none": {
+      "model_type": "Random Forest",
+      "balance_method": "none",
+      "accuracy": 0.6222222222222222,
+      "precision": 0.5623931623931624,
+      "recall": 0.6222222222222222,
+      "f1_score": 0.5515151515151515,
+      "auc_roc": 0.5754274456225805
+    },
+    "SVM_none_svm_none": {
+      "model_type": "SVM",
+      "balance_method": "none",
+      "accuracy": 0.6,
+      "precision": 0.36,
+      "recall": 0.6,
+      "f1_score": 0.45,
+      "auc_roc": 0.38391101606819333
+    },
+    "XGBoost_smote_xgb_smote": {
+      "model_type": "XGBoost",
+      "balance_method": "smote",
+      "accuracy": 0.5555555555555556,
+      "precision": 0.5140809011776754,
+      "recall": 0.5555555555555556,
+      "f1_score": 0.5323116219667944,
+      "auc_roc": 0.6371815814745513
+    },
+    "Random Forest_smote_rf_smote": {
+      "model_type": "Random Forest",
+      "balance_method": "smote",
+      "accuracy": 0.5555555555555556,
+      "precision": 0.5264367816091954,
+      "recall": 0.5555555555555556,
+      "f1_score": 0.5404761904761906,
+      "auc_roc": 0.5947627392160939
+    },
+    "SVM_smote_svm_smote": {
+      "model_type": "SVM",
+      "balance_method": "smote",
+      "accuracy": 0.5777777777777777,
+      "precision": 0.5580246913580247,
+      "recall": 0.5777777777777777,
+      "f1_score": 0.5673202614379085,
+      "auc_roc": 0.6269664478699495
+    }
+  }
+}
