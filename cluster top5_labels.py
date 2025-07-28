@@ -204,15 +204,19 @@ parser.add_argument('--n_clusters', type=int, default=10,
                     help='Number of clusters for k-means clustering (default: 10)')
 parser.add_argument('--test_dir', type=str, default='test/top_5labels',
                     help='Path to test directory containing top5_labels (default: test/top_5labels)')
+parser.add_argument('--clustering_output_dir', type=str, default='./clustering_results',
+                    help='Directory to save clustering results (default: ./clustering_results)')
+parser.add_argument('--visualization_dir', type=str, default='./visualizations/clustering',
+                    help='Directory to save clustering visualizations (default: ./visualizations/clustering)')
 
 # Parse arguments
 args = parser.parse_args()
 
 # Configuration
 test_labels_dir = args.test_dir
-clustering_output_dir = "./clustering_results"
+clustering_output_dir = args.clustering_output_dir
 n_clusters = args.n_clusters
-visualization_dir = "./visualizations/clustering"
+visualization_dir = args.visualization_dir
 
 # Step 1: Load top 5 labels data from test directory
 print("🚀 Loading top 5 labels data from test directory...")
