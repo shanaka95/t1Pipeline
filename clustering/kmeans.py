@@ -7,6 +7,119 @@ import glob
 from pathlib import Path
 import json
 
+def interpret_clustering_results(clustering_results):
+    """
+    Provide detailed interpretation of clustering results.
+    
+    Parameters:
+    clustering_results: Dictionary containing clustering results
+    
+    Returns:
+    str: Detailed interpretation text
+    """
+    silhouette = clustering_results['silhouette_score']
+    n_clusters = clustering_results['n_clusters']
+    total_segments = clustering_results['total_segments']
+    cluster_labels = clustering_results['cluster_labels']
+    
+    # Calculate cluster statistics
+    unique_labels, counts = np.unique(cluster_labels, return_counts=True)
+    largest_cluster = max(zip(unique_labels, counts), key=lambda x: x[1])
+    smallest_cluster = min(zip(unique_labels, counts), key=lambda x: x[1])
+    avg_cluster_size = total_segments / n_clusters
+    
+    # Determine interpretation based on silhouette score
+    if silhouette > 0.7:
+        interpretation = "Strong clustering structure"
+        quality = "Excellent"
+    elif silhouette > 0.5:
+        interpretation = "Reasonable clustering structure"
+        quality = "Good"
+    elif silhouette > 0.25:
+        interpretation = "Weak clustering structure"
+        quality = "Fair"
+    else:
+        interpretation = "Poor clustering structure"
+        quality = "Poor"
+    
+    # Create detailed interpretation
+    interpretation_text = f"""
+{'='*60}
+📊 CLUSTERING INTERPRETATION REPORT
+{'='*60}
+
+🎯 OVERVIEW:
+   • Total segments: {total_segments:,}
+   • Number of clusters: {n_clusters}
+   • Silhouette score: {silhouette:.6f}
+
+📈 CLUSTERING QUALITY:
+   • Quality Level: {quality}
+   • Interpretation: {interpretation}
+   
+   Silhouette Score Analysis:
+   • Range: -1 to +1 (higher is better)
+   • Your score: {silhouette:.6f}
+   • Meaning: {interpretation}
+
+📊 CLUSTER DISTRIBUTION STATISTICS:
+   • Largest cluster: {largest_cluster[0]} with {largest_cluster[1]:,} samples ({(largest_cluster[1]/total_segments)*100:.1f}%)
+   • Smallest cluster: {smallest_cluster[0]} with {smallest_cluster[1]:,} samples ({(smallest_cluster[1]/total_segments)*100:.1f}%)
+   • Average cluster size: {avg_cluster_size:.1f} samples
+   • Standard deviation of cluster sizes: {np.std(counts):.1f}
+
+🔍 DETAILED CLUSTER DISTRIBUTION:
+"""
+    
+    # Add cluster distribution
+    sorted_clusters = sorted(zip(unique_labels, counts), key=lambda x: x[1], reverse=True)
+    for cluster_id, count in sorted_clusters:
+        percentage = (count / total_segments) * 100
+        interpretation_text += f"   • Cluster {cluster_id:2d}: {count:6d} samples ({percentage:5.2f}%)\n"
+    
+    interpretation_text += f"""
+💡 RECOMMENDATIONS:
+"""
+    
+    if silhouette < 0.25:
+        interpretation_text += f"""
+   ⚠️  Your clustering shows poor structure. Consider:
+   • Reducing the number of clusters (try 10-20 instead of {n_clusters})
+   • Using different clustering algorithms (DBSCAN, hierarchical clustering)
+   • Improving data preprocessing (better normalization, feature selection)
+   • Using different dimensionality reduction (t-SNE, UMAP)
+   • Checking for data quality issues or noise
+"""
+    elif silhouette < 0.5:
+        interpretation_text += f"""
+   ⚠️  Your clustering shows weak structure. Consider:
+   • Experimenting with different numbers of clusters
+   • Trying different clustering algorithms
+   • Improving data preprocessing
+   • Using different distance metrics
+"""
+    else:
+        interpretation_text += f"""
+   ✅ Your clustering shows reasonable structure. Consider:
+   • Fine-tuning the number of clusters
+   • Analyzing cluster characteristics
+   • Validating clusters with domain knowledge
+   • Using clusters for downstream tasks
+"""
+    
+    interpretation_text += f"""
+📋 NEXT STEPS:
+   • Visualize cluster centers and characteristics
+   • Analyze pose patterns within each cluster
+   • Validate clusters with domain experts
+   • Use clusters for action recognition or pose analysis
+   • Consider ensemble clustering methods
+
+{'='*60}
+"""
+    
+    return interpretation_text
+
 def apply_kmeans_clustering(embeddings_master_dir, output_dir, n_clusters=50, random_state=42, visualization_dir=None):
     """
     Apply k-means clustering to all PCA results found in subdirectories.
@@ -140,6 +253,16 @@ def apply_kmeans_clustering(embeddings_master_dir, output_dir, n_clusters=50, ra
     with open(summary_file, 'w') as f:
         json.dump(summary, f, indent=2)
     print(f"📄 Saved summary to: {summary_file}")
+    
+    # Print detailed interpretation
+    interpretation = interpret_clustering_results(clustering_results)
+    print(interpretation)
+    
+    # Save interpretation to file
+    interpretation_file = os.path.join(output_dir, 'clustering_interpretation.txt')
+    with open(interpretation_file, 'w') as f:
+        f.write(interpretation)
+    print(f"📝 Saved interpretation to: {interpretation_file}")
     
     # --- Visualization Section ---
     if visualization_dir:
