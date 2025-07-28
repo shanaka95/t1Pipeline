@@ -309,7 +309,7 @@ def visualize_clusters_with_poses_dir(
     cluster_number (int): Specific cluster number to use (if None, finds optimal automatically)
     output_dir (str): Output directory for visualizations
     num_segments_per_cluster (int): Number of random segments to visualize per cluster
-    fps (int): Frames per second for animations
+    fps (int): Frames per second for animations (243 frames will be used per segment)
     """
     print(f"🎯 Starting cluster visualization with poses directory...")
     print(f"📂 Poses master directory: {poses_master_dir}")
@@ -411,13 +411,16 @@ def visualize_clusters_with_poses_dir(
             # Note: You may need to adjust this based on how segment_id is defined
             try:
                 if isinstance(segment_id, int) and segment_id < len(poses_3d):
-                    # For single frame, create a short sequence around it
-                    start_frame = max(0, segment_id - 15)
-                    end_frame = min(len(poses_3d), segment_id + 16)
-                    segment_poses = poses_3d[start_frame:end_frame]
+                    # Use all 243 frames from the segment, starting from segment_id
+                    # If we have enough frames, use 243 frames starting from segment_id
+                    if len(poses_3d) >= segment_id + 243:
+                        segment_poses = poses_3d[segment_id:segment_id + 243]
+                    else:
+                        # If not enough frames from segment_id, use the last 243 frames
+                        segment_poses = poses_3d[max(0, len(poses_3d) - 243):]
                 else:
-                    # Use entire pose sequence or first 30 frames
-                    segment_poses = poses_3d[:30] if len(poses_3d) > 30 else poses_3d
+                    # Use entire pose sequence (up to 243 frames)
+                    segment_poses = poses_3d[:243] if len(poses_3d) > 243 else poses_3d
                 
                 if len(segment_poses) == 0:
                     print(f"   ⚠️ Empty segment for {video_name}:{segment_id}")
@@ -486,7 +489,7 @@ def main():
     parser.add_argument("--num_segments", type=int, default=5,
                        help="Number of random segments to visualize per cluster")
     parser.add_argument("--fps", type=int, default=15,
-                       help="Frames per second for animations")
+                       help="Frames per second for animations (243 frames will be used per segment)")
     
     args = parser.parse_args()
     

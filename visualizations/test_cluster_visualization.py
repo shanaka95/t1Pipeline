@@ -26,7 +26,7 @@ def test_visualization_with_cluster(
     cluster_number (int): Specific cluster number to use
     output_dir (str): Output directory for visualizations
     num_segments (int): Number of segments per cluster for testing
-    fps (int): Frames per second for animations
+    fps (int): Frames per second for animations (243 frames will be used per segment)
     """
     
     print("🧪 Testing cluster visualization...")
@@ -107,7 +107,7 @@ def main():
     parser.add_argument("--fps", 
                        type=int, 
                        default=10,
-                       help="Frames per second for animations")
+                       help="Frames per second for animations (243 frames will be used per segment)")
     
     parser.add_argument("--list_clusters", 
                        action="store_true",
