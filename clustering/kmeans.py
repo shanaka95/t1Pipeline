@@ -259,7 +259,7 @@ def apply_kmeans_clustering(embeddings_master_dir, output_dir, n_clusters=50, ra
     print(interpretation)
     
     # Save interpretation to file
-    interpretation_file = os.path.join(output_dir, 'clustering_interpretation.txt')
+    interpretation_file = os.path.join(output_dir, 'clustering_interpretation_' + str(n_clusters) + '.txt')
     with open(interpretation_file, 'w') as f:
         f.write(interpretation)
     print(f"📝 Saved interpretation to: {interpretation_file}")
