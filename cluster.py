@@ -1,11 +1,19 @@
 from clustering.kmeans import apply_kmeans_clustering, extract_poses_by_clusters
 from visualizations.visualize_cluster import visualize_cluster_poses
 
-embeddings_master_dir = "/home/shanaka/Desktop/thesis/pipeline-final/embeddings"
-clustering_output_dir = "./clustering_results"
-poses_dir = "/home/shanaka/Desktop/thesis/pipeline-final/poses"
-clustered_poses_output_dir = "./clustered_poses"
-n_clusters = 50
+# embeddings_master_dir = "/home/shanaka/Desktop/thesis/pipeline-final/embeddings"
+# clustering_output_dir = "./clustering_results"
+# poses_dir = "/home/shanaka/Desktop/thesis/pipeline-final/poses"
+# clustered_poses_output_dir = "./clustered_poses"
+# n_clusters = 50
+# poses_per_cluster = 10
+# visualization_dir = "./visualizations/clustering"
+
+embeddings_master_dir = "/home/janus/iwso-datasets/t1-embeddings-final"
+clustering_output_dir = "/home/janus/iwso-datasets/t1-clusters-final"
+poses_dir = "/home/janus/iwso-datasets/t1-body-poses-final"
+clustered_poses_output_dir = "/home/janus/iwso-datasets/t1-clustered-poses-final"
+n_clusters = 10
 poses_per_cluster = 10
 visualization_dir = "./visualizations/clustering"
 
