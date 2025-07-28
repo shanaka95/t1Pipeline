@@ -125,6 +125,35 @@ def extract_embeddings_from_segments(segments):
     
     return results
 
+def extract_top5_labels_from_segments(segments):
+    """
+    Extract top 5 action labels from pose segments.
+    
+    segments: List of np.ndarray, each of shape (243, 17, 3)
+    Returns: List of dicts with keys: sequence_id, top5_labels (list of 5 integers)
+    """
+    model, config = load_model()
+    window_size = config.get('test_feeder_args', {}).get('window_size', 64)
+    results = []
+    
+    for i, pose_data in enumerate(segments):
+        processed_data = preprocess_pose_data(pose_data, window_size=window_size)
+        data_tensor = torch.from_numpy(processed_data).float().unsqueeze(0).to(DEVICE)
+        
+        with torch.no_grad():
+            output = model(data_tensor)
+            probabilities = F.softmax(output, dim=1)
+            # Get top 5 predictions
+            top5_probs, top5_indices = torch.topk(probabilities, 5, dim=1)
+            top5_labels = top5_indices.cpu().numpy()[0]  # Remove batch dimension
+        
+        results.append({
+            'sequence_id': i,
+            'top5_labels': top5_labels.tolist()
+        })
+    
+    return results
+
 def run_inference_on_segments(segments):
     """
     segments: List of np.ndarray, each of shape (243, 17, 3)
