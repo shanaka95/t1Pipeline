@@ -1,0 +1,257 @@
+id,depressed,depression_level
+4,0,Minimal
+5,0,Mild
+7,0,Minimal
+8,0,Mild
+13,0,Mild
+28,0,Mild
+38,1,Moderate
+52,0,Minimal
+60,1,Moderate
+71,0,Minimal
+74,0,Mild
+77,0,Mild
+94,0,Minimal
+96,0,Mild
+100,0,Mild
+111,0,Minimal
+114,1,Moderately Severe
+115,1,Moderate
+117,0,Mild
+119,0,Mild
+120,0,Minimal
+121,0,Minimal
+123,0,Minimal
+124,0,Mild
+125,0,Minimal
+129,1,Moderate
+130,0,Minimal
+132,1,Moderately Severe
+134,0,Mild
+135,1,Moderately Severe
+136,0,Mild
+137,0,Mild
+139,0,Minimal
+140,0,Minimal
+141,1,Moderately Severe
+142,0,Mild
+143,1,Moderately Severe
+144,1,Moderately Severe
+146,0,Minimal
+147,0,Mild
+151,0,Minimal
+155,1,Moderate
+156,0,Mild
+158,1,Moderately Severe
+159,1,Moderate
+160,0,Mild
+161,0,Minimal
+162,0,Minimal
+173,0,Minimal
+175,1,Moderate
+177,0,Mild
+196,0,Minimal
+198,0,Mild
+201,1,Moderate
+202,0,Minimal
+203,1,Moderately Severe
+207,0,Minimal
+212,1,Moderate
+213,1,Moderately Severe
+216,0,Minimal
+221,0,Minimal
+223,1,Moderate
+226,0,Minimal
+228,1,Severe
+230,1,Moderately Severe
+231,1,Moderately Severe
+232,0,Mild
+239,0,Mild
+240,0,Mild
+241,0,Minimal
+242,0,Mild
+245,0,Mild
+249,0,Mild
+250,0,Mild
+251,0,Mild
+253,1,Moderately Severe
+254,0,Minimal
+257,1,Moderate
+259,0,Mild
+260,1,Moderately Severe
+261,0,Minimal
+263,0,Mild
+266,1,Moderately Severe
+268,1,Moderate
+269,1,Moderately Severe
+270,0,Minimal
+272,1,Moderately Severe
+273,0,Minimal
+276,0,Minimal
+284,0,Minimal
+286,0,Minimal
+287,0,Mild
+292,1,Moderate
+296,0,Minimal
+299,0,Minimal
+300,0,Mild
+303,0,Minimal
+306,0,Minimal
+308,0,Minimal
+310,0,Minimal
+312,0,Minimal
+315,0,Minimal
+316,0,Minimal
+318,0,Minimal
+320,0,Minimal
+321,1,Moderate
+324,1,Moderately Severe
+325,0,Mild
+327,1,Moderately Severe
+337,0,Minimal
+338,0,Minimal
+350,1,Severe
+371,1,Moderate
+386,1,Moderately Severe
+389,0,Minimal
+399,1,Severe
+403,0,Mild
+416,1,Moderately Severe
+417,1,Moderately Severe
+418,1,Moderate
+430,1,Moderately Severe
+438,1,Moderately Severe
+444,0,Mild
+447,1,Moderately Severe
+453,1,Moderate
+459,0,Mild
+460,0,Mild
+467,0,Mild
+469,1,Moderate
+471,1,Moderately Severe
+472,1,Moderate
+502,1,Severe
+507,1,Severe
+512,1,Moderate
+516,1,Moderate
+518,1,Moderate
+531,1,Severe
+535,1,Moderate
+536,0,Mild
+537,1,Moderate
+539,1,Severe
+545,0,Mild
+552,1,Moderate
+553,1,Moderate
+556,1,Severe
+559,1,Moderately Severe
+565,1,Severe
+568,1,Moderate
+572,1,Moderately Severe
+574,1,Moderately Severe
+577,0,Mild
+592,0,Mild
+593,0,Mild
+594,1,Moderately Severe
+603,1,Moderate
+610,1,Severe
+613,1,Severe
+615,1,Moderate
+616,0,Mild
+624,0,Mild
+629,0,Mild
+634,1,Moderately Severe
+637,0,Mild
+640,0,Mild
+641,1,Moderately Severe
+652,0,Mild
+655,1,Moderately Severe
+662,1,Moderate
+664,1,Moderate
+665,0,Mild
+666,1,Moderately Severe
+673,1,Severe
+674,1,Moderately Severe
+683,0,Minimal
+691,1,Moderate
+692,0,Mild
+699,1,Moderate
+705,1,Moderately Severe
+706,0,Minimal
+709,1,Severe
+720,0,Mild
+726,1,Moderate
+731,0,Mild
+732,1,Moderate
+735,1,Severe
+741,0,Minimal
+742,0,Minimal
+745,0,Mild
+746,1,Moderately Severe
+747,1,Severe
+753,1,Moderately Severe
+756,0,Mild
+760,1,Moderate
+763,1,Severe
+769,0,Mild
+770,0,Mild
+777,1,Moderately Severe
+783,0,Minimal
+788,0,Mild
+806,1,Moderately Severe
+808,1,Moderately Severe
+824,1,Moderate
+828,0,Mild
+834,1,Moderate
+845,0,Minimal
+846,1,Moderate
+856,0,Minimal
+857,0,Mild
+858,0,Minimal
+859,1,Severe
+861,0,Minimal
+865,0,Mild
+866,0,Mild
+875,0,Mild
+877,0,Mild
+887,0,Minimal
+905,0,Mild
+907,0,Minimal
+910,0,Minimal
+911,0,Mild
+929,0,Minimal
+932,0,Mild
+933,1,Moderately Severe
+940,0,Mild
+952,0,Mild
+954,0,Mild
+955,0,Minimal
+982,0,Minimal
+984,0,Mild
+987,0,Mild
+992,1,Moderate
+995,1,Severe
+997,1,Moderately Severe
+998,1,Moderate
+1006,0,Minimal
+1013,0,Minimal
+1014,0,Minimal
+1017,0,Minimal
+1022,0,Mild
+1024,0,Mild
+1025,0,Minimal
+1028,0,Minimal
+1029,0,Mild
+1034,1,Moderate
+1037,1,Moderate
+1040,0,Mild
+1053,1,Moderately Severe
+1055,0,Minimal
+1060,1,Moderate
+1061,0,Minimal
+1068,0,Minimal
+1069,1,Moderately Severe
+1075,1,Moderate
+1076,1,Moderately Severe
+1104,0,Unknown
+1111,1,Moderate

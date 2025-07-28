@@ -3,6 +3,7 @@ Random Forest Model for Depression Prediction
 This module provides Random Forest-specific functionality for depression prediction.
 """
 
+import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV, StratifiedKFold
 from sklearn.metrics import accuracy_score, roc_auc_score
@@ -15,25 +16,40 @@ class RandomForestDepressionModel(BaseDepressionModel):
         super().__init__(processed_data_path, feature_info_path)
         
     def train_random_forest_model(self, X_train, y_train, X_test, y_test, 
-                                model_name="random_forest", tune_hyperparameters=True):
-        """Train Random Forest model with optional hyperparameter tuning"""
+                                model_name="random_forest", tune_hyperparameters=True, 
+                                balance_method='none', use_class_weights=False):
+        """Train Random Forest model with optional hyperparameter tuning and class balancing"""
         print(f"\n🚀 Training Random Forest model: {model_name}")
+        
+        # Handle class imbalance
+        if balance_method != 'none':
+            X_train_balanced, y_train_balanced = self.handle_class_imbalance(
+                X_train, y_train, method=balance_method
+            )
+        else:
+            X_train_balanced, y_train_balanced = X_train, y_train
+        
+        # Set class weights
+        class_weight = 'balanced' if use_class_weights else None
+        if use_class_weights:
+            print(f"Using class_weight: {class_weight}")
         
         if tune_hyperparameters:
             print("🔍 Performing hyperparameter tuning...")
             
-            # Define parameter grid
+            # Define parameter grid (reduced for faster training)
             param_grid = {
-                'n_estimators': [100, 200, 300],
-                'max_depth': [5, 10, 15, None],
-                'min_samples_split': [2, 5, 10],
-                'min_samples_leaf': [1, 2, 4],
-                'max_features': ['sqrt', 'log2', None]
+                'n_estimators': [100, 200],
+                'max_depth': [5, 10, 15],
+                'min_samples_split': [2, 5],
+                'min_samples_leaf': [1, 2],
+                'max_features': ['sqrt', 'log2']
             }
             
-            # Create Random Forest classifier
+            # Create Random Forest classifier with class weights
             rf_model = RandomForestClassifier(
                 random_state=42,
+                class_weight=class_weight,
                 n_jobs=-1
             )
             
@@ -44,29 +60,30 @@ class RandomForestDepressionModel(BaseDepressionModel):
                 n_jobs=-1, verbose=1, return_train_score=True
             )
             
-            grid_search.fit(X_train, y_train)
+            grid_search.fit(X_train_balanced, y_train_balanced)
             
             # Best model
             best_model = grid_search.best_estimator_
-            print(f"✅ Best parameters: {grid_search.best_params_}")
-            print(f"✅ Best CV score: {grid_search.best_score_:.4f}")
+            print(f"Best parameters: {grid_search.best_params_}")
+            print(f"Best CV score: {grid_search.best_score_:.4f}")
             
         else:
-            # Use default parameters with some optimization
+            # Use default parameters with optimization
             best_model = RandomForestClassifier(
                 n_estimators=200,
                 max_depth=10,
                 min_samples_split=5,
                 min_samples_leaf=2,
                 max_features='sqrt',
+                class_weight=class_weight,
                 random_state=42,
                 n_jobs=-1
             )
             
             # Train model
-            best_model.fit(X_train, y_train)
+            best_model.fit(X_train_balanced, y_train_balanced)
         
-        # Make predictions
+        # Make predictions on original test set
         y_pred = best_model.predict(X_test)
         y_pred_proba = best_model.predict_proba(X_test)[:, 1]
         
@@ -76,13 +93,15 @@ class RandomForestDepressionModel(BaseDepressionModel):
             'y_test': y_test,
             'y_pred': y_pred,
             'y_pred_proba': y_pred_proba,
-            'feature_names': X_train.columns.tolist()
+            'feature_names': X_train.columns.tolist(),
+            'balance_method': balance_method,
+            'use_class_weights': use_class_weights
         }
         
         # Print basic results
         accuracy = accuracy_score(y_test, y_pred)
         auc_score = roc_auc_score(y_test, y_pred_proba)
-        print(f"✅ Model trained successfully!")
+        print(f"Model trained successfully!")
         print(f"Test Accuracy: {accuracy:.4f}")
         print(f"Test AUC: {auc_score:.4f}")
         
@@ -118,7 +137,7 @@ class RandomForestDepressionModel(BaseDepressionModel):
         
         # Save feature importance to CSV
         importance_df.to_csv('../model_results/rf_feature_importance.csv', index=False)
-        print("✅ Random Forest feature importance plot and CSV saved")
+        print("Random Forest feature importance plot and CSV saved")
     
     def run_training_pipeline(self, tune_hyperparameters=True):
         """Run the complete Random Forest training pipeline"""
@@ -155,12 +174,12 @@ class RandomForestDepressionModel(BaseDepressionModel):
         # Save models
         self.save_models()
         
-        print("\n🎉 Random Forest TRAINING PIPELINE COMPLETED SUCCESSFULLY!")
+        print("\nRandom Forest TRAINING PIPELINE COMPLETED SUCCESSFULLY!")
         print("="*70)
-        print(f"📊 Models trained: {len(self.models)}")
-        print(f"🏆 Best model by AUC: {max(evaluation_results.items(), key=lambda x: x[1]['auc_roc'])}")
-        print(f"💾 Models saved to 'saved_models/' directory")
-        print(f"📊 Results saved to 'model_results/' directory")
+        print(f"Models trained: {len(self.models)}")
+        print(f"Best model by AUC: {max(evaluation_results.items(), key=lambda x: x[1]['auc_roc'])}")
+        print(f"Models saved to 'saved_models/' directory")
+        print(f"Results saved to 'model_results/' directory")
         
         return self.models, evaluation_results
 

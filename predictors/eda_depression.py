@@ -16,7 +16,7 @@ import os
 warnings.filterwarnings('ignore')
 
 class DepressionEDA:
-    def __init__(self, dataset_path='datasets/ml_depression_dataset.csv'):
+    def __init__(self, dataset_path='../processed_data/depression_processed.csv'):
         """Initialize the EDA class with dataset path"""
         self.dataset_path = dataset_path
         self.df = None
@@ -35,8 +35,7 @@ class DepressionEDA:
         # Identify column types
         self.feature_cols = [col for col in self.df.columns if col.startswith('cluster_')]
         self.target_cols = ['Depression_Binary', 'Depression_3Class', 'Binary_Depression']
-        self.metadata_cols = ['Patient_ID', 'Overall_Depression_Status', 'Confidence', 
-                             'PHQ9_Score', 'HRSD_Score', 'ADS_Score', 'SKID_Depressed']
+        self.metadata_cols = ['Patient_ID']  # Simplified for new dataset structure
         
         print(f"\n📊 Column Analysis:")
         print(f"Feature columns (clusters): {len(self.feature_cols)}")

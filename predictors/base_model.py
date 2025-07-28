@@ -13,6 +13,9 @@ from sklearn.model_selection import train_test_split, cross_val_score, Stratifie
 from sklearn.metrics import (classification_report, confusion_matrix, accuracy_score, 
                            precision_score, recall_score, f1_score, roc_auc_score, 
                            roc_curve, precision_recall_curve, average_precision_score)
+from imblearn.over_sampling import SMOTE
+from imblearn.combine import SMOTETomek
+from imblearn.under_sampling import RandomUnderSampler
 import joblib
 import os
 from datetime import datetime
@@ -32,7 +35,7 @@ class BaseDepressionModel:
         
     def load_processed_data(self):
         """Load processed data and feature information"""
-        print("📊 Loading processed data...")
+        print("Loading processed data...")
         
         # Load processed dataset
         self.df = pd.read_csv(self.processed_data_path)
@@ -41,7 +44,7 @@ class BaseDepressionModel:
         with open(self.feature_info_path, 'rb') as f:
             self.feature_info = pickle.load(f)
             
-        print(f"✅ Data loaded: {self.df.shape}")
+        print(f"Data loaded: {self.df.shape}")
         print(f"Available feature sets:")
         for key, features in self.feature_info.items():
             if isinstance(features, list):
@@ -62,37 +65,37 @@ class BaseDepressionModel:
         for col in feature_cols:
             # Check if column is in target leakage list
             if col in target_leakage_columns:
-                print(f"⚠️  WARNING: Excluding potential target leakage column: {col}")
+                print(f"WARNING: Excluding potential target leakage column: {col}")
                 continue
             
             # Check if column contains target-related keywords
             col_lower = col.lower()
             if any(keyword in col_lower for keyword in ['depression', 'depressed', 'skid', 'phq9', 'hrsd', 'ads']):
-                print(f"⚠️  WARNING: Excluding potential target leakage column: {col}")
+                print(f"WARNING: Excluding potential target leakage column: {col}")
                 continue
                 
             filtered_cols.append(col)
         
         if len(filtered_cols) != len(feature_cols):
-            print(f"🔒 Filtered out {len(feature_cols) - len(filtered_cols)} potential target leakage columns")
+            print(f"Filtered out {len(feature_cols) - len(filtered_cols)} potential target leakage columns")
         
         return filtered_cols
     
     def prepare_features_targets(self, use_scaled_features=True, include_engineered=True):
         """Prepare feature sets and targets for training"""
-        print("\n🔧 Preparing features and targets...")
+        print("\nPreparing features and targets...")
         
         # Select feature set
         if use_scaled_features:
-            feature_cols = self.feature_info['scaled_features']
+            feature_cols = self.feature_info['scaled_cluster_columns']
             print(f"Using scaled features: {len(feature_cols)} features")
         else:
-            feature_cols = self.feature_info['original_features']
+            feature_cols = self.feature_info['cluster_columns']
             print(f"Using original features: {len(feature_cols)} features")
             
         # Add engineered features if requested
         if include_engineered:
-            engineered_features = self.feature_info['engineered_features']
+            engineered_features = self.feature_info['derived_columns']
             # Remove non-numeric engineered features for training
             numeric_engineered = [f for f in engineered_features if f != 'most_active_cluster']
             feature_cols.extend(numeric_engineered)
@@ -130,7 +133,7 @@ class BaseDepressionModel:
     
     def _print_feature_summary(self, feature_cols):
         """Print a summary of the features being used"""
-        print(f"\n📋 Feature Summary:")
+        print(f"\nFeature Summary:")
         print(f"Total features: {len(feature_cols)}")
         
         # Categorize features
@@ -148,7 +151,7 @@ class BaseDepressionModel:
         if engineered_features:
             print(f"  Engineered features: {engineered_features}")
         
-        print("✅ Feature integrity verified - only cluster-based features used")
+        print("Feature integrity verified - only cluster-based features used")
     
     def split_data(self, X, y, test_size=0.2, random_state=42):
         """Split data into train and test sets"""
@@ -157,7 +160,7 @@ class BaseDepressionModel:
             stratify=y, shuffle=True
         )
         
-        print(f"\n📊 Data split:")
+        print(f"\nData split:")
         print(f"Training set: {X_train.shape[0]} samples")
         print(f"Test set: {X_test.shape[0]} samples")
         print(f"Training target distribution:")
@@ -165,10 +168,52 @@ class BaseDepressionModel:
         
         return X_train, X_test, y_train, y_test
     
+    def handle_class_imbalance(self, X_train, y_train, method='smote', random_state=42):
+        """
+        Handle class imbalance using various techniques
+        
+        Parameters:
+        - method: 'smote', 'smote_tomek', 'undersample', 'none'
+        - random_state: for reproducibility
+        """
+        print(f"\nHandling class imbalance using: {method}")
+        
+        # Show original distribution
+        original_dist = y_train.value_counts().sort_index()
+        print(f"Original distribution: {dict(original_dist)}")
+        
+        if method == 'none':
+            return X_train, y_train
+        
+        elif method == 'smote':
+            # SMOTE oversampling
+            smote = SMOTE(random_state=random_state, k_neighbors=3)
+            X_resampled, y_resampled = smote.fit_resample(X_train, y_train)
+            
+        elif method == 'smote_tomek':
+            # SMOTE + Tomek links (oversample + clean)
+            smote_tomek = SMOTETomek(random_state=random_state)
+            X_resampled, y_resampled = smote_tomek.fit_resample(X_train, y_train)
+            
+        elif method == 'undersample':
+            # Random undersampling
+            undersampler = RandomUnderSampler(random_state=random_state)
+            X_resampled, y_resampled = undersampler.fit_resample(X_train, y_train)
+            
+        else:
+            raise ValueError(f"Unknown method: {method}")
+        
+        # Show new distribution
+        new_dist = pd.Series(y_resampled).value_counts().sort_index()
+        print(f"New distribution: {dict(new_dist)}")
+        print(f"Samples changed: {len(X_train)} → {len(X_resampled)}")
+        
+        return X_resampled, y_resampled
+    
     def evaluate_models(self):
         """Comprehensive model evaluation"""
         print("\n" + "="*60)
-        print("📈 MODEL EVALUATION")
+        print("MODEL EVALUATION")
         print("="*60)
         
         evaluation_results = {}
@@ -215,7 +260,7 @@ class BaseDepressionModel:
     
     def create_visualizations(self):
         """Create comprehensive visualizations"""
-        print("\n📊 Creating visualizations...")
+        print("\nCreating visualizations...")
         
         # Create output directory
         os.makedirs('../model_results', exist_ok=True)
@@ -236,7 +281,7 @@ class BaseDepressionModel:
         # 4. Confusion Matrices
         self._plot_confusion_matrices()
         
-        print("✅ Visualizations saved to '../model_results/' directory")
+        print("Visualizations saved to '../model_results/' directory")
     
     def _plot_model_comparison(self):
         """Plot model performance comparison"""
@@ -340,7 +385,7 @@ class BaseDepressionModel:
     
     def save_models(self):
         """Save trained models"""
-        print("\n💾 Saving trained models...")
+        print("\nSaving trained models...")
         
         os.makedirs('../saved_models', exist_ok=True)
         
@@ -349,7 +394,7 @@ class BaseDepressionModel:
         for model_name, model in self.models.items():
             filename = f'../saved_models/{model_name}_{timestamp}.pkl'
             joblib.dump(model, filename)
-            print(f"✅ {model_name} saved to {filename}")
+            print(f"{model_name} saved to {filename}")
         
         # Save results summary
         results_summary = {}
@@ -362,17 +407,17 @@ class BaseDepressionModel:
         
         summary_df = pd.DataFrame(results_summary).T
         summary_df.to_csv(f'../saved_models/model_summary_{timestamp}.csv')
-        print(f"✅ Model summary saved to ../saved_models/model_summary_{timestamp}.csv")
+        print(f"Model summary saved to ../saved_models/model_summary_{timestamp}.csv")
     
     def verify_feature_integrity(self, feature_cols):
         """Verify that we're only using appropriate features"""
-        print("\n🔍 Verifying feature integrity...")
+        print("\nVerifying feature integrity...")
         non_cluster_features = [col for col in feature_cols if not col.startswith('cluster_')]
         if non_cluster_features:
-            print(f"⚠️  WARNING: Found non-cluster features: {non_cluster_features}")
+            print(f"WARNING: Found non-cluster features: {non_cluster_features}")
             print("Only cluster features should be used for depression prediction")
         else:
-            print("✅ All features are cluster-based (correct)")
+            print("All features are cluster-based (correct)")
         
         # Verify no target leakage
         target_columns = ['Depression_Binary', 'Depression_3Class', 'Binary_Depression', 
@@ -381,4 +426,4 @@ class BaseDepressionModel:
         if leakage_columns:
             raise ValueError(f"CRITICAL ERROR: Target leakage detected! Columns: {leakage_columns}")
         else:
-            print("✅ No target leakage detected") 
+            print("No target leakage detected") 

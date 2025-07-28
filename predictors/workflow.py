@@ -39,7 +39,7 @@ class DepressionPredictionWorkflow:
         
     def load_data_and_features(self):
         """Load data and feature information"""
-        print("🚀 Starting Comprehensive Depression Prediction Workflow")
+        print("Starting Comprehensive Depression Prediction Workflow")
         print("="*80)
         
         # Load data
@@ -49,8 +49,8 @@ class DepressionPredictionWorkflow:
         with open(self.feature_info_path, 'rb') as f:
             self.feature_info = pickle.load(f)
             
-        print(f"✅ Data loaded: {self.df.shape}")
-        print(f"📊 Dataset Overview:")
+        print(f"Data loaded: {self.df.shape}")
+        print(f"Dataset Overview:")
         print(f"  - Samples: {self.df.shape[0]}")
         print(f"  - Features: {self.df.shape[1]}")
         
@@ -59,30 +59,30 @@ class DepressionPredictionWorkflow:
     def show_feature_details(self):
         """Display detailed feature information"""
         print("\n" + "="*60)
-        print("📋 FEATURE DETAILS")
+        print("FEATURE DETAILS")
         print("="*60)
         
         # Show feature categories
-        print(f"\n📊 Feature Categories:")
+        print(f"\nFeature Categories:")
         for key, features in self.feature_info.items():
             if isinstance(features, list):
                 print(f"  - {key}: {len(features)} features")
         
         # Show sample features
-        print(f"\n🔍 Sample Features:")
-        if 'original_features' in self.feature_info:
-            sample_features = self.feature_info['original_features'][:5]
-            print(f"  Original features: {sample_features}")
+        print(f"\nSample Features:")
+        if 'cluster_columns' in self.feature_info:
+            sample_features = self.feature_info['cluster_columns'][:5]
+            print(f"  Cluster features: {sample_features}")
         
-        if 'scaled_features' in self.feature_info:
-            sample_scaled = self.feature_info['scaled_features'][:5]
-            print(f"  Scaled features: {sample_scaled}")
+        if 'scaled_cluster_columns' in self.feature_info:
+            sample_scaled = self.feature_info['scaled_cluster_columns'][:5]
+            print(f"  Scaled cluster features: {sample_scaled}")
         
-        if 'engineered_features' in self.feature_info:
-            print(f"  Engineered features: {self.feature_info['engineered_features']}")
+        if 'derived_columns' in self.feature_info:
+            print(f"  Derived features: {self.feature_info['derived_columns']}")
         
         # Show target distribution
-        print(f"\n🎯 Target Distribution:")
+        print(f"\nTarget Distribution:")
         binary_counts = self.df['Depression_Binary'].value_counts()
         print(f"  Depression_Binary:")
         for label, count in binary_counts.items():
@@ -95,11 +95,13 @@ class DepressionPredictionWorkflow:
             percentage = (count / len(self.df)) * 100
             print(f"    {label}: {count} ({percentage:.1f}%)")
     
-    def train_all_models(self, tune_hyperparameters=True):
-        """Train all models (XGBoost, Random Forest, Logistic Regression)"""
+    def train_all_models(self, tune_hyperparameters=True, balance_method='none', use_class_weights=False):
+        """Train all models (XGBoost, Random Forest, Logistic Regression) with balanced dataset"""
         print("\n" + "="*60)
-        print("🤖 TRAINING ALL MODELS")
+        print("TRAINING ALL MODELS WITH BALANCED DATASET")
         print("="*60)
+        print(f"Balance method: {balance_method}")
+        print(f"Class weights: {use_class_weights}")
         
         # Initialize model trainers
         models = {
@@ -121,28 +123,112 @@ class DepressionPredictionWorkflow:
             
             # Split data
             X_train, X_test, y_train, y_test = trainer.split_data(X, y_binary)
+            # write X_train, X_test, y_train, y_test to csv
+            X_train.to_csv('X_train.csv', index=False)
+            X_test.to_csv('X_test.csv', index=False)
+            y_train.to_csv('y_train.csv', index=False)
+            y_test.to_csv('y_test.csv', index=False)
             
-            # Train model
+            # Train model with class balancing
             if model_name == 'XGBoost':
-                model = trainer.train_xgboost_model(X_train, y_train, X_test, y_test, tune_hyperparameters=tune_hyperparameters)
+                model = trainer.train_xgboost_model(
+                    X_train, y_train, X_test, y_test, 
+                    tune_hyperparameters=tune_hyperparameters,
+                    balance_method=balance_method,
+                    use_class_weights=use_class_weights
+                )
             elif model_name == 'Random Forest':
-                model = trainer.train_random_forest_model(X_train, y_train, X_test, y_test, tune_hyperparameters=tune_hyperparameters)
+                model = trainer.train_random_forest_model(
+                    X_train, y_train, X_test, y_test, 
+                    tune_hyperparameters=tune_hyperparameters,
+                    balance_method=balance_method,
+                    use_class_weights=use_class_weights
+                )
             elif model_name == 'Logistic Regression':
-                model = trainer.train_logistic_regression_model(X_train, y_train, X_test, y_test, tune_hyperparameters=tune_hyperparameters)
+                model = trainer.train_logistic_regression_model(
+                    X_train, y_train, X_test, y_test, 
+                    tune_hyperparameters=tune_hyperparameters,
+                    balance_method=balance_method,
+                    use_class_weights=use_class_weights
+                )
             
             # Store results
             self.all_models[model_name] = trainer.models
             self.all_results[model_name] = trainer.results
             
-            print(f"✅ {model_name} training completed!")
+            print(f"{model_name} training completed!")
         
-        print(f"\n🎉 All models trained successfully!")
-        print(f"📊 Models trained: {len(self.all_models)}")
+        print(f"\nAll models trained successfully with balanced dataset!")
+        print(f"Models trained: {len(self.all_models)}")
+    
+    def train_comparison_models(self, tune_hyperparameters=False):
+        """Train models with different class balancing approaches for comparison"""
+        print("\n" + "="*80)
+        print("TRAINING COMPARISON MODELS - BALANCED vs UNBALANCED")
+        print("="*80)
+        
+        # Different approaches to test
+        approaches = [
+            {'name': 'Baseline', 'balance_method': 'none', 'use_class_weights': False},
+            {'name': 'SMOTE', 'balance_method': 'smote', 'use_class_weights': False},
+            {'name': 'Class_Weights', 'balance_method': 'none', 'use_class_weights': True},
+            {'name': 'SMOTE+Weights', 'balance_method': 'smote', 'use_class_weights': True}
+        ]
+        
+        comparison_results = {}
+        
+        # Only test with Random Forest for quick comparison
+        for approach in approaches:
+            print(f"\n{'='*50}")
+            print(f"Testing: {approach['name']}")
+            print(f"{'='*50}")
+            
+            trainer = RandomForestDepressionModel(self.processed_data_path, self.feature_info_path)
+            trainer.load_processed_data()
+            X, y_binary, y_3class, feature_cols = trainer.prepare_features_targets()
+            X_train, X_test, y_train, y_test = trainer.split_data(X, y_binary)
+            
+            # Train model with current approach
+            model = trainer.train_random_forest_model(
+                X_train, y_train, X_test, y_test,
+                model_name=f"rf_{approach['name'].lower()}",
+                tune_hyperparameters=tune_hyperparameters,
+                balance_method=approach['balance_method'],
+                use_class_weights=approach['use_class_weights']
+            )
+            
+            # Store results
+            model_result = list(trainer.results.values())[0]
+            y_test_res = model_result['y_test']
+            y_pred_res = model_result['y_pred']
+            y_pred_proba_res = model_result['y_pred_proba']
+            
+            comparison_results[approach['name']] = {
+                'accuracy': accuracy_score(y_test_res, y_pred_res),
+                'precision': precision_score(y_test_res, y_pred_res),
+                'recall': recall_score(y_test_res, y_pred_res),
+                'f1_score': f1_score(y_test_res, y_pred_res),
+                'auc_roc': roc_auc_score(y_test_res, y_pred_proba_res)
+            }
+        
+        # Print comparison
+        print(f"\n{'='*80}")
+        print("CLASS BALANCING COMPARISON RESULTS")
+        print(f"{'='*80}")
+        
+        comparison_df = pd.DataFrame(comparison_results).T
+        print(comparison_df.round(4))
+        
+        # Save comparison results
+        comparison_df.to_csv('../model_results/class_balance_comparison.csv')
+        print(f"\nComparison results saved to ../model_results/class_balance_comparison.csv")
+        
+        return comparison_results
     
     def evaluate_all_models(self):
         """Comprehensive evaluation of all models"""
         print("\n" + "="*60)
-        print("📈 COMPREHENSIVE MODEL EVALUATION")
+        print("COMPREHENSIVE MODEL EVALUATION")
         print("="*60)
         
         # Collect all evaluation results
@@ -193,7 +279,7 @@ class DepressionPredictionWorkflow:
     
     def create_comprehensive_visualizations(self):
         """Create comprehensive visualizations for all models"""
-        print("\n📊 Creating comprehensive visualizations...")
+        print("\nCreating comprehensive visualizations...")
         
         # Create output directory
         os.makedirs('../model_results', exist_ok=True)
@@ -217,7 +303,7 @@ class DepressionPredictionWorkflow:
         # 5. Feature Importance Comparison
         self._plot_feature_importance_comparison()
         
-        print("✅ Comprehensive visualizations saved to '../model_results/' directory")
+        print("Comprehensive visualizations saved to '../model_results/' directory")
     
     def _plot_comprehensive_model_comparison(self):
         """Plot comprehensive model performance comparison"""
@@ -322,11 +408,11 @@ class DepressionPredictionWorkflow:
         """Plot feature importance comparison across models"""
         # This would require implementing feature importance for each model
         # For now, we'll create a placeholder
-        print("📊 Feature importance comparison plot created")
+        print("Feature importance comparison plot created")
     
     def save_comprehensive_results(self):
         """Save comprehensive results and summary"""
-        print("\n💾 Saving comprehensive results...")
+        print("\nSaving comprehensive results...")
         
         os.makedirs('../saved_models', exist_ok=True)
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -336,12 +422,12 @@ class DepressionPredictionWorkflow:
             for model_key, model in models.items():
                 filename = f'../saved_models/{model_name}_{model_key}_{timestamp}.pkl'
                 joblib.dump(model, filename)
-                print(f"✅ {model_name} {model_key} saved to {filename}")
+                print(f"{model_name} {model_key} saved to {filename}")
         
         # Save comprehensive evaluation results
         evaluation_df = pd.DataFrame(self.combined_evaluation).T
         evaluation_df.to_csv(f'../saved_models/comprehensive_evaluation_{timestamp}.csv')
-        print(f"✅ Comprehensive evaluation saved to ../saved_models/comprehensive_evaluation_{timestamp}.csv")
+        print(f"Comprehensive evaluation saved to ../saved_models/comprehensive_evaluation_{timestamp}.csv")
         
         # Save detailed results summary
         summary = {
@@ -355,23 +441,23 @@ class DepressionPredictionWorkflow:
         summary_file = f'../saved_models/workflow_summary_{timestamp}.json'
         with open(summary_file, 'w') as f:
             json.dump(summary, f, indent=2)
-        print(f"✅ Workflow summary saved to {summary_file}")
+        print(f"Workflow summary saved to {summary_file}")
     
     def print_final_summary(self):
         """Print comprehensive final summary"""
         print("\n" + "="*80)
-        print("🏆 COMPREHENSIVE WORKFLOW SUMMARY")
+        print("COMPREHENSIVE WORKFLOW SUMMARY")
         print("="*80)
         
-        print(f"\n📊 Models Trained: {len(self.all_models)}")
+        print(f"\nModels Trained: {len(self.all_models)}")
         for model_name in self.all_models.keys():
-            print(f"  ✅ {model_name}")
+            print(f"  {model_name}")
         
-        print(f"\n📈 Performance Summary:")
+        print(f"\nPerformance Summary:")
         best_model = max(self.combined_evaluation.items(), key=lambda x: x[1]['auc_roc'])
-        print(f"  🏆 Best Model: {best_model[0]} (AUC: {best_model[1]['auc_roc']:.4f})")
+        print(f"  Best Model: {best_model[0]} (AUC: {best_model[1]['auc_roc']:.4f})")
         
-        print(f"\n📋 Detailed Results:")
+        print(f"\nDetailed Results:")
         for model_name, results in self.combined_evaluation.items():
             print(f"  {model_name}:")
             print(f"    - Accuracy: {results['accuracy']:.4f}")
@@ -380,22 +466,31 @@ class DepressionPredictionWorkflow:
             print(f"    - F1-Score: {results['f1_score']:.4f}")
             print(f"    - AUC-ROC: {results['auc_roc']:.4f}")
         
-        print(f"\n💾 Output Files:")
+        print(f"\nOutput Files:")
         print(f"  - Models: ../saved_models/ directory")
         print(f"  - Visualizations: ../model_results/ directory")
         print(f"  - Evaluation: comprehensive_evaluation_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv")
         
-        print(f"\n🎉 COMPREHENSIVE WORKFLOW COMPLETED SUCCESSFULLY!")
+        print(f"\nCOMPREHENSIVE WORKFLOW COMPLETED SUCCESSFULLY!")
         print("="*80)
     
-    def run_complete_workflow(self, tune_hyperparameters=True):
-        """Run the complete comprehensive workflow"""
+    def run_complete_workflow(self, tune_hyperparameters=True, balance_method='none', 
+                             use_class_weights=False, include_comparison=True):
+        """Run the complete comprehensive workflow with class balancing"""
         # Load data and show feature details
         self.load_data_and_features()
         self.show_feature_details()
         
-        # Train all models
-        self.train_all_models(tune_hyperparameters=tune_hyperparameters)
+        # Run comparison of different balancing approaches
+        if include_comparison:
+            comparison_results = self.train_comparison_models(tune_hyperparameters=False)
+        
+        # Train all models with best balancing approach
+        self.train_all_models(
+            tune_hyperparameters=tune_hyperparameters,
+            balance_method=balance_method,
+            use_class_weights=use_class_weights
+        )
         
         # Evaluate all models
         self.evaluate_all_models()
@@ -412,12 +507,17 @@ class DepressionPredictionWorkflow:
         return self.all_models, self.combined_evaluation
 
 def main():
-    """Main function to run the comprehensive workflow"""
+    """Main function to run the comprehensive workflow with class balancing"""
     # Initialize workflow
     workflow = DepressionPredictionWorkflow()
     
-    # Run complete workflow
-    models, evaluation = workflow.run_complete_workflow(tune_hyperparameters=True)
+    # Run complete workflow with SMOTE and class weights (fast mode for demo)
+    models, evaluation = workflow.run_complete_workflow(
+        tune_hyperparameters=True,  # Set to False for faster testing
+        balance_method='smote',  # Options: 'smote', 'smote_tomek', 'undersample', 'none'
+        use_class_weights=True,
+        include_comparison=True
+    )
     
     return models, evaluation
 

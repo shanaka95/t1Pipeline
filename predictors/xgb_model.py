@@ -3,6 +3,7 @@ XGBoost Model for Depression Prediction
 This module provides XGBoost-specific functionality for depression prediction.
 """
 
+import pandas as pd
 import xgboost as xgb
 from sklearn.model_selection import GridSearchCV, StratifiedKFold
 from sklearn.metrics import accuracy_score, roc_auc_score
@@ -15,29 +16,47 @@ class XGBoostDepressionModel(BaseDepressionModel):
         super().__init__(processed_data_path, feature_info_path)
         
     def train_xgboost_model(self, X_train, y_train, X_test, y_test, 
-                           model_name="xgb_binary", tune_hyperparameters=True):
-        """Train XGBoost model with optional hyperparameter tuning"""
+                           model_name="xgb_binary", tune_hyperparameters=True, 
+                           balance_method='none', use_class_weights=False):
+        """Train XGBoost model with optional hyperparameter tuning and class balancing"""
         print(f"\n🚀 Training XGBoost model: {model_name}")
+        
+        # Handle class imbalance
+        if balance_method != 'none':
+            X_train_balanced, y_train_balanced = self.handle_class_imbalance(
+                X_train, y_train, method=balance_method
+            )
+        else:
+            X_train_balanced, y_train_balanced = X_train, y_train
+        
+        # Calculate class weights
+        class_weight = None
+        scale_pos_weight = None
+        if use_class_weights:
+            class_counts = pd.Series(y_train_balanced).value_counts().sort_index()
+            scale_pos_weight = class_counts[0] / class_counts[1]  # negative / positive
+            print(f"Using scale_pos_weight: {scale_pos_weight:.4f}")
         
         if tune_hyperparameters:
             print("🔍 Performing hyperparameter tuning...")
             
-            # Define parameter grid
+            # Define parameter grid (reduced for faster training)
             param_grid = {
-                'n_estimators': [100, 200, 300],
-                'max_depth': [3, 4, 5, 6],
+                'n_estimators': [100, 200],
+                'max_depth': [3, 4, 5],
                 'learning_rate': [0.05, 0.1, 0.15],
-                'subsample': [0.8, 0.9, 1.0],
-                'colsample_bytree': [0.8, 0.9, 1.0],
-                'reg_alpha': [0, 0.1, 0.5],
-                'reg_lambda': [1, 1.5, 2]
+                'subsample': [0.8, 0.9],
+                'colsample_bytree': [0.8, 0.9],
+                'reg_alpha': [0, 0.1],
+                'reg_lambda': [1, 1.5]
             }
             
-            # Create XGBoost classifier
+            # Create XGBoost classifier with class weights
             xgb_model = xgb.XGBClassifier(
                 random_state=42,
                 eval_metric='logloss',
                 use_label_encoder=False,
+                scale_pos_weight=scale_pos_weight,
                 n_jobs=-1
             )
             
@@ -48,15 +67,15 @@ class XGBoostDepressionModel(BaseDepressionModel):
                 n_jobs=-1, verbose=1, return_train_score=True
             )
             
-            grid_search.fit(X_train, y_train)
+            grid_search.fit(X_train_balanced, y_train_balanced)
             
             # Best model
             best_model = grid_search.best_estimator_
-            print(f"✅ Best parameters: {grid_search.best_params_}")
-            print(f"✅ Best CV score: {grid_search.best_score_:.4f}")
+            print(f"Best parameters: {grid_search.best_params_}")
+            print(f"Best CV score: {grid_search.best_score_:.4f}")
             
         else:
-            # Use default parameters with some optimization
+            # Use default parameters with optimization
             best_model = xgb.XGBClassifier(
                 n_estimators=200,
                 max_depth=4,
@@ -65,6 +84,7 @@ class XGBoostDepressionModel(BaseDepressionModel):
                 colsample_bytree=0.9,
                 reg_alpha=0.1,
                 reg_lambda=1.5,
+                scale_pos_weight=scale_pos_weight,
                 random_state=42,
                 eval_metric='logloss',
                 use_label_encoder=False,
@@ -72,9 +92,9 @@ class XGBoostDepressionModel(BaseDepressionModel):
             )
             
             # Train model
-            best_model.fit(X_train, y_train)
+            best_model.fit(X_train_balanced, y_train_balanced)
         
-        # Make predictions
+        # Make predictions on original test set
         y_pred = best_model.predict(X_test)
         y_pred_proba = best_model.predict_proba(X_test)[:, 1]
         
@@ -84,13 +104,15 @@ class XGBoostDepressionModel(BaseDepressionModel):
             'y_test': y_test,
             'y_pred': y_pred,
             'y_pred_proba': y_pred_proba,
-            'feature_names': X_train.columns.tolist()
+            'feature_names': X_train.columns.tolist(),
+            'balance_method': balance_method,
+            'use_class_weights': use_class_weights
         }
         
         # Print basic results
         accuracy = accuracy_score(y_test, y_pred)
         auc_score = roc_auc_score(y_test, y_pred_proba)
-        print(f"✅ Model trained successfully!")
+        print(f"Model trained successfully!")
         print(f"Test Accuracy: {accuracy:.4f}")
         print(f"Test AUC: {auc_score:.4f}")
         
@@ -126,11 +148,11 @@ class XGBoostDepressionModel(BaseDepressionModel):
         
         # Save feature importance to CSV
         importance_df.to_csv('../model_results/feature_importance.csv', index=False)
-        print("✅ Feature importance plot and CSV saved")
+        print("Feature importance plot and CSV saved")
     
     def run_training_pipeline(self, tune_hyperparameters=True):
         """Run the complete XGBoost training pipeline"""
-        print("🚀 Starting XGBoost Training Pipeline for Depression Prediction")
+        print("Starting XGBoost Training Pipeline for Depression Prediction")
         print("="*70)
         
         # Load data
@@ -163,12 +185,12 @@ class XGBoostDepressionModel(BaseDepressionModel):
         # Save models
         self.save_models()
         
-        print("\n🎉 XGBoost TRAINING PIPELINE COMPLETED SUCCESSFULLY!")
+        print("\nXGBoost TRAINING PIPELINE COMPLETED SUCCESSFULLY!")
         print("="*70)
-        print(f"📊 Models trained: {len(self.models)}")
-        print(f"🏆 Best model by AUC: {max(evaluation_results.items(), key=lambda x: x[1]['auc_roc'])}")
-        print(f"💾 Models saved to 'saved_models/' directory")
-        print(f"📊 Results saved to 'model_results/' directory")
+        print(f"Models trained: {len(self.models)}")
+        print(f"Best model by AUC: {max(evaluation_results.items(), key=lambda x: x[1]['auc_roc'])}")
+        print(f"Models saved to 'saved_models/' directory")
+        print(f"Results saved to 'model_results/' directory")
         
         return self.models, evaluation_results
 
