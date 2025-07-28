@@ -188,6 +188,33 @@ def load_pose_data(video_dir):
     try:
         with open(poses_file, 'rb') as f:
             poses_3d = pickle.load(f)
+        
+        # Convert to numpy array if it's not already
+        if not isinstance(poses_3d, np.ndarray):
+            poses_3d = np.array(poses_3d)
+        
+        print(f"🔍 Loaded pose data shape: {poses_3d.shape}, type: {type(poses_3d)}")
+        
+        # Ensure the data has the expected shape (T, 17, 3)
+        if len(poses_3d.shape) == 2:
+            # If shape is (T, 51), reshape to (T, 17, 3)
+            if poses_3d.shape[1] == 51:
+                poses_3d = poses_3d.reshape(-1, 17, 3)
+                print(f"✅ Reshaped from (T, 51) to {poses_3d.shape}")
+            else:
+                print(f"⚠️ Unexpected pose data shape: {poses_3d.shape}")
+                return None
+        elif len(poses_3d.shape) == 3:
+            # If shape is (T, 17, 3), it's already correct
+            if poses_3d.shape[1] != 17 or poses_3d.shape[2] != 3:
+                print(f"⚠️ Unexpected pose data shape: {poses_3d.shape}")
+                return None
+            else:
+                print(f"✅ Pose data shape is correct: {poses_3d.shape}")
+        else:
+            print(f"⚠️ Unexpected pose data shape: {poses_3d.shape}")
+            return None
+        
         return poses_3d
     except Exception as e:
         print(f"❌ Error loading poses from {poses_file}: {e}")
