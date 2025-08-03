@@ -1,0 +1,36 @@
+{
+  "timestamp": "20250803_142632",
+  "models_trained": [
+    "XGBoost",
+    "Random Forest",
+    "Logistic Regression"
+  ],
+  "best_model_by_auc": "Logistic Regression",
+  "best_auc_score": 0.5205761316872428,
+  "evaluation_results": {
+    "XGBoost": {
+      "accuracy": 0.6,
+      "precision": 0.5,
+      "recall": 0.3333333333333333,
+      "f1_score": 0.4,
+      "auc_roc": 0.4876543209876543,
+      "avg_precision": 0.4203044882816049
+    },
+    "Random Forest": {
+      "accuracy": 0.6222222222222222,
+      "precision": 0.5555555555555556,
+      "recall": 0.2777777777777778,
+      "f1_score": 0.37037037037037035,
+      "auc_roc": 0.4218106995884774,
+      "avg_precision": 0.413287256644502
+    },
+    "Logistic Regression": {
+      "accuracy": 0.5333333333333333,
+      "precision": 0.42105263157894735,
+      "recall": 0.4444444444444444,
+      "f1_score": 0.43243243243243246,
+      "auc_roc": 0.5205761316872428,
+      "avg_precision": 0.4841158061324631
+    }
+  }
+}
