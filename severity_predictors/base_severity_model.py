@@ -85,24 +85,49 @@ class BaseSeverityModel:
         return filtered_cols
     
     def prepare_features_targets(self, use_scaled_features=True, include_engineered=True):
-        """Prepare feature sets and targets for severity prediction"""
+        """Prepare feature sets and targets for severity prediction (supports both Top1 and Top5)"""
         print("\nPreparing features and targets for severity prediction...")
         
-        # Select feature set
-        if use_scaled_features:
+        # Select feature set based on data type (Top1 vs Top5)
+        feature_cols = []
+        
+        if 'scaled_cluster_columns' in self.feature_info and use_scaled_features:
+            # Top5 clustering approach
             feature_cols = self.feature_info['scaled_cluster_columns'].copy()
-            print(f"Using scaled features: {len(feature_cols)} features")
-        else:
+            print(f"Using Top5 scaled cluster features: {len(feature_cols)} features")
+        elif 'cluster_columns' in self.feature_info:
+            # Top5 clustering approach (unscaled)
             feature_cols = self.feature_info['cluster_columns'].copy()
-            print(f"Using original features: {len(feature_cols)} features")
+            print(f"Using Top5 original cluster features: {len(feature_cols)} features")
+        elif 'action_class_scaled_columns' in self.feature_info and use_scaled_features:
+            # Top1 action class approach
+            feature_cols = self.feature_info['action_class_scaled_columns'].copy()
+            print(f"Using Top1 scaled action class features: {len(feature_cols)} features")
+        elif 'action_class_columns' in self.feature_info:
+            # Top1 action class approach (unscaled)
+            feature_cols = self.feature_info['action_class_columns'].copy()
+            print(f"Using Top1 original action class features: {len(feature_cols)} features")
+        elif 'all_feature_columns' in self.feature_info:
+            # Fallback to all available features
+            feature_cols = self.feature_info['all_feature_columns'].copy()
+            print(f"Using all available features: {len(feature_cols)} features")
+        else:
+            raise ValueError("No suitable feature columns found in feature_info")
             
-        # Add engineered features if requested
+        # Add engineered features if requested and available
         if include_engineered:
-            engineered_features = self.feature_info['derived_columns']
-            # Remove non-numeric engineered features for training
-            numeric_engineered = [f for f in engineered_features if f != 'most_active_cluster']
-            feature_cols.extend(numeric_engineered)
-            print(f"Added engineered features: {len(numeric_engineered)} features")
+            engineered_key = None
+            if 'derived_columns' in self.feature_info:
+                engineered_key = 'derived_columns'
+            elif 'engineered_columns' in self.feature_info:
+                engineered_key = 'engineered_columns'
+            
+            if engineered_key:
+                engineered_features = self.feature_info[engineered_key]
+                # Remove non-numeric engineered features for training
+                numeric_engineered = [f for f in engineered_features if f != 'most_active_cluster']
+                feature_cols.extend(numeric_engineered)
+                print(f"Added engineered features: {len(numeric_engineered)} features")
         
         # Filter out any potential target leakage columns
         feature_cols = self._filter_target_leakage_columns(feature_cols)
@@ -122,46 +147,90 @@ class BaseSeverityModel:
         # Handle any remaining missing values
         X = X.fillna(X.median())
         
-        # Prepare targets - focus on 3-class severity
-        y_3class_original = self.df['Depression_3Class']
+        # Prepare targets - check what's available
+        if 'Depression_3Class' in self.df.columns:
+            y_3class_original = self.df['Depression_3Class']
+            # Encode labels for XGBoost compatibility (0, 1, 2 instead of 1, 2, 3)
+            y_3class = self.label_encoder.fit_transform(y_3class_original)
+            
+            print(f"Final feature matrix shape: {X.shape}")
+            print(f"Original 3-Class severity target distribution:")
+            print(y_3class_original.value_counts().sort_index())
+            print(f"Encoded 3-Class severity target distribution:")
+            print(pd.Series(y_3class).value_counts().sort_index())
+        else:
+            print("Warning: 3-Class severity not available, using binary target as fallback")
+            y_3class = None
+            y_3class_original = None
         
-        # Encode labels for XGBoost compatibility (0, 1, 2 instead of 1, 2, 3)
-        y_3class = self.label_encoder.fit_transform(y_3class_original)
+        # Binary target (always try to include)
+        if 'Depression_Binary' in self.df.columns:
+            y_binary = self.df['Depression_Binary']
+            print(f"Binary target distribution:")
+            print(y_binary.value_counts().sort_index())
+        else:
+            y_binary = None
+            print("Warning: Binary target not available")
         
-        # Also prepare binary target for comparison
-        y_binary = self.df['Depression_Binary']
-        
-        print(f"Final feature matrix shape: {X.shape}")
-        print(f"Original 3-Class severity target distribution:")
-        print(y_3class_original.value_counts().sort_index())
-        print(f"Encoded 3-Class severity target distribution:")
-        print(pd.Series(y_3class).value_counts().sort_index())
-        print(f"Binary target distribution:")
-        print(y_binary.value_counts().sort_index())
-        
-        return X, y_3class, y_binary, feature_cols
+        # Return appropriate targets
+        if y_3class is not None:
+            return X, y_3class, y_binary, feature_cols
+        elif y_binary is not None:
+            return X, y_binary, y_binary, feature_cols
+        else:
+            raise ValueError("No suitable target variable found")
     
     def _print_feature_summary(self, feature_cols):
-        """Print a summary of the features being used"""
+        """Print a summary of the features being used (supports both cluster and action class features)"""
         print(f"\nFeature Summary:")
         print(f"Total features: {len(feature_cols)}")
         
         # Categorize features
         cluster_features = [col for col in feature_cols if col.startswith('cluster_')]
+        action_features = [col for col in feature_cols if col.startswith('action_class_')]
         scaled_features = [col for col in feature_cols if col.endswith('_scaled')]
-        engineered_features = [col for col in feature_cols if col in ['total_cluster_activity', 'most_active_cluster', 'num_active_clusters', 'cluster_diversity']]
         
-        print(f"  - Cluster features: {len(cluster_features)}")
-        print(f"  - Scaled features: {len(scaled_features)}")
-        print(f"  - Engineered features: {len(engineered_features)}")
+        # Define engineered features for both types
+        cluster_engineered = ['total_cluster_activity', 'most_active_cluster', 'num_active_clusters', 'cluster_diversity']
+        action_engineered = ['total_action_activity', 'most_active_action', 'num_active_actions', 'action_diversity']
+        engineered_features = [col for col in feature_cols if col in cluster_engineered + action_engineered]
         
-        # Show sample features
         if cluster_features:
+            # Top5 clustering approach
+            print(f"  - Cluster features: {len(cluster_features)}")
+            print(f"  - Scaled features: {len(scaled_features)}")
+            print(f"  - Engineered features: {len([col for col in engineered_features if col in cluster_engineered])}")
+            
+            # Show sample features
             print(f"  Sample cluster features: {cluster_features[:3]}...")
-        if engineered_features:
-            print(f"  Engineered features: {engineered_features}")
-        
-        print("Feature integrity verified - only cluster-based features used")
+            if engineered_features:
+                cluster_eng = [col for col in engineered_features if col in cluster_engineered]
+                if cluster_eng:
+                    print(f"  Engineered features: {cluster_eng}")
+                    
+            print("Feature integrity verified - only cluster-based features used")
+            
+        elif action_features:
+            # Top1 action class approach
+            print(f"  - Action class features: {len(action_features)}")
+            print(f"  - Scaled features: {len(scaled_features)}")
+            print(f"  - Engineered features: {len([col for col in engineered_features if col in action_engineered])}")
+            
+            # Show sample features
+            print(f"  Sample action class features: {action_features[:3]}...")
+            if engineered_features:
+                action_eng = [col for col in engineered_features if col in action_engineered]
+                if action_eng:
+                    print(f"  Engineered features: {action_eng}")
+                    
+            print("Feature integrity verified - only action class-based features used")
+            
+        else:
+            # Mixed or other feature types
+            print(f"  - Scaled features: {len(scaled_features)}")
+            print(f"  - Engineered features: {len(engineered_features)}")
+            print(f"  Sample features: {feature_cols[:5]}...")
+            print("Mixed feature types detected")
     
     def split_data(self, X, y, test_size=0.2, random_state=42):
         """Split data into train and test sets with stratification"""
@@ -419,21 +488,48 @@ class BaseSeverityModel:
         print(f"Severity model summary saved to ../saved_models/severity_model_summary_{timestamp}.csv")
     
     def verify_feature_integrity(self, feature_cols):
-        """Verify that we're only using appropriate features"""
+        """Verify that we're only using appropriate features (supports both cluster and action class features)"""
         print("\nVerifying feature integrity...")
         
-        # Check if we're using cluster-based features
+        # Check feature types
         cluster_features = [col for col in feature_cols if col.startswith('cluster_')]
-        non_cluster_features = [col for col in feature_cols if not col.startswith('cluster_') 
-                               and col not in ['total_cluster_activity', 'num_active_clusters', 'cluster_diversity']]
+        action_features = [col for col in feature_cols if col.startswith('action_class_')]
         
-        print(f"Cluster-based features: {len(cluster_features)}")
-        print(f"Derived features: {len([col for col in feature_cols if col in ['total_cluster_activity', 'num_active_clusters', 'cluster_diversity']])}")
+        # Define appropriate derived features for each type
+        cluster_derived = ['total_cluster_activity', 'num_active_clusters', 'cluster_diversity']
+        action_derived = ['total_action_activity', 'num_active_actions', 'action_diversity', 'most_active_action']
         
-        if non_cluster_features:
-            print(f"WARNING: Found non-cluster features: {non_cluster_features}")
+        derived_features = [col for col in feature_cols if col in cluster_derived + action_derived]
+        
+        # Check for inappropriate features
+        if cluster_features:
+            # Top5 clustering approach
+            non_cluster_features = [col for col in feature_cols 
+                                   if not col.startswith('cluster_') and col not in cluster_derived]
+            print(f"Cluster-based features: {len(cluster_features)}")
+            print(f"Derived features: {len([col for col in feature_cols if col in cluster_derived])}")
+            
+            if non_cluster_features:
+                print(f"WARNING: Found non-cluster features: {non_cluster_features[:5]}...")
+            else:
+                print("All features are cluster-based or derived (correct)")
+                
+        elif action_features:
+            # Top1 action class approach
+            non_action_features = [col for col in feature_cols 
+                                  if not col.startswith('action_class_') and col not in action_derived]
+            print(f"Action class-based features: {len(action_features)}")
+            print(f"Derived features: {len([col for col in feature_cols if col in action_derived])}")
+            
+            if non_action_features:
+                print(f"WARNING: Found non-action-class features: {non_action_features[:5]}...")
+            else:
+                print("All features are action class-based or derived (correct)")
+                
         else:
-            print("All features are cluster-based or derived (correct)")
+            # Neither cluster nor action features detected
+            print("WARNING: No cluster or action class features detected")
+            print(f"Feature sample: {feature_cols[:5]}...")
         
         # Verify no target leakage
         target_columns = ['Depression_Binary', 'Depression_3Class', 'Binary_Depression', 

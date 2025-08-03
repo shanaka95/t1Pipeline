@@ -1,0 +1,79 @@
+{
+  "timestamp": "20250803_140053",
+  "clustering_type": "top1",
+  "models_compared": [
+    "Top1_XGBoost_none",
+    "Top1_Random Forest_none",
+    "Top1_SVM_none",
+    "Top1_XGBoost_smote",
+    "Top1_Random Forest_smote",
+    "Top1_SVM_smote"
+  ],
+  "balance_methods": [
+    "none",
+    "smote"
+  ],
+  "best_overall": "Top1_Random Forest_none_top1_rf_none",
+  "comparison_results": {
+    "Top1_XGBoost_none_top1_xgb_none": {
+      "clustering_type": "top1",
+      "model_type": "XGBoost",
+      "balance_method": "none",
+      "accuracy": 0.43478260869565216,
+      "precision": 0.4092391304347826,
+      "recall": 0.43478260869565216,
+      "f1_score": 0.4162689585439838,
+      "auc_roc": 0.6112300541648368
+    },
+    "Top1_Random Forest_none_top1_rf_none": {
+      "clustering_type": "top1",
+      "model_type": "Random Forest",
+      "balance_method": "none",
+      "accuracy": 0.5434782608695652,
+      "precision": 0.5062111801242236,
+      "recall": 0.5434782608695652,
+      "f1_score": 0.5046747083106332,
+      "auc_roc": 0.6178794283413849
+    },
+    "Top1_SVM_none_top1_svm_none": {
+      "clustering_type": "top1",
+      "model_type": "SVM",
+      "balance_method": "none",
+      "accuracy": 0.5217391304347826,
+      "precision": 0.40707587382779203,
+      "recall": 0.5217391304347826,
+      "f1_score": 0.4347080319188604,
+      "auc_roc": 0.46891011564924606
+    },
+    "Top1_XGBoost_smote_top1_xgb_smote": {
+      "clustering_type": "top1",
+      "model_type": "XGBoost",
+      "balance_method": "smote",
+      "accuracy": 0.41304347826086957,
+      "precision": 0.39558629776021076,
+      "recall": 0.41304347826086957,
+      "f1_score": 0.40245044457133533,
+      "auc_roc": 0.5943721636656419
+    },
+    "Top1_Random Forest_smote_top1_rf_smote": {
+      "clustering_type": "top1",
+      "model_type": "Random Forest",
+      "balance_method": "smote",
+      "accuracy": 0.4782608695652174,
+      "precision": 0.495311167945439,
+      "recall": 0.4782608695652174,
+      "f1_score": 0.4806479113384484,
+      "auc_roc": 0.5965314375640463
+    },
+    "Top1_SVM_smote_top1_svm_smote": {
+      "clustering_type": "top1",
+      "model_type": "SVM",
+      "balance_method": "smote",
+      "accuracy": 0.34782608695652173,
+      "precision": 0.37450592885375494,
+      "recall": 0.34782608695652173,
+      "f1_score": 0.3368387234953952,
+      "auc_roc": 0.5719857085346215
+    }
+  }
+}
