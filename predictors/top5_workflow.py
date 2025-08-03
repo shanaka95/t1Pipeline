@@ -26,7 +26,7 @@ from random_forest_model import RandomForestDepressionModel
 from logistic_regression_model import LogisticRegressionDepressionModel
 
 class DepressionPredictionWorkflow:
-    def __init__(self, processed_data_path='../processed_data/depression_processed.csv',
+    def __init__(self, processed_data_path='../processed_data/depression_processed_top5.csv',
                  feature_info_path='../processed_data/feature_info.pkl'):
         """Initialize the comprehensive workflow"""
         self.processed_data_path = processed_data_path
