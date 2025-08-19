@@ -21,3 +21,4 @@ poses/*
 embeddings/*
 clustering_results/*
 clustered_poses/*
+outputs/*

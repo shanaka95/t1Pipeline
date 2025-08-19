@@ -1,0 +1,16 @@
+============================================================
+COMPREHENSIVE CLUSTERING ANALYSIS - 100 CLUSTERS (TOP5 LABELS)
+============================================================
+
+OVERVIEW:
+------------------------------
+Total Segments: 165,050
+Number of Active Clusters: 100
+Empty Clusters: 0
+Average Cluster Size: 1650.50
+Median Cluster Size: 925.50
+Largest Cluster: 23027 segments
+Smallest Cluster: 167 segments
+
+TOP 20 LARGEST CLUSTERS:
+------------------------------

@@ -1,0 +1,53 @@
+ID,Action,Category
+0,shaking body,A
+1,sitting straightly,A
+2,shrugging,A
+3,turning around,A
+4,rising up,A
+5,bowing head,B
+6,head up,B
+7,tilting head,B
+8,turning head,B
+9,nodding,B
+10,shaking head,B
+11,scratching arms,C
+12,playing objects,C
+13,putting hands together,C
+14,rubbing hands,C
+15,pointing oneself,C
+16,clenching fist,C
+17,stretching arms,C
+18,retracting arms,C
+19,waving,C
+20,spreading hands,C
+21,hands touching fingers,C
+22,other finger movements,C
+23,illustrative gestures,C
+24,shaking legs,D
+25,curling legs,D
+26,spread legs,D
+27,closing legs,D
+28,crossing legs,D
+29,stretching feet,D
+30,retracting feet,D
+31,tiptoe,D
+32,scratching or touching neck,E
+33,scratching or touching chest,E
+34,scratching or touching back,E
+35,scratching or touching shoulder,E
+36,arms akimbo,E
+37,crossing arms,E
+38,playing or tidying hair,F
+39,scratching or touching hindbrain,F
+40,scratching or touching forehead,F
+41,scratching or touching face,F
+42,rubbing eyes,F
+43,touching nose,F
+44,touching ears,F
+45,covering face,F
+46,covering mouth,F
+47,pushing glasses,F
+48,patting legs,G
+49,touching legs,G
+50,scratching legs,G
+51,scratching feet,G

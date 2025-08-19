@@ -1,0 +1,3802 @@
+{
+  "cluster_3": {
+    "cluster_id": 3,
+    "segment_count": 23027,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      14,
+      17,
+      81,
+      102,
+      402,
+      403,
+      404,
+      406,
+      412,
+      413
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 14,
+        "global_segment_id": 14,
+        "cluster_id": 3
+      },
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 17,
+        "global_segment_id": 17,
+        "cluster_id": 3
+      },
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 81,
+        "global_segment_id": 81,
+        "cluster_id": 3
+      }
+    ]
+  },
+  "cluster_14": {
+    "cluster_id": 14,
+    "segment_count": 8545,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      8,
+      10,
+      48,
+      276,
+      295,
+      298,
+      303,
+      373,
+      392,
+      400
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 8,
+        "global_segment_id": 8,
+        "cluster_id": 14
+      },
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 10,
+        "global_segment_id": 10,
+        "cluster_id": 14
+      },
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 48,
+        "global_segment_id": 48,
+        "cluster_id": 14
+      }
+    ]
+  },
+  "cluster_12": {
+    "cluster_id": 12,
+    "segment_count": 5805,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      12,
+      21,
+      27,
+      30,
+      34,
+      65,
+      71,
+      78,
+      80,
+      84
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 12,
+        "global_segment_id": 12,
+        "cluster_id": 12
+      },
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 21,
+        "global_segment_id": 21,
+        "cluster_id": 12
+      },
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 27,
+        "global_segment_id": 27,
+        "cluster_id": 12
+      }
+    ]
+  },
+  "cluster_29": {
+    "cluster_id": 29,
+    "segment_count": 5237,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      375,
+      386,
+      394,
+      424,
+      448,
+      451,
+      459,
+      496,
+      515,
+      525
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 2,
+        "global_segment_id": 375,
+        "cluster_id": 29
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 13,
+        "global_segment_id": 386,
+        "cluster_id": 29
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 21,
+        "global_segment_id": 394,
+        "cluster_id": 29
+      }
+    ]
+  },
+  "cluster_24": {
+    "cluster_id": 24,
+    "segment_count": 5131,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      853,
+      873,
+      886,
+      979,
+      1001,
+      1062,
+      1063,
+      1136,
+      1274,
+      1284
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 1,
+        "global_segment_id": 853,
+        "cluster_id": 24
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 21,
+        "global_segment_id": 873,
+        "cluster_id": 24
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 34,
+        "global_segment_id": 886,
+        "cluster_id": 24
+      }
+    ]
+  },
+  "cluster_36": {
+    "cluster_id": 36,
+    "segment_count": 4945,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      410,
+      418,
+      426,
+      449,
+      573,
+      576,
+      617,
+      630,
+      633,
+      634
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 37,
+        "global_segment_id": 410,
+        "cluster_id": 36
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 45,
+        "global_segment_id": 418,
+        "cluster_id": 36
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 53,
+        "global_segment_id": 426,
+        "cluster_id": 36
+      }
+    ]
+  },
+  "cluster_28": {
+    "cluster_id": 28,
+    "segment_count": 4259,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      329,
+      383,
+      391,
+      440,
+      468,
+      473,
+      490,
+      491,
+      493,
+      505
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 329,
+        "global_segment_id": 329,
+        "cluster_id": 28
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 10,
+        "global_segment_id": 383,
+        "cluster_id": 28
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 18,
+        "global_segment_id": 391,
+        "cluster_id": 28
+      }
+    ]
+  },
+  "cluster_5": {
+    "cluster_id": 5,
+    "segment_count": 3573,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      248,
+      395,
+      474,
+      495,
+      590,
+      734,
+      881,
+      893,
+      940,
+      1079
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 248,
+        "global_segment_id": 248,
+        "cluster_id": 5
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 22,
+        "global_segment_id": 395,
+        "cluster_id": 5
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 101,
+        "global_segment_id": 474,
+        "cluster_id": 5
+      }
+    ]
+  },
+  "cluster_9": {
+    "cluster_id": 9,
+    "segment_count": 3549,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      45,
+      109,
+      330,
+      707,
+      804,
+      910,
+      915,
+      920,
+      931,
+      933
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 45,
+        "global_segment_id": 45,
+        "cluster_id": 9
+      },
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 109,
+        "global_segment_id": 109,
+        "cluster_id": 9
+      },
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 330,
+        "global_segment_id": 330,
+        "cluster_id": 9
+      }
+    ]
+  },
+  "cluster_85": {
+    "cluster_id": 85,
+    "segment_count": 3430,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      409,
+      569,
+      570,
+      667,
+      671,
+      753,
+      944,
+      1036,
+      1052,
+      1113
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 36,
+        "global_segment_id": 409,
+        "cluster_id": 85
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 196,
+        "global_segment_id": 569,
+        "cluster_id": 85
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 197,
+        "global_segment_id": 570,
+        "cluster_id": 85
+      }
+    ]
+  },
+  "cluster_31": {
+    "cluster_id": 31,
+    "segment_count": 3413,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      408,
+      469,
+      524,
+      531,
+      675,
+      744,
+      866,
+      973,
+      975,
+      1014
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 35,
+        "global_segment_id": 408,
+        "cluster_id": 31
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 96,
+        "global_segment_id": 469,
+        "cluster_id": 31
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 151,
+        "global_segment_id": 524,
+        "cluster_id": 31
+      }
+    ]
+  },
+  "cluster_87": {
+    "cluster_id": 87,
+    "segment_count": 3167,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      397,
+      452,
+      470,
+      478,
+      484,
+      487,
+      489,
+      508,
+      509,
+      684
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 24,
+        "global_segment_id": 397,
+        "cluster_id": 87
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 79,
+        "global_segment_id": 452,
+        "cluster_id": 87
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 97,
+        "global_segment_id": 470,
+        "cluster_id": 87
+      }
+    ]
+  },
+  "cluster_10": {
+    "cluster_id": 10,
+    "segment_count": 3146,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      1,
+      6,
+      7,
+      9,
+      11,
+      13,
+      15,
+      18,
+      19,
+      20
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 1,
+        "global_segment_id": 1,
+        "cluster_id": 10
+      },
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 6,
+        "global_segment_id": 6,
+        "cluster_id": 10
+      },
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 7,
+        "global_segment_id": 7,
+        "cluster_id": 10
+      }
+    ]
+  },
+  "cluster_11": {
+    "cluster_id": 11,
+    "segment_count": 2798,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      501,
+      528,
+      561,
+      606,
+      646,
+      702,
+      834,
+      855,
+      941,
+      990
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 128,
+        "global_segment_id": 501,
+        "cluster_id": 11
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 155,
+        "global_segment_id": 528,
+        "cluster_id": 11
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 188,
+        "global_segment_id": 561,
+        "cluster_id": 11
+      }
+    ]
+  },
+  "cluster_20": {
+    "cluster_id": 20,
+    "segment_count": 2728,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      385,
+      431,
+      632,
+      637,
+      661,
+      811,
+      862,
+      949,
+      959,
+      987
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 12,
+        "global_segment_id": 385,
+        "cluster_id": 20
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 58,
+        "global_segment_id": 431,
+        "cluster_id": 20
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 259,
+        "global_segment_id": 632,
+        "cluster_id": 20
+      }
+    ]
+  },
+  "cluster_16": {
+    "cluster_id": 16,
+    "segment_count": 2609,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      0,
+      3,
+      4,
+      379,
+      521,
+      704,
+      769,
+      801,
+      870,
+      878
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 0,
+        "global_segment_id": 0,
+        "cluster_id": 16
+      },
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 3,
+        "global_segment_id": 3,
+        "cluster_id": 16
+      },
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 4,
+        "global_segment_id": 4,
+        "cluster_id": 16
+      }
+    ]
+  },
+  "cluster_40": {
+    "cluster_id": 40,
+    "segment_count": 2604,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      503,
+      605,
+      871,
+      925,
+      1026,
+      1070,
+      1078,
+      1080,
+      1147,
+      1205
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 130,
+        "global_segment_id": 503,
+        "cluster_id": 40
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 232,
+        "global_segment_id": 605,
+        "cluster_id": 40
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 19,
+        "global_segment_id": 871,
+        "cluster_id": 40
+      }
+    ]
+  },
+  "cluster_19": {
+    "cluster_id": 19,
+    "segment_count": 2592,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      16,
+      456,
+      504,
+      746,
+      774,
+      828,
+      872,
+      899,
+      929,
+      980
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 16,
+        "global_segment_id": 16,
+        "cluster_id": 19
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 83,
+        "global_segment_id": 456,
+        "cluster_id": 19
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 131,
+        "global_segment_id": 504,
+        "cluster_id": 19
+      }
+    ]
+  },
+  "cluster_1": {
+    "cluster_id": 1,
+    "segment_count": 2503,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      5,
+      99,
+      240,
+      438,
+      439,
+      479,
+      677,
+      717,
+      770,
+      786
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 5,
+        "global_segment_id": 5,
+        "cluster_id": 1
+      },
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 99,
+        "global_segment_id": 99,
+        "cluster_id": 1
+      },
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 240,
+        "global_segment_id": 240,
+        "cluster_id": 1
+      }
+    ]
+  },
+  "cluster_27": {
+    "cluster_id": 27,
+    "segment_count": 2356,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      54,
+      238,
+      669,
+      681,
+      775,
+      842,
+      919,
+      923,
+      1053,
+      1130
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 54,
+        "global_segment_id": 54,
+        "cluster_id": 27
+      },
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 238,
+        "global_segment_id": 238,
+        "cluster_id": 27
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 296,
+        "global_segment_id": 669,
+        "cluster_id": 27
+      }
+    ]
+  },
+  "cluster_6": {
+    "cluster_id": 6,
+    "segment_count": 2179,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      564,
+      623,
+      733,
+      1186,
+      1464,
+      1501,
+      1652,
+      1668,
+      1736,
+      1802
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 191,
+        "global_segment_id": 564,
+        "cluster_id": 6
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 250,
+        "global_segment_id": 623,
+        "cluster_id": 6
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 360,
+        "global_segment_id": 733,
+        "cluster_id": 6
+      }
+    ]
+  },
+  "cluster_35": {
+    "cluster_id": 35,
+    "segment_count": 2112,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      890,
+      946,
+      960,
+      989,
+      1022,
+      1068,
+      1123,
+      1269,
+      1271,
+      1295
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 38,
+        "global_segment_id": 890,
+        "cluster_id": 35
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 94,
+        "global_segment_id": 946,
+        "cluster_id": 35
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 108,
+        "global_segment_id": 960,
+        "cluster_id": 35
+      }
+    ]
+  },
+  "cluster_30": {
+    "cluster_id": 30,
+    "segment_count": 1862,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      428,
+      482,
+      568,
+      647,
+      737,
+      761,
+      785,
+      927,
+      1046,
+      1518
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 55,
+        "global_segment_id": 428,
+        "cluster_id": 30
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 109,
+        "global_segment_id": 482,
+        "cluster_id": 30
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 195,
+        "global_segment_id": 568,
+        "cluster_id": 30
+      }
+    ]
+  },
+  "cluster_21": {
+    "cluster_id": 21,
+    "segment_count": 1810,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      602,
+      604,
+      670,
+      882,
+      928,
+      970,
+      992,
+      1056,
+      1081,
+      1261
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 229,
+        "global_segment_id": 602,
+        "cluster_id": 21
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 231,
+        "global_segment_id": 604,
+        "cluster_id": 21
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 297,
+        "global_segment_id": 670,
+        "cluster_id": 21
+      }
+    ]
+  },
+  "cluster_37": {
+    "cluster_id": 37,
+    "segment_count": 1809,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      291,
+      381,
+      417,
+      420,
+      712,
+      725,
+      780,
+      836,
+      884,
+      889
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 291,
+        "global_segment_id": 291,
+        "cluster_id": 37
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 8,
+        "global_segment_id": 381,
+        "cluster_id": 37
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 44,
+        "global_segment_id": 417,
+        "cluster_id": 37
+      }
+    ]
+  },
+  "cluster_67": {
+    "cluster_id": 67,
+    "segment_count": 1711,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      472,
+      849,
+      974,
+      1282,
+      1311,
+      1317,
+      1351,
+      1353,
+      1377,
+      1379
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 99,
+        "global_segment_id": 472,
+        "cluster_id": 67
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 476,
+        "global_segment_id": 849,
+        "cluster_id": 67
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 122,
+        "global_segment_id": 974,
+        "cluster_id": 67
+      }
+    ]
+  },
+  "cluster_49": {
+    "cluster_id": 49,
+    "segment_count": 1710,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      382,
+      389,
+      390,
+      460,
+      461,
+      466,
+      467,
+      475,
+      483,
+      492
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 9,
+        "global_segment_id": 382,
+        "cluster_id": 49
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 16,
+        "global_segment_id": 389,
+        "cluster_id": 49
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 17,
+        "global_segment_id": 390,
+        "cluster_id": 49
+      }
+    ]
+  },
+  "cluster_13": {
+    "cluster_id": 13,
+    "segment_count": 1639,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      181,
+      534,
+      763,
+      939,
+      993,
+      1020,
+      1114,
+      1155,
+      1502,
+      1565
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 181,
+        "global_segment_id": 181,
+        "cluster_id": 13
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 161,
+        "global_segment_id": 534,
+        "cluster_id": 13
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 390,
+        "global_segment_id": 763,
+        "cluster_id": 13
+      }
+    ]
+  },
+  "cluster_15": {
+    "cluster_id": 15,
+    "segment_count": 1618,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      1152,
+      1153,
+      1219,
+      1421,
+      1431,
+      1475,
+      1529,
+      1535,
+      1741,
+      1886
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 300,
+        "global_segment_id": 1152,
+        "cluster_id": 15
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 301,
+        "global_segment_id": 1153,
+        "cluster_id": 15
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 367,
+        "global_segment_id": 1219,
+        "cluster_id": 15
+      }
+    ]
+  },
+  "cluster_74": {
+    "cluster_id": 74,
+    "segment_count": 1560,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      457,
+      477,
+      481,
+      685,
+      741,
+      745,
+      783,
+      877,
+      991,
+      1104
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 84,
+        "global_segment_id": 457,
+        "cluster_id": 74
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 104,
+        "global_segment_id": 477,
+        "cluster_id": 74
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 108,
+        "global_segment_id": 481,
+        "cluster_id": 74
+      }
+    ]
+  },
+  "cluster_69": {
+    "cluster_id": 69,
+    "segment_count": 1509,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      1010,
+      1221,
+      1297,
+      1307,
+      1332,
+      1410,
+      1425,
+      2124,
+      2138,
+      2250
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 158,
+        "global_segment_id": 1010,
+        "cluster_id": 69
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 369,
+        "global_segment_id": 1221,
+        "cluster_id": 69
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 445,
+        "global_segment_id": 1297,
+        "cluster_id": 69
+      }
+    ]
+  },
+  "cluster_51": {
+    "cluster_id": 51,
+    "segment_count": 1495,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      274,
+      374,
+      523,
+      777,
+      1034,
+      1085,
+      1131,
+      1141,
+      1168,
+      1265
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 274,
+        "global_segment_id": 274,
+        "cluster_id": 51
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 1,
+        "global_segment_id": 374,
+        "cluster_id": 51
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 150,
+        "global_segment_id": 523,
+        "cluster_id": 51
+      }
+    ]
+  },
+  "cluster_48": {
+    "cluster_id": 48,
+    "segment_count": 1379,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      427,
+      913,
+      1224,
+      1318,
+      1363,
+      1372,
+      1895,
+      2008,
+      2125,
+      2186
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 54,
+        "global_segment_id": 427,
+        "cluster_id": 48
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 61,
+        "global_segment_id": 913,
+        "cluster_id": 48
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 372,
+        "global_segment_id": 1224,
+        "cluster_id": 48
+      }
+    ]
+  },
+  "cluster_17": {
+    "cluster_id": 17,
+    "segment_count": 1366,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      416,
+      435,
+      529,
+      676,
+      679,
+      1017,
+      1055,
+      1240,
+      1569,
+      1581
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 43,
+        "global_segment_id": 416,
+        "cluster_id": 17
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 62,
+        "global_segment_id": 435,
+        "cluster_id": 17
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 156,
+        "global_segment_id": 529,
+        "cluster_id": 17
+      }
+    ]
+  },
+  "cluster_22": {
+    "cluster_id": 22,
+    "segment_count": 1323,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      280,
+      423,
+      455,
+      575,
+      597,
+      711,
+      772,
+      851,
+      1007,
+      1045
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 280,
+        "global_segment_id": 280,
+        "cluster_id": 22
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 50,
+        "global_segment_id": 423,
+        "cluster_id": 22
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 82,
+        "global_segment_id": 455,
+        "cluster_id": 22
+      }
+    ]
+  },
+  "cluster_46": {
+    "cluster_id": 46,
+    "segment_count": 1303,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      114,
+      136,
+      327,
+      1008,
+      1236,
+      1264,
+      1483,
+      2058,
+      2109,
+      2141
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 114,
+        "global_segment_id": 114,
+        "cluster_id": 46
+      },
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 136,
+        "global_segment_id": 136,
+        "cluster_id": 46
+      },
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 327,
+        "global_segment_id": 327,
+        "cluster_id": 46
+      }
+    ]
+  },
+  "cluster_58": {
+    "cluster_id": 58,
+    "segment_count": 1297,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      2,
+      22,
+      35,
+      46,
+      60,
+      62,
+      67,
+      72,
+      85,
+      96
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 2,
+        "global_segment_id": 2,
+        "cluster_id": 58
+      },
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 22,
+        "global_segment_id": 22,
+        "cluster_id": 58
+      },
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 35,
+        "global_segment_id": 35,
+        "cluster_id": 58
+      }
+    ]
+  },
+  "cluster_61": {
+    "cluster_id": 61,
+    "segment_count": 1289,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      399,
+      922,
+      985,
+      1009,
+      1290,
+      1313,
+      1411,
+      1493,
+      1970,
+      1980
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 26,
+        "global_segment_id": 399,
+        "cluster_id": 61
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 70,
+        "global_segment_id": 922,
+        "cluster_id": 61
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 133,
+        "global_segment_id": 985,
+        "cluster_id": 61
+      }
+    ]
+  },
+  "cluster_25": {
+    "cluster_id": 25,
+    "segment_count": 1283,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      538,
+      716,
+      1129,
+      1322,
+      1346,
+      1769,
+      1945,
+      2088,
+      2147,
+      2201
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 165,
+        "global_segment_id": 538,
+        "cluster_id": 25
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 343,
+        "global_segment_id": 716,
+        "cluster_id": 25
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 277,
+        "global_segment_id": 1129,
+        "cluster_id": 25
+      }
+    ]
+  },
+  "cluster_79": {
+    "cluster_id": 79,
+    "segment_count": 1209,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      1333,
+      1381,
+      1758,
+      2065,
+      2113,
+      2118,
+      2364,
+      2418,
+      2573,
+      2617
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 481,
+        "global_segment_id": 1333,
+        "cluster_id": 79
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 529,
+        "global_segment_id": 1381,
+        "cluster_id": 79
+      },
+      {
+        "video_name": "007_t1_20230302",
+        "sequence_id": 215,
+        "global_segment_id": 1758,
+        "cluster_id": 79
+      }
+    ]
+  },
+  "cluster_38": {
+    "cluster_id": 38,
+    "segment_count": 1194,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      678,
+      693,
+      698,
+      722,
+      782,
+      822,
+      905,
+      1048,
+      1183,
+      1198
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 305,
+        "global_segment_id": 678,
+        "cluster_id": 38
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 320,
+        "global_segment_id": 693,
+        "cluster_id": 38
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 325,
+        "global_segment_id": 698,
+        "cluster_id": 38
+      }
+    ]
+  },
+  "cluster_66": {
+    "cluster_id": 66,
+    "segment_count": 1130,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      514,
+      860,
+      867,
+      868,
+      883,
+      909,
+      916,
+      965,
+      996,
+      997
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 141,
+        "global_segment_id": 514,
+        "cluster_id": 66
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 8,
+        "global_segment_id": 860,
+        "cluster_id": 66
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 15,
+        "global_segment_id": 867,
+        "cluster_id": 66
+      }
+    ]
+  },
+  "cluster_70": {
+    "cluster_id": 70,
+    "segment_count": 1128,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      767,
+      879,
+      1105,
+      1300,
+      1315,
+      1510,
+      1534,
+      1855,
+      1949,
+      1968
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 394,
+        "global_segment_id": 767,
+        "cluster_id": 70
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 27,
+        "global_segment_id": 879,
+        "cluster_id": 70
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 253,
+        "global_segment_id": 1105,
+        "cluster_id": 70
+      }
+    ]
+  },
+  "cluster_81": {
+    "cluster_id": 81,
+    "segment_count": 1074,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      977,
+      1058,
+      1137,
+      1262,
+      1275,
+      1879,
+      1887,
+      1985,
+      2011,
+      2126
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 125,
+        "global_segment_id": 977,
+        "cluster_id": 81
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 206,
+        "global_segment_id": 1058,
+        "cluster_id": 81
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 285,
+        "global_segment_id": 1137,
+        "cluster_id": 81
+      }
+    ]
+  },
+  "cluster_56": {
+    "cluster_id": 56,
+    "segment_count": 1069,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      471,
+      499,
+      859,
+      903,
+      1099,
+      1108,
+      1217,
+      1392,
+      1583,
+      1648
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 98,
+        "global_segment_id": 471,
+        "cluster_id": 56
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 126,
+        "global_segment_id": 499,
+        "cluster_id": 56
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 7,
+        "global_segment_id": 859,
+        "cluster_id": 56
+      }
+    ]
+  },
+  "cluster_82": {
+    "cluster_id": 82,
+    "segment_count": 1035,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      411,
+      1547,
+      2103,
+      2378,
+      2608,
+      2615,
+      2950,
+      3286,
+      3857,
+      4892
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 38,
+        "global_segment_id": 411,
+        "cluster_id": 82
+      },
+      {
+        "video_name": "007_t1_20230302",
+        "sequence_id": 4,
+        "global_segment_id": 1547,
+        "cluster_id": 82
+      },
+      {
+        "video_name": "231_t1_20230719",
+        "sequence_id": 257,
+        "global_segment_id": 2103,
+        "cluster_id": 82
+      }
+    ]
+  },
+  "cluster_18": {
+    "cluster_id": 18,
+    "segment_count": 1034,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      377,
+      8205,
+      8212,
+      8229,
+      8259,
+      17968,
+      17978,
+      18348,
+      18350,
+      18387
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 4,
+        "global_segment_id": 377,
+        "cluster_id": 18
+      },
+      {
+        "video_name": "223_t1_20230707",
+        "sequence_id": 777,
+        "global_segment_id": 8205,
+        "cluster_id": 18
+      },
+      {
+        "video_name": "223_t1_20230707",
+        "sequence_id": 784,
+        "global_segment_id": 8212,
+        "cluster_id": 18
+      }
+    ]
+  },
+  "cluster_23": {
+    "cluster_id": 23,
+    "segment_count": 1033,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      447,
+      1267,
+      1268,
+      1344,
+      1631,
+      1955,
+      2055,
+      2072,
+      2073,
+      2074
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 74,
+        "global_segment_id": 447,
+        "cluster_id": 23
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 415,
+        "global_segment_id": 1267,
+        "cluster_id": 23
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 416,
+        "global_segment_id": 1268,
+        "cluster_id": 23
+      }
+    ]
+  },
+  "cluster_41": {
+    "cluster_id": 41,
+    "segment_count": 988,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      638,
+      869,
+      902,
+      908,
+      921,
+      932,
+      1089,
+      1097,
+      1435,
+      1446
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 265,
+        "global_segment_id": 638,
+        "cluster_id": 41
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 17,
+        "global_segment_id": 869,
+        "cluster_id": 41
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 50,
+        "global_segment_id": 902,
+        "cluster_id": 41
+      }
+    ]
+  },
+  "cluster_32": {
+    "cluster_id": 32,
+    "segment_count": 956,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      1242,
+      1413,
+      1469,
+      1888,
+      1896,
+      1914,
+      1929,
+      2002,
+      2028,
+      2092
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 390,
+        "global_segment_id": 1242,
+        "cluster_id": 32
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 561,
+        "global_segment_id": 1413,
+        "cluster_id": 32
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 617,
+        "global_segment_id": 1469,
+        "cluster_id": 32
+      }
+    ]
+  },
+  "cluster_53": {
+    "cluster_id": 53,
+    "segment_count": 895,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      454,
+      547,
+      562,
+      607,
+      1330,
+      1360,
+      1522,
+      1526,
+      1600,
+      1604
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 81,
+        "global_segment_id": 454,
+        "cluster_id": 53
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 174,
+        "global_segment_id": 547,
+        "cluster_id": 53
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 189,
+        "global_segment_id": 562,
+        "cluster_id": 53
+      }
+    ]
+  },
+  "cluster_84": {
+    "cluster_id": 84,
+    "segment_count": 879,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      380,
+      565,
+      595,
+      1029,
+      1358,
+      1388,
+      1486,
+      1568,
+      1761,
+      1765
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 7,
+        "global_segment_id": 380,
+        "cluster_id": 84
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 192,
+        "global_segment_id": 565,
+        "cluster_id": 84
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 222,
+        "global_segment_id": 595,
+        "cluster_id": 84
+      }
+    ]
+  },
+  "cluster_59": {
+    "cluster_id": 59,
+    "segment_count": 867,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      463,
+      680,
+      729,
+      911,
+      1057,
+      1320,
+      1621,
+      1811,
+      1827,
+      1836
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 90,
+        "global_segment_id": 463,
+        "cluster_id": 59
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 307,
+        "global_segment_id": 680,
+        "cluster_id": 59
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 356,
+        "global_segment_id": 729,
+        "cluster_id": 59
+      }
+    ]
+  },
+  "cluster_52": {
+    "cluster_id": 52,
+    "segment_count": 838,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      7509,
+      7628,
+      7717,
+      8079,
+      8094,
+      8118,
+      8189,
+      8203,
+      8208,
+      8209
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "223_t1_20230707",
+        "sequence_id": 81,
+        "global_segment_id": 7509,
+        "cluster_id": 52
+      },
+      {
+        "video_name": "223_t1_20230707",
+        "sequence_id": 200,
+        "global_segment_id": 7628,
+        "cluster_id": 52
+      },
+      {
+        "video_name": "223_t1_20230707",
+        "sequence_id": 289,
+        "global_segment_id": 7717,
+        "cluster_id": 52
+      }
+    ]
+  },
+  "cluster_44": {
+    "cluster_id": 44,
+    "segment_count": 796,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      963,
+      966,
+      1100,
+      1110,
+      1138,
+      1938,
+      1939,
+      2030,
+      2035,
+      2038
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 111,
+        "global_segment_id": 963,
+        "cluster_id": 44
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 114,
+        "global_segment_id": 966,
+        "cluster_id": 44
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 248,
+        "global_segment_id": 1100,
+        "cluster_id": 44
+      }
+    ]
+  },
+  "cluster_62": {
+    "cluster_id": 62,
+    "segment_count": 793,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      376,
+      1119,
+      1403,
+      1850,
+      1898,
+      2007,
+      2393,
+      2667,
+      2673,
+      2701
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 3,
+        "global_segment_id": 376,
+        "cluster_id": 62
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 267,
+        "global_segment_id": 1119,
+        "cluster_id": 62
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 551,
+        "global_segment_id": 1403,
+        "cluster_id": 62
+      }
+    ]
+  },
+  "cluster_50": {
+    "cluster_id": 50,
+    "segment_count": 791,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      1566,
+      1576,
+      1790,
+      1961,
+      2294,
+      2532,
+      2750,
+      2952,
+      3637,
+      4094
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "007_t1_20230302",
+        "sequence_id": 23,
+        "global_segment_id": 1566,
+        "cluster_id": 50
+      },
+      {
+        "video_name": "007_t1_20230302",
+        "sequence_id": 33,
+        "global_segment_id": 1576,
+        "cluster_id": 50
+      },
+      {
+        "video_name": "007_t1_20230302",
+        "sequence_id": 247,
+        "global_segment_id": 1790,
+        "cluster_id": 50
+      }
+    ]
+  },
+  "cluster_57": {
+    "cluster_id": 57,
+    "segment_count": 760,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      396,
+      599,
+      730,
+      760,
+      794,
+      844,
+      1039,
+      1717,
+      1859,
+      2221
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 23,
+        "global_segment_id": 396,
+        "cluster_id": 57
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 226,
+        "global_segment_id": 599,
+        "cluster_id": 57
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 357,
+        "global_segment_id": 730,
+        "cluster_id": 57
+      }
+    ]
+  },
+  "cluster_71": {
+    "cluster_id": 71,
+    "segment_count": 759,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      519,
+      1294,
+      1844,
+      1912,
+      2288,
+      2811,
+      4864,
+      4973,
+      5328,
+      5928
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 146,
+        "global_segment_id": 519,
+        "cluster_id": 71
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 442,
+        "global_segment_id": 1294,
+        "cluster_id": 71
+      },
+      {
+        "video_name": "007_t1_20230302",
+        "sequence_id": 301,
+        "global_segment_id": 1844,
+        "cluster_id": 71
+      }
+    ]
+  },
+  "cluster_34": {
+    "cluster_id": 34,
+    "segment_count": 745,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      378,
+      579,
+      1285,
+      1675,
+      1753,
+      1894,
+      2054,
+      2076,
+      6367,
+      6524
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 5,
+        "global_segment_id": 378,
+        "cluster_id": 34
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 206,
+        "global_segment_id": 579,
+        "cluster_id": 34
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 433,
+        "global_segment_id": 1285,
+        "cluster_id": 34
+      }
+    ]
+  },
+  "cluster_72": {
+    "cluster_id": 72,
+    "segment_count": 741,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      1359,
+      1503,
+      7527,
+      7531,
+      7540,
+      7737,
+      7750,
+      7765,
+      7769,
+      7952
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 507,
+        "global_segment_id": 1359,
+        "cluster_id": 72
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 651,
+        "global_segment_id": 1503,
+        "cluster_id": 72
+      },
+      {
+        "video_name": "223_t1_20230707",
+        "sequence_id": 99,
+        "global_segment_id": 7527,
+        "cluster_id": 72
+      }
+    ]
+  },
+  "cluster_65": {
+    "cluster_id": 65,
+    "segment_count": 733,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      239,
+      1148,
+      1408,
+      1832,
+      1908,
+      2087,
+      2178,
+      2202,
+      2289,
+      2354
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 239,
+        "global_segment_id": 239,
+        "cluster_id": 65
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 296,
+        "global_segment_id": 1148,
+        "cluster_id": 65
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 556,
+        "global_segment_id": 1408,
+        "cluster_id": 65
+      }
+    ]
+  },
+  "cluster_97": {
+    "cluster_id": 97,
+    "segment_count": 705,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      779,
+      1288,
+      1571,
+      2101,
+      2471,
+      5557,
+      5567,
+      5568,
+      5570,
+      5582
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 406,
+        "global_segment_id": 779,
+        "cluster_id": 97
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 436,
+        "global_segment_id": 1288,
+        "cluster_id": 97
+      },
+      {
+        "video_name": "007_t1_20230302",
+        "sequence_id": 28,
+        "global_segment_id": 1571,
+        "cluster_id": 97
+      }
+    ]
+  },
+  "cluster_42": {
+    "cluster_id": 42,
+    "segment_count": 683,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      1853,
+      2227,
+      2530,
+      3815,
+      4158,
+      4670,
+      4789,
+      5183,
+      5391,
+      5504
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "231_t1_20230719",
+        "sequence_id": 7,
+        "global_segment_id": 1853,
+        "cluster_id": 42
+      },
+      {
+        "video_name": "231_t1_20230719",
+        "sequence_id": 381,
+        "global_segment_id": 2227,
+        "cluster_id": 42
+      },
+      {
+        "video_name": "231_t1_20230719",
+        "sequence_id": 684,
+        "global_segment_id": 2530,
+        "cluster_id": 42
+      }
+    ]
+  },
+  "cluster_92": {
+    "cluster_id": 92,
+    "segment_count": 671,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      1286,
+      1325,
+      1645,
+      2069,
+      2398,
+      2422,
+      2456,
+      2515,
+      2534,
+      4904
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 434,
+        "global_segment_id": 1286,
+        "cluster_id": 92
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 473,
+        "global_segment_id": 1325,
+        "cluster_id": 92
+      },
+      {
+        "video_name": "007_t1_20230302",
+        "sequence_id": 102,
+        "global_segment_id": 1645,
+        "cluster_id": 92
+      }
+    ]
+  },
+  "cluster_93": {
+    "cluster_id": 93,
+    "segment_count": 652,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      73,
+      250,
+      885,
+      1279,
+      1310,
+      1331,
+      1355,
+      1500,
+      1885,
+      2082
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 73,
+        "global_segment_id": 73,
+        "cluster_id": 93
+      },
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 250,
+        "global_segment_id": 250,
+        "cluster_id": 93
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 33,
+        "global_segment_id": 885,
+        "cluster_id": 93
+      }
+    ]
+  },
+  "cluster_90": {
+    "cluster_id": 90,
+    "segment_count": 644,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      936,
+      1439,
+      1444,
+      2603,
+      2654,
+      2730,
+      2942,
+      2943,
+      2994,
+      3039
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 84,
+        "global_segment_id": 936,
+        "cluster_id": 90
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 587,
+        "global_segment_id": 1439,
+        "cluster_id": 90
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 592,
+        "global_segment_id": 1444,
+        "cluster_id": 90
+      }
+    ]
+  },
+  "cluster_98": {
+    "cluster_id": 98,
+    "segment_count": 625,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      938,
+      1092,
+      1456,
+      1742,
+      1959,
+      2014,
+      2027,
+      2052,
+      2129,
+      2235
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 86,
+        "global_segment_id": 938,
+        "cluster_id": 98
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 240,
+        "global_segment_id": 1092,
+        "cluster_id": 98
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 604,
+        "global_segment_id": 1456,
+        "cluster_id": 98
+      }
+    ]
+  },
+  "cluster_73": {
+    "cluster_id": 73,
+    "segment_count": 624,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      237,
+      861,
+      1133,
+      1362,
+      1382,
+      1466,
+      1982,
+      2182,
+      2591,
+      4911
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 237,
+        "global_segment_id": 237,
+        "cluster_id": 73
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 9,
+        "global_segment_id": 861,
+        "cluster_id": 73
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 281,
+        "global_segment_id": 1133,
+        "cluster_id": 73
+      }
+    ]
+  },
+  "cluster_33": {
+    "cluster_id": 33,
+    "segment_count": 622,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      465,
+      1004,
+      1556,
+      1842,
+      2539,
+      5415,
+      5470,
+      5666,
+      6273,
+      6287
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 92,
+        "global_segment_id": 465,
+        "cluster_id": 33
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 152,
+        "global_segment_id": 1004,
+        "cluster_id": 33
+      },
+      {
+        "video_name": "007_t1_20230302",
+        "sequence_id": 13,
+        "global_segment_id": 1556,
+        "cluster_id": 33
+      }
+    ]
+  },
+  "cluster_4": {
+    "cluster_id": 4,
+    "segment_count": 614,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      559,
+      1140,
+      1211,
+      1263,
+      2093,
+      2094,
+      2142,
+      2167,
+      2439,
+      2778
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 186,
+        "global_segment_id": 559,
+        "cluster_id": 4
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 288,
+        "global_segment_id": 1140,
+        "cluster_id": 4
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 359,
+        "global_segment_id": 1211,
+        "cluster_id": 4
+      }
+    ]
+  },
+  "cluster_43": {
+    "cluster_id": 43,
+    "segment_count": 592,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      603,
+      773,
+      778,
+      1049,
+      1181,
+      1184,
+      1197,
+      1200,
+      1316,
+      1323
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 230,
+        "global_segment_id": 603,
+        "cluster_id": 43
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 400,
+        "global_segment_id": 773,
+        "cluster_id": 43
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 405,
+        "global_segment_id": 778,
+        "cluster_id": 43
+      }
+    ]
+  },
+  "cluster_7": {
+    "cluster_id": 7,
+    "segment_count": 579,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      666,
+      1273,
+      1328,
+      1550,
+      1755,
+      1788,
+      1950,
+      2223,
+      2350,
+      5868
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 293,
+        "global_segment_id": 666,
+        "cluster_id": 7
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 421,
+        "global_segment_id": 1273,
+        "cluster_id": 7
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 476,
+        "global_segment_id": 1328,
+        "cluster_id": 7
+      }
+    ]
+  },
+  "cluster_95": {
+    "cluster_id": 95,
+    "segment_count": 578,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      1074,
+      1380,
+      1869,
+      1983,
+      1986,
+      1991,
+      2026,
+      2104,
+      2238,
+      2355
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 222,
+        "global_segment_id": 1074,
+        "cluster_id": 95
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 528,
+        "global_segment_id": 1380,
+        "cluster_id": 95
+      },
+      {
+        "video_name": "231_t1_20230719",
+        "sequence_id": 23,
+        "global_segment_id": 1869,
+        "cluster_id": 95
+      }
+    ]
+  },
+  "cluster_89": {
+    "cluster_id": 89,
+    "segment_count": 565,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      261,
+      818,
+      1244,
+      5474,
+      5561,
+      5705,
+      5707,
+      11204,
+      12195,
+      12201
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 261,
+        "global_segment_id": 261,
+        "cluster_id": 89
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 445,
+        "global_segment_id": 818,
+        "cluster_id": 89
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 392,
+        "global_segment_id": 1244,
+        "cluster_id": 89
+      }
+    ]
+  },
+  "cluster_45": {
+    "cluster_id": 45,
+    "segment_count": 545,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      1030,
+      1038,
+      1519,
+      1536,
+      1956,
+      1975,
+      2192,
+      2300,
+      4496,
+      4948
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 178,
+        "global_segment_id": 1030,
+        "cluster_id": 45
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 186,
+        "global_segment_id": 1038,
+        "cluster_id": 45
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 667,
+        "global_segment_id": 1519,
+        "cluster_id": 45
+      }
+    ]
+  },
+  "cluster_63": {
+    "cluster_id": 63,
+    "segment_count": 543,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      535,
+      563,
+      1301,
+      2180,
+      2479,
+      2493,
+      2494,
+      3180,
+      5777,
+      7144
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 162,
+        "global_segment_id": 535,
+        "cluster_id": 63
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 190,
+        "global_segment_id": 563,
+        "cluster_id": 63
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 449,
+        "global_segment_id": 1301,
+        "cluster_id": 63
+      }
+    ]
+  },
+  "cluster_94": {
+    "cluster_id": 94,
+    "segment_count": 488,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      1028,
+      1167,
+      1238,
+      1481,
+      2047,
+      5684,
+      5690,
+      6931,
+      7405,
+      12099
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 176,
+        "global_segment_id": 1028,
+        "cluster_id": 94
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 315,
+        "global_segment_id": 1167,
+        "cluster_id": 94
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 386,
+        "global_segment_id": 1238,
+        "cluster_id": 94
+      }
+    ]
+  },
+  "cluster_26": {
+    "cluster_id": 26,
+    "segment_count": 487,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      110,
+      146,
+      159,
+      169,
+      260,
+      307,
+      319,
+      332,
+      1482,
+      2671
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 110,
+        "global_segment_id": 110,
+        "cluster_id": 26
+      },
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 146,
+        "global_segment_id": 146,
+        "cluster_id": 26
+      },
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 159,
+        "global_segment_id": 159,
+        "cluster_id": 26
+      }
+    ]
+  },
+  "cluster_91": {
+    "cluster_id": 91,
+    "segment_count": 474,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      530,
+      560,
+      578,
+      594,
+      731,
+      971,
+      1170,
+      1766,
+      2157,
+      2437
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 157,
+        "global_segment_id": 530,
+        "cluster_id": 91
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 187,
+        "global_segment_id": 560,
+        "cluster_id": 91
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 205,
+        "global_segment_id": 578,
+        "cluster_id": 91
+      }
+    ]
+  },
+  "cluster_2": {
+    "cluster_id": 2,
+    "segment_count": 472,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      688,
+      876,
+      1352,
+      1913,
+      1999,
+      2713,
+      5849,
+      5954,
+      7440,
+      7489
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 315,
+        "global_segment_id": 688,
+        "cluster_id": 2
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 24,
+        "global_segment_id": 876,
+        "cluster_id": 2
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 500,
+        "global_segment_id": 1352,
+        "cluster_id": 2
+      }
+    ]
+  },
+  "cluster_54": {
+    "cluster_id": 54,
+    "segment_count": 461,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      516,
+      1027,
+      1060,
+      1356,
+      1401,
+      1497,
+      2929,
+      2930,
+      5164,
+      5310
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 143,
+        "global_segment_id": 516,
+        "cluster_id": 54
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 175,
+        "global_segment_id": 1027,
+        "cluster_id": 54
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 208,
+        "global_segment_id": 1060,
+        "cluster_id": 54
+      }
+    ]
+  },
+  "cluster_64": {
+    "cluster_id": 64,
+    "segment_count": 459,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      600,
+      718,
+      728,
+      1094,
+      1215,
+      1249,
+      1434,
+      5158,
+      5584,
+      6284
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 227,
+        "global_segment_id": 600,
+        "cluster_id": 64
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 345,
+        "global_segment_id": 718,
+        "cluster_id": 64
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 355,
+        "global_segment_id": 728,
+        "cluster_id": 64
+      }
+    ]
+  },
+  "cluster_80": {
+    "cluster_id": 80,
+    "segment_count": 449,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      476,
+      721,
+      1602,
+      1835,
+      5915,
+      7519,
+      7520,
+      7727,
+      7738,
+      7771
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 103,
+        "global_segment_id": 476,
+        "cluster_id": 80
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 348,
+        "global_segment_id": 721,
+        "cluster_id": 80
+      },
+      {
+        "video_name": "007_t1_20230302",
+        "sequence_id": 59,
+        "global_segment_id": 1602,
+        "cluster_id": 80
+      }
+    ]
+  },
+  "cluster_78": {
+    "cluster_id": 78,
+    "segment_count": 434,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      1567,
+      1900,
+      2089,
+      2392,
+      5430,
+      6356,
+      6779,
+      7438,
+      7471,
+      7604
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "007_t1_20230302",
+        "sequence_id": 24,
+        "global_segment_id": 1567,
+        "cluster_id": 78
+      },
+      {
+        "video_name": "231_t1_20230719",
+        "sequence_id": 54,
+        "global_segment_id": 1900,
+        "cluster_id": 78
+      },
+      {
+        "video_name": "231_t1_20230719",
+        "sequence_id": 243,
+        "global_segment_id": 2089,
+        "cluster_id": 78
+      }
+    ]
+  },
+  "cluster_77": {
+    "cluster_id": 77,
+    "segment_count": 421,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      131,
+      436,
+      687,
+      984,
+      1005,
+      1042,
+      1054,
+      1201,
+      5303,
+      5560
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 131,
+        "global_segment_id": 131,
+        "cluster_id": 77
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 63,
+        "global_segment_id": 436,
+        "cluster_id": 77
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 314,
+        "global_segment_id": 687,
+        "cluster_id": 77
+      }
+    ]
+  },
+  "cluster_60": {
+    "cluster_id": 60,
+    "segment_count": 416,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      703,
+      1374,
+      1376,
+      1527,
+      6332,
+      6871,
+      7176,
+      7180,
+      7451,
+      7525
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 330,
+        "global_segment_id": 703,
+        "cluster_id": 60
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 522,
+        "global_segment_id": 1374,
+        "cluster_id": 60
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 524,
+        "global_segment_id": 1376,
+        "cluster_id": 60
+      }
+    ]
+  },
+  "cluster_75": {
+    "cluster_id": 75,
+    "segment_count": 414,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      8216,
+      8248,
+      17972,
+      17975,
+      18401,
+      18416,
+      34030,
+      36798,
+      37251,
+      39979
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "223_t1_20230707",
+        "sequence_id": 788,
+        "global_segment_id": 8216,
+        "cluster_id": 75
+      },
+      {
+        "video_name": "223_t1_20230707",
+        "sequence_id": 820,
+        "global_segment_id": 8248,
+        "cluster_id": 75
+      },
+      {
+        "video_name": "846_t1_20240627",
+        "sequence_id": 553,
+        "global_segment_id": 17972,
+        "cluster_id": 75
+      }
+    ]
+  },
+  "cluster_83": {
+    "cluster_id": 83,
+    "segment_count": 406,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      771,
+      1326,
+      1504,
+      1729,
+      6610,
+      7505,
+      7537,
+      7543,
+      7560,
+      7605
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 398,
+        "global_segment_id": 771,
+        "cluster_id": 83
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 474,
+        "global_segment_id": 1326,
+        "cluster_id": 83
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 652,
+        "global_segment_id": 1504,
+        "cluster_id": 83
+      }
+    ]
+  },
+  "cluster_0": {
+    "cluster_id": 0,
+    "segment_count": 380,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      850,
+      895,
+      906,
+      1209,
+      1724,
+      2379,
+      2470,
+      3497,
+      3862,
+      5667
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 477,
+        "global_segment_id": 850,
+        "cluster_id": 0
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 43,
+        "global_segment_id": 895,
+        "cluster_id": 0
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 54,
+        "global_segment_id": 906,
+        "cluster_id": 0
+      }
+    ]
+  },
+  "cluster_68": {
+    "cluster_id": 68,
+    "segment_count": 364,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      612,
+      1276,
+      2105,
+      6460,
+      6479,
+      7488,
+      7490,
+      7587,
+      7602,
+      7624
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 239,
+        "global_segment_id": 612,
+        "cluster_id": 68
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 424,
+        "global_segment_id": 1276,
+        "cluster_id": 68
+      },
+      {
+        "video_name": "231_t1_20230719",
+        "sequence_id": 259,
+        "global_segment_id": 2105,
+        "cluster_id": 68
+      }
+    ]
+  },
+  "cluster_88": {
+    "cluster_id": 88,
+    "segment_count": 361,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      100,
+      898,
+      1195,
+      1239,
+      1304,
+      3861,
+      4758,
+      5586,
+      6330,
+      7293
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "559_t1_20240207",
+        "sequence_id": 100,
+        "global_segment_id": 100,
+        "cluster_id": 88
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 46,
+        "global_segment_id": 898,
+        "cluster_id": 88
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 343,
+        "global_segment_id": 1195,
+        "cluster_id": 88
+      }
+    ]
+  },
+  "cluster_39": {
+    "cluster_id": 39,
+    "segment_count": 323,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      958,
+      1128,
+      1169,
+      1171,
+      1559,
+      3942,
+      6930,
+      7128,
+      7978,
+      8314
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 106,
+        "global_segment_id": 958,
+        "cluster_id": 39
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 276,
+        "global_segment_id": 1128,
+        "cluster_id": 39
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 317,
+        "global_segment_id": 1169,
+        "cluster_id": 39
+      }
+    ]
+  },
+  "cluster_47": {
+    "cluster_id": 47,
+    "segment_count": 322,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      464,
+      972,
+      2578,
+      2928,
+      3870,
+      7021,
+      12507,
+      13704,
+      13705,
+      16349
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 91,
+        "global_segment_id": 464,
+        "cluster_id": 47
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 120,
+        "global_segment_id": 972,
+        "cluster_id": 47
+      },
+      {
+        "video_name": "231_t1_20230719",
+        "sequence_id": 732,
+        "global_segment_id": 2578,
+        "cluster_id": 47
+      }
+    ]
+  },
+  "cluster_96": {
+    "cluster_id": 96,
+    "segment_count": 308,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      433,
+      437,
+      727,
+      1277,
+      1324,
+      1357,
+      1528,
+      1972,
+      2160,
+      2594
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 60,
+        "global_segment_id": 433,
+        "cluster_id": 96
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 64,
+        "global_segment_id": 437,
+        "cluster_id": 96
+      },
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 354,
+        "global_segment_id": 727,
+        "cluster_id": 96
+      }
+    ]
+  },
+  "cluster_86": {
+    "cluster_id": 86,
+    "segment_count": 301,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      422,
+      995,
+      1266,
+      1524,
+      2752,
+      5555,
+      5594,
+      5708,
+      7883,
+      7998
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 49,
+        "global_segment_id": 422,
+        "cluster_id": 86
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 143,
+        "global_segment_id": 995,
+        "cluster_id": 86
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 414,
+        "global_segment_id": 1266,
+        "cluster_id": 86
+      }
+    ]
+  },
+  "cluster_8": {
+    "cluster_id": 8,
+    "segment_count": 272,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      947,
+      1245,
+      1474,
+      7030,
+      7732,
+      8317,
+      12194,
+      13367,
+      13654,
+      14618
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 95,
+        "global_segment_id": 947,
+        "cluster_id": 8
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 393,
+        "global_segment_id": 1245,
+        "cluster_id": 8
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 622,
+        "global_segment_id": 1474,
+        "cluster_id": 8
+      }
+    ]
+  },
+  "cluster_76": {
+    "cluster_id": 76,
+    "segment_count": 269,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      819,
+      1319,
+      1495,
+      5556,
+      5559,
+      5572,
+      6432,
+      7882,
+      12273,
+      13575
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "318_t1_20231121",
+        "sequence_id": 446,
+        "global_segment_id": 819,
+        "cluster_id": 76
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 467,
+        "global_segment_id": 1319,
+        "cluster_id": 76
+      },
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 643,
+        "global_segment_id": 1495,
+        "cluster_id": 76
+      }
+    ]
+  },
+  "cluster_99": {
+    "cluster_id": 99,
+    "segment_count": 242,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      1943,
+      8233,
+      17946,
+      17948,
+      17957,
+      17959,
+      17960,
+      17967,
+      17971,
+      18372
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "231_t1_20230719",
+        "sequence_id": 97,
+        "global_segment_id": 1943,
+        "cluster_id": 99
+      },
+      {
+        "video_name": "223_t1_20230707",
+        "sequence_id": 805,
+        "global_segment_id": 8233,
+        "cluster_id": 99
+      },
+      {
+        "video_name": "846_t1_20240627",
+        "sequence_id": 527,
+        "global_segment_id": 17946,
+        "cluster_id": 99
+      }
+    ]
+  },
+  "cluster_55": {
+    "cluster_id": 55,
+    "segment_count": 167,
+    "video_distribution": {},
+    "segment_types": {},
+    "sample_segments": [
+      986,
+      2097,
+      2226,
+      2446,
+      6048,
+      9656,
+      17148,
+      18237,
+      18250,
+      18314
+    ],
+    "sample_metadata": [
+      {
+        "video_name": "729_t1_20240903",
+        "sequence_id": 134,
+        "global_segment_id": 986,
+        "cluster_id": 55
+      },
+      {
+        "video_name": "231_t1_20230719",
+        "sequence_id": 251,
+        "global_segment_id": 2097,
+        "cluster_id": 55
+      },
+      {
+        "video_name": "231_t1_20230719",
+        "sequence_id": 380,
+        "global_segment_id": 2226,
+        "cluster_id": 55
+      }
+    ]
+  }
+}
