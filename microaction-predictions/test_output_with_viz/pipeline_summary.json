@@ -1,0 +1,13 @@
+{
+  "input_path": "../test/0003_01_0005_poses/poses_3D.pkl",
+  "output_dir": "test_output_with_viz",
+  "mmn_results_dir": "/home/shanaka/Desktop/thesis/pipeline-final/action_recognition/MMN",
+  "pipeline_steps": {
+    "original_frames": 88,
+    "filtered_frames": 88,
+    "normalized_frames": 88,
+    "rotated_frames": 88,
+    "coco_frames": 88,
+    "num_segments": 1
+  }
+}
