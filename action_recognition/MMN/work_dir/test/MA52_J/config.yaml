@@ -1,0 +1,65 @@
+# command line: main_cpu.py --config ./config/test/MA52_J.yaml --weights ./checkpoints/MMN_MA52_J.pt
+
+base_lr: 0.001
+batch_size: 64
+config: ./config/test/MA52_J.yaml
+device:
+- 0
+eval_interval: 5
+feeder: feeders.feeder_ma52.Feeder
+grad_clip: false
+grad_max: 1.0
+ignore_weights: []
+log_interval: 100
+loss_type: LSCE
+lr_decay_rate: 0.1
+lr_ratio: 0.001
+lr_scheduler: cosine
+min_lr: 1.0e-05
+model: model.MMN.MMN_
+model_args:
+  drop: 0.0
+  drop_path: 0.3
+  head_drop: 0.1
+  in_channels: 2
+  index_t: true
+  kernel_size: 3
+  mlp_ratio: 2.0
+  num_classes: 52
+  num_heads: 4
+  num_people: 1
+  num_points: 44
+model_saved_name: ''
+nesterov: true
+num_epoch: 120
+num_worker: 0
+optimizer: AdamW
+phase: test
+print_log: true
+save_epoch: 30
+save_interval: 1
+save_score: false
+seed: 1
+show_topk:
+- 1
+- 5
+start_epoch: 0
+test_batch_size: 64
+test_feeder_args:
+  data_type: j
+  partition: true
+  repeat: 1
+  split: val
+train_feeder_args:
+  data_type: j
+  debug: false
+  p: 0.0
+  partition: true
+  repeat: 1
+  split: train
+warm_up_epoch: 20
+warmup_lr: 1.0e-07
+warmup_prefix: false
+weight_decay: 0.1
+weights: ./checkpoints/MMN_MA52_J.pt
+work_dir: ./work_dir/test/MA52_J
