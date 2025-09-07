@@ -1138,6 +1138,14 @@ def process_poses_pipeline(input_path: str, output_dir: str,
     segments = segment_poses(coco_poses, velocity_threshold=0.01, acceleration_threshold=0.01)
     print(f"✅ Created {len(segments)} segments")
     
+    # Step 6.1: Remove segments with exactly 243 frames (likely artifacts)
+    original_segment_count = len(segments)
+    segments = [seg for seg in segments if seg.shape[0] != 243]
+    removed_count = original_segment_count - len(segments)
+    if removed_count > 0:
+        print(f"🗑️  Removed {removed_count} segments with exactly 243 frames (likely artifacts)")
+    print(f"✅ {len(segments)} segments remaining after artifact removal")
+    
     # Step 6.5: Save segment visualizations (optional)
     if num_visualizations is not None and num_visualizations > 0:
         print(f"\n🎨 Step 6.5: Saving segment visualizations")
