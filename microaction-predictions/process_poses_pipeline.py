@@ -2,19 +2,21 @@
 """
 Complete Pose Processing Pipeline for Micro-Action Prediction
 
-This script processes pose data through the complete pipeline:
-1. Load poses from .pkl file
-2. Concatenate all segments into a single long sequence
-3. Apply filtering using postprocess_poses/filter.py
-4. Apply normalization using postprocess_poses/normalize.py
-5. Apply rotation using postprocess_poses/rotate.py
-6. Convert to COCO body style format
-7. Segment using postprocess_poses/segment.py with 0.05 threshold
-8. Predict micro-actions for all segments using MMN model
+This script takes your pose data and processes it through a complete pipeline to predict micro-actions:
 
-Usage:
+1. Loads your pose data from a .pkl file
+2. Combines all pose segments into one continuous sequence
+3. Cleans up the data by filtering out glitches and noise
+4. Normalizes the poses to a standard size and position
+5. Rotates the poses to face forward consistently
+6. Converts the poses to COCO format for the action recognition model
+7. Splits the sequence into meaningful segments based on movement
+8. Predicts what micro-actions are happening in each segment using the MMN model
+
+Usage examples:
     python process_poses_pipeline.py --input poses/005_t1_20230519/poses_3D.pkl --output results/005_t1_20230519
     python process_poses_pipeline.py --input poses/005_t1_20230519/poses_3D.pkl --output results/005_t1_20230519 --debug-num-clips 5 --debug-clip-length 50
+    python process_poses_pipeline.py --input poses/005_t1_20230519/poses_3D.pkl --output results/005_t1_20230519 --num-visualizations 10
 """
 
 import os
@@ -39,70 +41,71 @@ sys.path.append('../action_recognition/MMN')
 # Add postprocess_poses to path
 sys.path.append('../postprocess_poses')
 
-# H36M skeleton connections (joint_start -> joint_end)
+# These define how the skeleton joints are connected to form the human body
+# H36M format uses 17 joints with these connections:
 H36M_CONNECTIONS = [
-    (0, 1),   # Hip -> Right Hip
-    (1, 2),   # Right Hip -> Right Knee  
-    (2, 3),   # Right Knee -> Right Ankle
-    (0, 4),   # Hip -> Left Hip
-    (4, 5),   # Left Hip -> Left Knee
-    (5, 6),   # Left Knee -> Left Ankle
-    (0, 7),   # Hip -> Spine
-    (7, 8),   # Spine -> Thorax
-    (8, 9),   # Thorax -> Neck
-    (9, 10),  # Neck -> Head
-    (8, 11),  # Thorax -> Left Shoulder
-    (11, 12), # Left Shoulder -> Left Elbow
-    (12, 13), # Left Elbow -> Left Hand
-    (8, 14),  # Thorax -> Right Shoulder
-    (14, 15), # Right Shoulder -> Right Elbow
-    (15, 16)  # Right Elbow -> Right Hand
+    (0, 1),   # Hip connects to Right Hip
+    (1, 2),   # Right Hip connects to Right Knee  
+    (2, 3),   # Right Knee connects to Right Ankle
+    (0, 4),   # Hip connects to Left Hip
+    (4, 5),   # Left Hip connects to Left Knee
+    (5, 6),   # Left Knee connects to Left Ankle
+    (0, 7),   # Hip connects to Spine
+    (7, 8),   # Spine connects to Thorax
+    (8, 9),   # Thorax connects to Neck
+    (9, 10),  # Neck connects to Head
+    (8, 11),  # Thorax connects to Left Shoulder
+    (11, 12), # Left Shoulder connects to Left Elbow
+    (12, 13), # Left Elbow connects to Left Hand
+    (8, 14),  # Thorax connects to Right Shoulder
+    (14, 15), # Right Shoulder connects to Right Elbow
+    (15, 16)  # Right Elbow connects to Right Hand
 ]
 
-# COCO skeleton connections (joint_start -> joint_end)
+# COCO format uses 44 joints with these connections:
 COCO_CONNECTIONS = [
-    # Head connections
-    (0, 1),   # Nose -> Left Eye
-    (0, 2),   # Nose -> Right Eye
-    (0, 3),   # Nose -> Left Ear
-    (0, 4),   # Nose -> Right Ear
+    # Face and head connections
+    (0, 1),   # Nose connects to Left Eye
+    (0, 2),   # Nose connects to Right Eye
+    (0, 3),   # Nose connects to Left Ear
+    (0, 4),   # Nose connects to Right Ear
     
-    # Head to body connections (connect head to shoulders)
-    (1, 5),   # Left Eye -> Left Shoulder
-    (2, 6),   # Right Eye -> Right Shoulder
-    (3, 5),   # Left Ear -> Left Shoulder
-    (4, 6),   # Right Ear -> Right Shoulder
+    # Head connects to the body through shoulders
+    (1, 5),   # Left Eye connects to Left Shoulder
+    (2, 6),   # Right Eye connects to Right Shoulder
+    (3, 5),   # Left Ear connects to Left Shoulder
+    (4, 6),   # Right Ear connects to Right Shoulder
     
-    # Upper body
-    (5, 6),   # Left Shoulder -> Right Shoulder
-    (5, 7),   # Left Shoulder -> Left Elbow
-    (7, 9),   # Left Elbow -> Left Wrist
-    (6, 8),   # Right Shoulder -> Right Elbow
-    (8, 10),  # Right Elbow -> Right Wrist
+    # Upper body connections
+    (5, 6),   # Left Shoulder connects to Right Shoulder
+    (5, 7),   # Left Shoulder connects to Left Elbow
+    (7, 9),   # Left Elbow connects to Left Wrist
+    (6, 8),   # Right Shoulder connects to Right Elbow
+    (8, 10),  # Right Elbow connects to Right Wrist
     
-    # Torso
-    (5, 11),  # Left Shoulder -> Left Hip
-    (6, 12),  # Right Shoulder -> Right Hip
-    (11, 12), # Left Hip -> Right Hip
+    # Torso connections
+    (5, 11),  # Left Shoulder connects to Left Hip
+    (6, 12),  # Right Shoulder connects to Right Hip
+    (11, 12), # Left Hip connects to Right Hip
     
-    # Lower body
-    (11, 13), # Left Hip -> Left Knee
-    (13, 15), # Left Knee -> Left Ankle
-    (12, 14), # Right Hip -> Right Knee
-    (14, 16), # Right Knee -> Right Ankle
+    # Lower body connections
+    (11, 13), # Left Hip connects to Left Knee
+    (13, 15), # Left Knee connects to Left Ankle
+    (12, 14), # Right Hip connects to Right Knee
+    (14, 16), # Right Knee connects to Right Ankle
 ]
 
 def load_poses_from_pkl(poses_path: str) -> np.ndarray:
     """
-    Load and concatenate all pose segments from a PKL file.
+    Load and combine all pose segments from your PKL file into one continuous sequence.
     
     Args:
-        poses_path (str): Path to the PKL file containing pose segments
+        poses_path (str): Path to your PKL file containing pose segments
         
     Returns:
-        np.ndarray: Concatenated pose sequence with shape (total_frames, 17, 3)
+        np.ndarray: All pose segments combined into one sequence with shape (total_frames, 17, 3)
     """
-    print(f"Loading poses from: {poses_path}")
+    print(f"📁 Loading your pose data from: {poses_path}")
     
     import pickle
     
@@ -116,9 +119,9 @@ def load_poses_from_pkl(poses_path: str) -> np.ndarray:
         segment_keys = [key for key in data.keys() if key.startswith('segment_')]
         segment_keys.sort()  # Ensure proper ordering
         
-        print(f"Found {len(segment_keys)} pose segments")
+        print(f"Found {len(segment_keys)} pose segments in your data")
         
-        # Concatenate all segments
+        # Combine all segments into one sequence
         all_segments = []
         total_frames = 0
         
@@ -129,26 +132,26 @@ def load_poses_from_pkl(poses_path: str) -> np.ndarray:
             if len(segment.shape) == 4 and segment.shape[0] == 1:
                 segment = segment.squeeze(0)
             
-            # Validate segment format
+            # Check if this segment has the right format
             if len(segment.shape) != 3 or segment.shape[1] != 17 or segment.shape[2] != 3:
-                print(f"Warning: Segment {key} has unexpected shape {segment.shape}, skipping...")
+                print(f"⚠️  Warning: Segment {key} has an unexpected shape {segment.shape}, skipping this one...")
                 continue
             
             all_segments.append(segment)
             total_frames += segment.shape[0]
-            print(f"  {key}: {segment.shape[0]} frames")
+            print(f"  📹 {key}: {segment.shape[0]} frames")
         
-        # Concatenate all segments
+        # Combine all segments into one long sequence
         if all_segments:
             concatenated_poses = np.concatenate(all_segments, axis=0)
-            print(f"Concatenated {len(all_segments)} segments into {concatenated_poses.shape[0]} frames")
+            print(f"✅ Successfully combined {len(all_segments)} segments into {concatenated_poses.shape[0]} total frames")
             return concatenated_poses
         else:
-            raise ValueError("No valid pose segments found in the PKL file")
+            raise ValueError("❌ No valid pose segments found in your PKL file")
     
     elif isinstance(data, list):
-        # If it's a list of segments
-        print(f"Found {len(data)} pose segments in list format")
+        # If your data is stored as a list of segments
+        print(f"Found {len(data)} pose segments stored as a list")
         
         all_segments = []
         total_frames = 0
@@ -158,55 +161,55 @@ def load_poses_from_pkl(poses_path: str) -> np.ndarray:
             if len(segment.shape) == 4 and segment.shape[0] == 1:
                 segment = segment.squeeze(0)
             
-            # Validate segment format
+            # Check if this segment has the right format
             if len(segment.shape) != 3 or segment.shape[1] != 17 or segment.shape[2] != 3:
-                print(f"Warning: Segment {i} has unexpected shape {segment.shape}, skipping...")
+                print(f"⚠️  Warning: Segment {i} has an unexpected shape {segment.shape}, skipping this one...")
                 continue
             
             all_segments.append(segment)
             total_frames += segment.shape[0]
-            print(f"  Segment {i}: {segment.shape[0]} frames")
+            print(f"  📹 Segment {i}: {segment.shape[0]} frames")
         
-        # Concatenate all segments
+        # Combine all segments into one long sequence
         if all_segments:
             concatenated_poses = np.concatenate(all_segments, axis=0)
-            print(f"Concatenated {len(all_segments)} segments into {concatenated_poses.shape[0]} frames")
+            print(f"✅ Successfully combined {len(all_segments)} segments into {concatenated_poses.shape[0]} total frames")
             return concatenated_poses
         else:
-            raise ValueError("No valid pose segments found in the PKL file")
+            raise ValueError("❌ No valid pose segments found in your PKL file")
     
     elif isinstance(data, np.ndarray):
-        # If it's already a numpy array
-        print(f"Found numpy array with shape: {data.shape}")
+        # If your data is already a numpy array
+        print(f"Found your data as a numpy array with shape: {data.shape}")
         
         # Handle extra batch dimension if present
         if len(data.shape) == 4 and data.shape[0] == 1:
             data = data.squeeze(0)
         
-        # Validate format
+        # Check if the format is correct
         if len(data.shape) != 3 or data.shape[1] != 17 or data.shape[2] != 3:
-            raise ValueError(f"Invalid pose array shape: {data.shape}, expected (frames, 17, 3)")
+            raise ValueError(f"❌ Your pose array has the wrong shape: {data.shape}, we need (frames, 17, 3)")
         
-        print(f"Using pose array with {data.shape[0]} frames")
+        print(f"✅ Using your pose array with {data.shape[0]} frames")
         return data
     
     else:
-        raise ValueError(f"Unexpected data format: {type(data)}")
+        raise ValueError(f"❌ We don't recognize this data format: {type(data)}")
 
 def filter_poses(poses: np.ndarray, velocity_threshold: float = 0.3, 
                 acceleration_threshold: float = 0.5) -> np.ndarray:
     """
-    Filter poses using the glitch detection logic from postprocess_poses/filter.py
+    Clean up your pose data by removing glitches and noise using smart filtering.
     
     Args:
-        poses: Pose sequence with shape (frames, 17, 3)
-        velocity_threshold: Threshold for velocity-based glitch detection
-        acceleration_threshold: Threshold for acceleration-based glitch detection
+        poses: Your pose sequence with shape (frames, 17, 3)
+        velocity_threshold: How sensitive we are to sudden movements (higher = more sensitive)
+        acceleration_threshold: How sensitive we are to sudden changes in speed (higher = more sensitive)
         
     Returns:
-        Filtered pose sequence
+        Your pose sequence with the bad frames removed
     """
-    print(f"🔍 Filtering poses with velocity_threshold={velocity_threshold}, acceleration_threshold={acceleration_threshold}")
+    print(f"🧹 Cleaning up your pose data (velocity threshold: {velocity_threshold}, acceleration threshold: {acceleration_threshold})")
     
     # Import filter functions
     from filter import PoseGlitchDetector
@@ -214,178 +217,191 @@ def filter_poses(poses: np.ndarray, velocity_threshold: float = 0.3,
     # Initialize detector
     detector = PoseGlitchDetector(velocity_threshold, acceleration_threshold)
     
-    # Detect glitches
+    # Look for glitches in your data
     glitch_info = detector.detect_glitches(poses)
     
     if glitch_info["has_glitches"]:
-        print(f"⚠️  Found {glitch_info['num_glitch_frames']} glitch frames ({glitch_info['glitch_percentage']:.1f}%)")
+        print(f"⚠️  Found {glitch_info['num_glitch_frames']} bad frames ({glitch_info['glitch_percentage']:.1f}% of your data)")
         
-        # Create mask for non-glitch frames
+        # Create a filter to keep only the good frames
         glitch_mask = np.ones(poses.shape[0], dtype=bool)
         glitch_mask[glitch_info['glitch_frames']] = False
         
-        # Filter out glitch frames
+        # Remove the bad frames
         filtered_poses = poses[glitch_mask]
-        print(f"✅ Filtered poses: {poses.shape[0]} -> {filtered_poses.shape[0]} frames")
+        print(f"✅ Cleaned up your data: {poses.shape[0]} frames → {filtered_poses.shape[0]} frames")
         
         return filtered_poses
     else:
-        print(f"✅ No glitches detected, keeping all {poses.shape[0]} frames")
+        print(f"✅ Your data looks clean! Keeping all {poses.shape[0]} frames")
         return poses
 
 def normalize_poses(poses: np.ndarray, target_scale: float = 1.0, 
                    ema_alpha: float = 0.3) -> np.ndarray:
     """
-    Normalize poses using postprocess_poses/normalize.py
+    Standardize your pose data to make it consistent and easier to work with.
     
     Args:
-        poses: Pose sequence with shape (frames, 17, 3)
-        target_scale: Target skeleton scale
-        ema_alpha: EMA smoothing factor
+        poses: Your pose sequence with shape (frames, 17, 3)
+        target_scale: How big to make the skeleton (1.0 = normal size)
+        ema_alpha: How much to smooth the movements (0.3 = moderate smoothing)
         
     Returns:
-        Normalized pose sequence
+        Your pose sequence standardized to a consistent size and position
     """
-    print(f"🔧 Normalizing poses with target_scale={target_scale}, ema_alpha={ema_alpha}")
+    print(f"📏 Standardizing your pose data (target size: {target_scale}, smoothing: {ema_alpha})")
     
     # Import normalize functions
     from normalize import scale_skeleton_to_standard_size, center_at_origin, apply_ema_smoothing
     
-    # Apply normalization steps
+    # Apply the standardization steps
     normalized = scale_skeleton_to_standard_size(poses, target_scale)
     normalized = center_at_origin(normalized)
     normalized = apply_ema_smoothing(normalized, ema_alpha)
     
-    print(f"✅ Normalization completed!")
+    print(f"✅ Your pose data is now standardized!")
     return normalized
 
 def rotate_poses(poses: np.ndarray, target_angle_deg: float = -178.55) -> np.ndarray:
     """
-    Rotate poses using postprocess_poses/rotate.py
+    Rotate your poses so they all face the same direction for consistent analysis.
     
     Args:
-        poses: Pose sequence with shape (frames, 17, 3)
-        target_angle_deg: Target hip angle in degrees
+        poses: Your pose sequence with shape (frames, 17, 3)
+        target_angle_deg: The angle to rotate to (makes everyone face forward)
         
     Returns:
-        Rotated pose sequence
+        Your pose sequence rotated to face the same direction
     """
-    print(f"🔄 Rotating poses to front-facing orientation (target angle: {target_angle_deg:.2f}°)")
+    print(f"🔄 Rotating your poses to face forward (target angle: {target_angle_deg:.2f}°)")
     
     # Import rotate functions
-    from rotate import rotate_skeleton_to_front_facing
+    from rotate import process_pose_segments
     
-    # Apply rotation to each frame
-    rotated_poses = np.array([
-        rotate_skeleton_to_front_facing(pose, target_angle_deg) 
-        for pose in poses
-    ])
+    # Use the more efficient batch processing function
+    # Treat the single sequence as a list with one element
+    pose_segments = [poses]
+    rotated_segments = process_pose_segments(pose_segments, target_angle_deg)
+    rotated_poses = rotated_segments[0]  # Extract the single rotated sequence
     
-    print(f"✅ Rotation completed!")
+    print(f"✅ Your poses are now all facing forward!")
     return rotated_poses
 
 def convert_h36m_to_coco_format(h36m_pose: np.ndarray) -> np.ndarray:
     """
-    Convert H36M pose format (17 joints, 3D) to COCO format (44 joints, 2D)
+    Convert your poses from H36M format (17 joints in 3D) to COCO format (44 joints in 2D).
+    This makes your data compatible with the action recognition model.
     
     Args:
-        h36m_pose: Shape (T, 17, 3) - H36M pose sequence
+        h36m_pose: Your pose sequence in H36M format with shape (T, 17, 3)
         
     Returns:
-        Shape (T, 44, 2) - COCO pose sequence
+        Your pose sequence converted to COCO format with shape (T, 44, 2)
     """
     T, V, C = h36m_pose.shape
     
     # Initialize COCO pose with zeros
     coco_pose = np.zeros((T, 44, 2))
     
-    # H36M joint names for reference:
-    # 0: root, 1: rhip, 2: rkne, 3: rank, 4: lhip, 5: lkne, 6: lank
-    # 7: belly, 8: neck, 9: nose, 10: head, 11: lsho, 12: lelb, 13: lwri
-    # 14: rsho, 15: relb, 16: rwri
+    # Here's what each joint number means in H36M format:
+    # 0: root (center of hips), 1: right hip, 2: right knee, 3: right ankle
+    # 4: left hip, 5: left knee, 6: left ankle, 7: belly, 8: neck
+    # 9: nose, 10: head, 11: left shoulder, 12: left elbow, 13: left wrist
+    # 14: right shoulder, 15: right elbow, 16: right wrist
     
-    # COCO joint names for reference:
-    # 0: nose, 1: left_eye, 2: right_eye, 3: left_ear, 4: right_ear
-    # 5: left_shoulder, 6: right_shoulder, 7: left_elbow, 8: right_elbow
-    # 9: left_wrist, 10: right_wrist, 11: left_hip, 12: right_hip
-    # 13: left_knee, 14: right_knee, 15: left_ankle, 16: right_ankle
-    # 17-43: additional keypoints (mostly zeros in our case)
+    # Here's what each joint number means in COCO format:
+    # 0: nose, 1: left eye, 2: right eye, 3: left ear, 4: right ear
+    # 5: left shoulder, 6: right shoulder, 7: left elbow, 8: right elbow
+    # 9: left wrist, 10: right wrist, 11: left hip, 12: right hip
+    # 13: left knee, 14: right knee, 15: left ankle, 16: right ankle
+    # 17-43: additional keypoints (we'll leave these as zeros)
     
-    # Proper mapping from H36M to COCO format
+    # H36M joint indices (from postprocess_poses/rotate.py)
+    # ROOT=0, RHIP=1, RKNE=2, RANK=3, LHIP=4, LKNE=5, LANK=6, BELLY=7, NECK=8, NOSE=9, HEAD=10, LSHO=11, LELB=12, LWRI=13, RSHO=14, RELB=15, RWRI=16
+    
+    # This maps each H36M joint to the corresponding COCO joint
     h36m_to_coco = {
-        # Head and face
-        9: 0,    # nose -> nose
-        10: 0,   # head -> nose (approximation)
+        # Face and head joints - use nose as the main head position
+        9: 0,    # nose → nose (main head position)
         
-        # Shoulders
-        11: 5,   # lsho -> left_shoulder
-        14: 6,   # rsho -> right_shoulder
+        # Shoulder joints
+        11: 5,   # left shoulder → left shoulder
+        14: 6,   # right shoulder → right shoulder
         
-        # Elbows
-        12: 7,   # lelb -> left_elbow
-        15: 8,   # relb -> right_elbow
+        # Elbow joints
+        12: 7,   # left elbow → left elbow
+        15: 8,   # right elbow → right elbow
         
-        # Wrists
-        13: 9,   # lwri -> left_wrist
-        16: 10,  # rwri -> right_wrist
+        # Wrist joints
+        13: 9,   # left wrist → left wrist
+        16: 10,  # right wrist → right wrist
         
-        # Hips
-        4: 11,   # lhip -> left_hip
-        1: 12,   # rhip -> right_hip
+        # Hip joints
+        4: 11,   # left hip → left hip
+        1: 12,   # right hip → right hip
         
-        # Knees
-        5: 13,   # lkne -> left_knee
-        2: 14,   # rkne -> right_knee
+        # Knee joints
+        5: 13,   # left knee → left knee
+        2: 14,   # right knee → right knee
         
-        # Ankles
-        6: 15,   # lank -> left_ankle
-        3: 16,   # rank -> right_ankle
+        # Ankle joints
+        6: 15,   # left ankle → left ankle
+        3: 16,   # right ankle → right ankle
     }
     
-    # Project 3D to 2D by taking X and Y coordinates
-    # Note: H36M uses different coordinate system, so we need to adjust
+    # Convert from 3D to 2D by taking just the X and Y coordinates
     h36m_2d = h36m_pose[:, :, :2].copy()
     
-    # Apply coordinate system adjustment for better visualization
-    # Flip Y-axis to match COCO convention (Y increases downward in COCO)
-    h36m_2d[:, :, 1] = -h36m_2d[:, :, 1]
+    # Note: We don't flip the Y-axis here because the visualization function
+    # will handle the coordinate system conversion properly
     
-    # Copy joints from H36M to COCO
+    # Copy each joint from H36M format to COCO format
     for h36m_idx, coco_idx in h36m_to_coco.items():
         coco_pose[:, coco_idx, :] = h36m_2d[:, h36m_idx, :]
     
-    # Fill in missing face keypoints with better approximations
-    if 0 in h36m_to_coco.values():  # If nose is mapped
-        nose_pos = coco_pose[:, 0, :]  # nose position
-        
-        # Get shoulder positions for better head positioning
-        left_shoulder_pos = coco_pose[:, 5, :]  # left_shoulder
-        right_shoulder_pos = coco_pose[:, 6, :]  # right_shoulder
-        
-        # Calculate head center position (above shoulders)
-        shoulder_center = (left_shoulder_pos + right_shoulder_pos) / 2
-        
-        # Position head above shoulders (adjust nose position)
-        head_height_offset = 0.15  # Distance above shoulders
-        coco_pose[:, 0, :] = shoulder_center + np.array([0, head_height_offset])  # nose
-        
-        # Update nose position for face keypoints
-        nose_pos = coco_pose[:, 0, :]
-        
-        # Approximate eye positions (slightly above and to sides of nose)
-        eye_offset_x = 0.03
-        eye_offset_y = -0.02
-        coco_pose[:, 1, :] = nose_pos + np.array([-eye_offset_x, eye_offset_y])  # left_eye
-        coco_pose[:, 2, :] = nose_pos + np.array([eye_offset_x, eye_offset_y])   # right_eye
-        
-        # Approximate ear positions (slightly to sides of nose)
-        ear_offset_x = 0.05
-        ear_offset_y = 0.01
-        coco_pose[:, 3, :] = nose_pos + np.array([-ear_offset_x, ear_offset_y])  # left_ear
-        coco_pose[:, 4, :] = nose_pos + np.array([ear_offset_x, ear_offset_y])   # right_ear
+    # Add improved face keypoints using H36M head geometry
+    # H36M provides: NECK=8, NOSE=9, HEAD=10
+    nose_pos = h36m_2d[:, 9, :]      # H36M nose position
+    head_pos = h36m_2d[:, 10, :]     # H36M head position  
+    neck_pos = h36m_2d[:, 8, :]      # H36M neck position
     
-    # Normalize the pose to reasonable range for visualization
-    # Find the range of non-zero coordinates
+    # Calculate head orientation vector (from neck to head)
+    head_vector = head_pos - neck_pos
+    head_length = np.linalg.norm(head_vector, axis=1, keepdims=True)
+    head_length = np.maximum(head_length, 1e-6)  # Avoid division by zero
+    head_unit = head_vector / head_length
+    
+    # Calculate perpendicular vector for left-right positioning
+    # Rotate head vector 90 degrees clockwise in 2D plane for horizontal direction
+    # This ensures left-right orientation matches the body coordinate system
+    perp_vector = np.stack([head_unit[:, 1], -head_unit[:, 0]], axis=1)
+    
+    # Use nose as the primary face reference point
+    coco_pose[:, 0, :] = nose_pos  # nose → nose
+    
+    # Estimate face keypoints using head geometry
+    # Scale factors based on typical head proportions
+    eye_up_scale = 0.15      # Eyes are slightly above nose
+    eye_side_scale = 0.25    # Eyes are to the sides of nose
+    ear_side_scale = 0.4     # Ears are further to the sides
+    ear_back_scale = 0.1     # Ears are slightly behind nose
+    
+    # Calculate eye positions
+    eye_offset_up = head_unit * (eye_up_scale * head_length)
+    eye_offset_side = perp_vector * (eye_side_scale * head_length)
+    
+    coco_pose[:, 1, :] = nose_pos + eye_offset_up - eye_offset_side  # left eye (negative X)
+    coco_pose[:, 2, :] = nose_pos + eye_offset_up + eye_offset_side  # right eye (positive X)
+    
+    # Calculate ear positions  
+    ear_offset_side = perp_vector * (ear_side_scale * head_length)
+    ear_offset_back = -head_unit * (ear_back_scale * head_length)  # Slightly behind
+    
+    coco_pose[:, 3, :] = nose_pos + ear_offset_back - ear_offset_side  # left ear (negative X)
+    coco_pose[:, 4, :] = nose_pos + ear_offset_back + ear_offset_side  # right ear (positive X)
+    
+    # Scale the pose to a reasonable size for visualization
+    # Find all the coordinates that aren't zero
     non_zero_mask = np.any(coco_pose != 0, axis=2)
     if np.any(non_zero_mask):
         valid_coords = coco_pose[non_zero_mask]
@@ -393,7 +409,7 @@ def convert_h36m_to_coco_format(h36m_pose: np.ndarray) -> np.ndarray:
             coord_range = np.ptp(valid_coords, axis=0)
             max_range = np.max(coord_range)
             if max_range > 0:
-                # Scale to reasonable range (e.g., [-1, 1])
+                # Scale everything to fit nicely in the range [-1, 1]
                 scale_factor = 2.0 / max_range
                 coco_pose = coco_pose * scale_factor
     
@@ -404,15 +420,15 @@ def create_debug_animation(poses: np.ndarray,
                          title: str = "Pose Animation", 
                          fps: int = 15) -> None:
     """
-    Create a skeleton animation for debugging purposes.
+    Create a nice animation of the skeleton moving to help you see what's happening.
     
     Args:
-        poses: 3D pose data with shape (T, 17, 3) or (T, 44, 2)
-        output_path: Output path for the GIF
-        title: Title for the animation
-        fps: Frames per second for the animation
+        poses: Your pose data with shape (T, 17, 3) for 3D or (T, 44, 2) for 2D
+        output_path: Where to save the animation GIF
+        title: What to call this animation
+        fps: How fast to play the animation (frames per second)
     """
-    print(f"   🎬 Creating debug animation with {poses.shape[0]} frames...")
+    print(f"   🎬 Creating a nice animation with {poses.shape[0]} frames...")
     
     # Determine if it's 3D or 2D poses and format
     is_3d = poses.shape[2] == 3
@@ -575,43 +591,51 @@ def save_debug_clips(poses: np.ndarray, output_dir: str, stage_name: str,
         fps: Frames per second for animations
     """
     print(f"🔍 Saving {num_clips} debug clips for {stage_name} stage...")
+
+def save_segment_visualizations(segments: List[np.ndarray], output_dir: str, 
+                              num_visualizations: int = 5, fps: int = 15) -> None:
+    """
+    Save random segments as visualizations after segmentation.
     
-    # Create debug directory
-    debug_dir = os.path.join(output_dir, 'debug_clips')
-    os.makedirs(debug_dir, exist_ok=True)
+    Args:
+        segments: List of pose segments
+        output_dir: Output directory for visualizations
+        num_visualizations: Number of random segments to visualize
+        fps: Frames per second for animations
+    """
+    print(f"🎨 Saving {num_visualizations} random segment visualizations...")
     
-    total_frames = poses.shape[0]
+    # Create visualizations directory
+    viz_dir = os.path.join(output_dir, 'visualizations')
+    os.makedirs(viz_dir, exist_ok=True)
     
-    if total_frames < clip_length:
-        print(f"   ⚠️  Total frames ({total_frames}) is less than clip length ({clip_length}), using all frames")
-        clip_length = total_frames
-    
-    # Select random start positions for clips
-    max_start = total_frames - clip_length
-    if max_start <= 0:
-        start_positions = [0]
+    # Select random segments
+    if len(segments) < num_visualizations:
+        print(f"   ⚠️  Only {len(segments)} segments available, visualizing all of them")
+        selected_indices = list(range(len(segments)))
     else:
-        start_positions = random.sample(range(max_start + 1), min(num_clips, max_start + 1))
+        selected_indices = random.sample(range(len(segments)), num_visualizations)
     
-    for i, start_pos in enumerate(start_positions):
-        end_pos = min(start_pos + clip_length, total_frames)
-        clip_poses = poses[start_pos:end_pos]
+    for i, segment_idx in enumerate(selected_indices):
+        segment = segments[segment_idx]
         
         # Create output filename
-        output_filename = f"debug_{stage_name}_clip_{i+1:02d}_frames_{start_pos:04d}-{end_pos:04d}.gif"
-        output_path = os.path.join(debug_dir, output_filename)
+        output_filename = f"segment_{segment_idx:03d}_visualization_{i+1:02d}.gif"
+        output_path = os.path.join(viz_dir, output_filename)
         
         # Create title
-        title = f"Debug {stage_name.title()} - Clip {i+1}/{len(start_positions)} (Frames {start_pos}-{end_pos})"
+        title = f"Segment {segment_idx:03d} - Visualization {i+1}/{len(selected_indices)}"
         
         # Create visualization
         try:
-            create_debug_animation(clip_poses, output_path, title, fps)
+            create_debug_animation(segment, output_path, title, fps)
         except Exception as e:
-            print(f"   ❌ Failed to create debug clip {i+1}: {e}")
+            print(f"   ❌ Failed to create visualization for segment {segment_idx}: {e}")
             continue
     
-    print(f"   ✅ Debug clips saved to: {debug_dir}")
+    print(f"   ✅ Segment visualizations saved to: {viz_dir}")
+    
+   
 
 def segment_poses(poses: np.ndarray, velocity_threshold: float = 0.05, 
                  acceleration_threshold: float = 0.05) -> List[np.ndarray]:
@@ -1034,7 +1058,8 @@ def process_poses_pipeline(input_path: str, output_dir: str,
                           device: str = 'cuda',
                           enable_debug_clips: bool = True,
                           debug_num_clips: int = 3,
-                          debug_clip_length: int = 30) -> Dict:
+                          debug_clip_length: int = 30,
+                          num_visualizations: int = None) -> Dict:
     """
     Complete pipeline for processing poses and predicting micro-actions
     
@@ -1047,6 +1072,7 @@ def process_poses_pipeline(input_path: str, output_dir: str,
         enable_debug_clips: Whether to save debug clips before and after COCO conversion
         debug_num_clips: Number of debug clips to save
         debug_clip_length: Length of each debug clip in frames
+        num_visualizations: Number of random segments to save as visualizations (optional)
         
     Returns:
         Dictionary with pipeline results
@@ -1096,8 +1122,13 @@ def process_poses_pipeline(input_path: str, output_dir: str,
     
     # Step 6: Segment poses
     print(f"\n📊 Step 6: Segmenting poses")
-    segments = segment_poses(coco_poses, velocity_threshold=0.05, acceleration_threshold=0.05)
+    segments = segment_poses(coco_poses, velocity_threshold=0.01, acceleration_threshold=0.01)
     print(f"✅ Created {len(segments)} segments")
+    
+    # Step 6.5: Save segment visualizations (optional)
+    if num_visualizations is not None and num_visualizations > 0:
+        print(f"\n🎨 Step 6.5: Saving segment visualizations")
+        save_segment_visualizations(segments, output_dir, num_visualizations)
     
     # Step 7: Create MMN data files
     print(f"\n💾 Step 7: Creating MMN data files")
@@ -1165,6 +1196,9 @@ def process_poses_pipeline(input_path: str, output_dir: str,
     if enable_debug_clips:
         debug_dir = os.path.join(output_dir, 'debug_clips')
         print(f"   - Debug clips: {debug_dir}")
+    if num_visualizations is not None and num_visualizations > 0:
+        viz_dir = os.path.join(output_dir, 'visualizations')
+        print(f"   - Segment visualizations: {viz_dir}")
     
     return summary
 
@@ -1183,12 +1217,14 @@ def main():
                        help='Path to MMN model weights')
     parser.add_argument('--device', type=str, default='cuda',
                        help='Device to run inference on (cuda/cpu)')
-    parser.add_argument('--save-debug-clips', action='store_true', default=True,
+    parser.add_argument('--save-debug-clips', action='store_true', default=False,
                        help='Save debug clips before and after COCO conversion (default: enabled)')
     parser.add_argument('--debug-num-clips', type=int, default=3,
                        help='Number of debug clips to save (default: 3)')
     parser.add_argument('--debug-clip-length', type=int, default=30,
                        help='Length of each debug clip in frames (default: 30)')
+    parser.add_argument('--num-visualizations', type=int, default=None,
+                       help='Number of random segments to save as visualizations (optional)')
     
     args = parser.parse_args()
     
@@ -1216,7 +1252,8 @@ def main():
             device=args.device,
             enable_debug_clips=args.save_debug_clips,
             debug_num_clips=args.debug_num_clips,
-            debug_clip_length=args.debug_clip_length
+            debug_clip_length=args.debug_clip_length,
+            num_visualizations=args.num_visualizations
         )
         print(f"\n✅ Pipeline completed successfully!")
         print(f"Results saved to: {args.output}")
