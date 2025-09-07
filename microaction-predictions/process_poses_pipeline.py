@@ -62,19 +62,17 @@ H36M_CONNECTIONS = [
     (15, 16)  # Right Elbow connects to Right Hand
 ]
 
-# COCO format uses 44 joints with these connections:
+# COCO format connections - creating a realistic face and body structure
 COCO_CONNECTIONS = [
-    # Face and head connections
+    # Simplified face structure (minimal realistic connections)
     (0, 1),   # Nose connects to Left Eye
     (0, 2),   # Nose connects to Right Eye
-    (0, 3),   # Nose connects to Left Ear
-    (0, 4),   # Nose connects to Right Ear
+    (1, 2),   # Left Eye connects to Right Eye (simple face triangle)
     
-    # Head connects to the body through shoulders
-    (1, 5),   # Left Eye connects to Left Shoulder
-    (2, 6),   # Right Eye connects to Right Shoulder
-    (3, 5),   # Left Ear connects to Left Shoulder
-    (4, 6),   # Right Ear connects to Right Shoulder
+    # Head to neck connection (connect face to body through virtual neck point)
+    (0, 17),  # Nose connects to Virtual Neck (joint 17)
+    (17, 5),  # Virtual Neck connects to Left Shoulder
+    (17, 6),  # Virtual Neck connects to Right Shoulder
     
     # Upper body connections
     (5, 6),   # Left Shoulder connects to Right Shoulder
@@ -365,6 +363,17 @@ def convert_h36m_to_coco_format(h36m_pose: np.ndarray) -> np.ndarray:
     head_pos = h36m_2d[:, 10, :]     # H36M head position  
     neck_pos = h36m_2d[:, 8, :]      # H36M neck position
     
+    # Add a virtual neck point in COCO format (joint 17) for better head-body connection
+    # This will be the midpoint between shoulders, slightly raised toward the head
+    left_shoulder = h36m_2d[:, 11, :]   # H36M left shoulder
+    right_shoulder = h36m_2d[:, 14, :]  # H36M right shoulder
+    shoulder_midpoint = (left_shoulder + right_shoulder) / 2
+    
+    # Position the virtual neck much closer to shoulders for realistic proportions
+    # Use actual neck position but bring it closer to shoulder level
+    neck_offset = (neck_pos - shoulder_midpoint) * 0.3  # Only 30% of the way to actual neck
+    virtual_neck = shoulder_midpoint + neck_offset
+    
     # Calculate head orientation vector (from neck to head)
     head_vector = head_pos - neck_pos
     head_length = np.linalg.norm(head_vector, axis=1, keepdims=True)
@@ -379,12 +388,12 @@ def convert_h36m_to_coco_format(h36m_pose: np.ndarray) -> np.ndarray:
     # Use nose as the primary face reference point
     coco_pose[:, 0, :] = nose_pos  # nose → nose
     
-    # Estimate face keypoints using head geometry
-    # Scale factors based on typical head proportions
-    eye_up_scale = 0.15      # Eyes are slightly above nose
-    eye_side_scale = 0.25    # Eyes are to the sides of nose
-    ear_side_scale = 0.4     # Ears are further to the sides
-    ear_back_scale = 0.1     # Ears are slightly behind nose
+    # Estimate face keypoints using much smaller, more realistic proportions
+    # Scale factors based on realistic human head proportions
+    eye_up_scale = 0.05      # Eyes are slightly above nose (much smaller)
+    eye_side_scale = 0.08    # Eyes are close to nose (much smaller)
+    ear_side_scale = 0.12    # Ears are closer to head (much smaller)
+    ear_back_scale = 0.03    # Ears are just slightly behind nose (much smaller)
     
     # Calculate eye positions
     eye_offset_up = head_unit * (eye_up_scale * head_length)
@@ -399,6 +408,10 @@ def convert_h36m_to_coco_format(h36m_pose: np.ndarray) -> np.ndarray:
     
     coco_pose[:, 3, :] = nose_pos + ear_offset_back - ear_offset_side  # left ear (negative X)
     coco_pose[:, 4, :] = nose_pos + ear_offset_back + ear_offset_side  # right ear (positive X)
+    
+    # Add the virtual neck point at joint 17 for better head-body connection
+    if coco_pose.shape[1] > 17:  # Only if we have space for additional joints
+        coco_pose[:, 17, :] = virtual_neck
     
     # Scale the pose to a reasonable size for visualization
     # Find all the coordinates that aren't zero
